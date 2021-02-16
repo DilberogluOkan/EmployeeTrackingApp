@@ -1,0 +1,103 @@
+﻿@using Entities.Concrete
+@model List<Identity>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+
+<div class="box box-default">
+    <div class="box-header with-border">
+
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr role="row" class="odd">
+                    <td class="sorting_1"><b>Tc Kimlik No</b></td>
+                    <td></td>
+                    <td><b>Sicil No</b></td>
+                    <td></td>
+                    <td rowspan="3" style="width:120px"></td>
+                </tr>
+                <tr role="row" class="odd">
+                    <td class="sorting_1"><b>Adı</b></td>
+                    <td></td>
+                    <td class="sorting_1"><b>Doğum Tarih</b></td>
+                    <td></td>
+
+
+                </tr>
+                <tr role="row" class="odd">
+                    <td><b>Soyadı</b></td>
+                    <td></td>
+                    <td><b>Doğum yeri</b></td>
+                    <td> </td>
+
+                </tr>
+@foreach (var item in Model)
+{
+
+
+                <tr role="row" class="odd">
+                    <td><b>@item.Id</b></td>
+                    <td>@item.Id</td>
+                   
+
+                </tr>}
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- /.box -->
+<!-- /.box -->
+<div class="box box-danger">
+    <div class="box-header">
+        <h3 class="box-title">Bilgiler</h3>
+    </div>
+    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr role="row" class="odd">
+                <td class="sorting_1"><b>Cinsiyet</b></td>
+                <td></td>
+                <td><b>Medeni Hali</b></td>
+                <td></td>
+
+            </tr>
+            <tr role="row" class="odd">
+                <td class="sorting_1"><b>Özel Durum</b></td>
+                <td></td>
+                <td><b>Kan Grubu</b></td>
+                <td></td>
+
+
+            </tr>
+            <tr role="row" class="odd">
+                <td><b>Katılış Tarihi</b></td>
+                <td></td>
+                <td class="sorting_1"><b>Sınıfı</b></td>
+                <td></td>
+
+            </tr>
+            <tr role="row" class="odd">
+                <td><b>Boy</b></td>
+                <td></td>
+                <td><b>Kilo</b></td>
+                <td></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+    <!-- /.box-body -->
+</div>
+
+

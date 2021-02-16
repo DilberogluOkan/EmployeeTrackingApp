@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0DE15AF-43A1-4A4C-B39D-5517BF8A48F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Business</RootNamespace>
+    <AssemblyName>Business</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IAdaptationService.cs" />
+    <Compile Include="Abstract\IAwardService.cs" />
+    <Compile Include="Abstract\IBirthCertificateService.cs" />
+    <Compile Include="Abstract\ICourseService.cs" />
+    <Compile Include="Abstract\ICriminalService.cs" />
+    <Compile Include="Abstract\IDesignationService.cs" />
+    <Compile Include="Abstract\IForeignLanguageService.cs" />
+    <Compile Include="Abstract\IGraduationService.cs" />
+    <Compile Include="Abstract\IIdentityService.cs" />
+    <Compile Include="Abstract\IMilitaryService.cs" />
+    <Compile Include="Abstract\IPermissionService.cs" />
+    <Compile Include="Abstract\IPromotionService.cs" />
+    <Compile Include="Abstract\ITemporaryDutyService.cs" />
+    <Compile Include="Concrete\AdaptationManager.cs" />
+    <Compile Include="Concrete\AwardManager.cs" />
+    <Compile Include="Concrete\BirthCertificateManager.cs" />
+    <Compile Include="Concrete\CourseManager.cs" />
+    <Compile Include="Concrete\CriminalManager.cs" />
+    <Compile Include="Concrete\DesignationManager.cs" />
+    <Compile Include="Concrete\ForeignLanguageManager.cs" />
+    <Compile Include="Concrete\GraduationManager.cs" />
+    <Compile Include="Concrete\IdentityManager.cs" />
+    <Compile Include="Concrete\MilitaryManager.cs" />
+    <Compile Include="Concrete\PermissionManager.cs" />
+    <Compile Include="Concrete\PromotionManager.cs" />
+    <Compile Include="Concrete\TemporaryDutyManager.cs" />
+    <Compile Include="Constants\Messages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{CCA9A305-FD40-47E3-BDA8-6E5481F86493}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{4D64DAD8-152F-45E6-8D0A-E87402ED448E}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{221BF18E-9E3C-496F-9502-29036A740BCA}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
