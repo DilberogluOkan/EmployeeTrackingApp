@@ -13,6 +13,8 @@ namespace WebUI.Controllers
     {
 
         TemporaryDutyManager manager = new TemporaryDutyManager(new TemporaryDutyDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
+
         // GET: TemporaryDuty
         public ActionResult Index()
         {
@@ -21,7 +23,7 @@ namespace WebUI.Controllers
 
         public ActionResult TemporaryDutyQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {
