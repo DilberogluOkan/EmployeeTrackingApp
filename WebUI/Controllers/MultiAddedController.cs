@@ -17,7 +17,7 @@ namespace WebUI.Controllers
                                                             MaritalStatusManager maritalStatusManager)
         {
             _bloodGroup = bloodGroupManager;
-            _genderManager = genderManager;
+            _genderManager = genderManager;//czxcz
             _maritalStatusManager = maritalStatusManager;
         }
 
