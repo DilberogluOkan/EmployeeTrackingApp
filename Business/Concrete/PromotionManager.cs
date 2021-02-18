@@ -40,6 +40,16 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        public IDataResult<List<Promotion>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Promotion>>(_promotionDal.GetAll(p => p.KimlikBilgiId== id));
+        }
+
+        public IDataResult<Promotion> GetById(int promotionId)
+        {
+            return new SuccessDataResult<Promotion>(_promotionDal.Get(p => p.TerfiBilgiId == promotionId));
+        }
+
         public IResult Update(Promotion promotion)
         {
             throw new NotImplementedException();

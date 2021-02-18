@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(Designation designation);
         IResult Update(Designation designation);
         IDataResult<List<Designation>> GetAll();
-        IDataResult<Designation> Get(int designationId);
+        IDataResult<Designation> GetById(int designationId);
+        IDataResult<List<Designation>> GetAllByIdentityId(int id);
     }
 }

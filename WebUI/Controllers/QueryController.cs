@@ -19,6 +19,12 @@ namespace WebUI.Controllers
             var result = manager.GetAll().Data;
             if (!string.IsNullOrEmpty(tcNo))
             {
+                foreach (var item in result)
+                {
+                    var deger = item.Adi.Contains(tcNo);
+                }
+                return View();
+                
             }
             return View(result);
         }

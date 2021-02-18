@@ -30,9 +30,9 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Designation> Get(int designationId)
+        public IDataResult<Designation> GetById(int designationId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Designation>(_designationDal.Get(p => p.AtamaBilgiId == designationId));
         }
 
         public IDataResult<List<Designation>> GetAll()
@@ -43,6 +43,11 @@ namespace Business.Concrete
         public IResult Update(Designation designation)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Designation>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Designation>>(_designationDal.GetAll(p => p.KimlikBilgiId == id));
         }
     }
 }

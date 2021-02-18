@@ -15,5 +15,6 @@ namespace Business.Abstract
         IResult Update(Adaptation adaptation);
         IDataResult<Adaptation> GetById(int adaptationId);
         IDataResult<List<Adaptation>> GetAll();
+        IDataResult<List<Adaptation>> GetAllByIdentityId(int id);
     }
 }

@@ -11,7 +11,7 @@ namespace Business.Abstract
     public interface IIdentityService
     {
         
-        //IDataResult<List<Identity>> GetAllByCategoryId(int id);
+        IDataResult<List<Identity>> GetAllByIdentityId(int id);
         
        // IDataResult<List<DetailDto>> GetProductDetails();
        

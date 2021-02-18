@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,51 @@ namespace WebUI.Controllers
     {
         AwardManager manager = new AwardManager(new AwardDal());
         // GET: Award
-        public ActionResult Index(int identityId)
+        public ActionResult Index()
         {
-            var result = manager.GetById(identityId).Data;
+            return View();
+        }
+
+        public ActionResult AwardQuery(string id)
+        {
+            var result = manager.GetAll();
+
+            if (!string.IsNullOrEmpty(id))
+            {
+
+                return View();
+            }
             return View(result);
+        }
+
+        public ActionResult AwardGetList(int id)
+        {
+
+            var awardGetList = manager.GetAllByIdentityId(id);
+            return View("AwardGetList", awardGetList);
+        }
+
+        public ActionResult AwardGet(int id)
+        {
+            var awardGet = manager.GetById(id);
+
+            return View("AwardGet", awardGet);
+        }
+
+
+        [HttpGet]
+        public ActionResult AwardUpdate()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AwardUpdate(Award award)
+
+        {
+            manager.Update(award);
+            return RedirectToAction("");
         }
     }
 }

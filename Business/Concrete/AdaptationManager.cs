@@ -42,6 +42,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Adaptation>>(_adaptationDal.GetAll(), Messages.Success);
         }
 
+        public IDataResult<List<Adaptation>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Adaptation>>(_adaptationDal.GetAll(p => p.IntibakBilgiId == id));
+        }
+
         public IDataResult<Adaptation> GetById(int adaptationId)
         {
             return new SuccessDataResult<Adaptation>(_adaptationDal.Get(p => p.IntibakBilgiId == adaptationId));

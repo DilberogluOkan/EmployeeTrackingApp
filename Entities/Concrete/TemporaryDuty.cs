@@ -8,6 +8,7 @@ namespace Entities.Concrete
     public class TemporaryDuty:IEntity
     {
         public int GeciciGorevBilgiId { get; set; }
+        public int KimlikBilgiId { get; set; }
         public string GorevlendirildigiBirlik { get; set; }
         public string GorevYeri { get; set; }
         public DateTime BaslamaTarihi { get; set; }

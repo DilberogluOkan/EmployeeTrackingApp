@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,53 @@ namespace WebUI.Controllers
     public class BirthCertificateController : Controller
     {
         BirthCertificateManager manager = new BirthCertificateManager(new BirthCertificateDal());
-       
-        public ActionResult Index(int identityId)
+
+        public ActionResult Index()
         {
-            //var result = manager.GetById(identityId).Data;
             return View();
+        }
+
+        public ActionResult BirthCertificateQuery(string id)
+        {
+            var result = manager.GetAll();
+
+            if (!string.IsNullOrEmpty(id))
+            {
+
+                return View();
+            }
+            return View(result);
+        }
+
+        public ActionResult BirthCertificateGetList(int id)
+        {
+
+            //var birthCertificateGetList = manager.GetAllByIdentityId(id);
+            //return View("BirthCertificateGetList", birthCertificateGetList);
+            return View();
+        }
+
+        public ActionResult BirthCertificateGet(int id)
+        {
+            //var birthCertificateGet = manager.GetById(id);
+            return View();
+            //return View("BirthCertificateGet", birthCertificateGet);
+        }
+
+
+        [HttpGet]
+        public ActionResult BirthCertificateUpdate()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult BirthCertificateUpdate(BirthCertificate birthCertificate)
+
+        {
+            manager.Update(birthCertificate);
+            return RedirectToAction("");
         }
     }
 }

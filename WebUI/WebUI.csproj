@@ -206,6 +206,34 @@
     <Content Include="Views\TemporaryDuty\Index.cshtml" />
     <Content Include="Views\Query\Index.cshtml" />
     <Content Include="Views\MultiAdded\Index.cshtml" />
+    <Content Include="Views\Graduation\GraduationQuery.cshtml" />
+    <Content Include="Views\Graduation\GraduationGetList.cshtml" />
+    <Content Include="Views\Graduation\GraduationGet.cshtml" />
+    <Content Include="Views\Adaptation\AdaptationQuery.cshtml" />
+    <Content Include="Views\Adaptation\AdaptationGetList.cshtml" />
+    <Content Include="Views\Adaptation\AdaptationGet.cshtml" />
+    <Content Include="Views\Award\AwardQuery.cshtml" />
+    <Content Include="Views\Award\AwardGetList.cshtml" />
+    <Content Include="Views\Award\AwardGet.cshtml" />
+    <Content Include="Views\BirthCertificate\BirthCertificateQuery.cshtml" />
+    <Content Include="Views\Course\CourseQuery.cshtml" />
+    <Content Include="Views\Course\CourseGet.cshtml" />
+    <Content Include="Views\Course\CourseGetList.cshtml" />
+    <Content Include="Views\Criminal\CriminalGet.cshtml" />
+    <Content Include="Views\Criminal\CriminalGetList.cshtml" />
+    <Content Include="Views\Criminal\CriminalQuery.cshtml" />
+    <Content Include="Views\Designation\DesignationGetList.cshtml" />
+    <Content Include="Views\Designation\DesignationGet.cshtml" />
+    <Content Include="Views\Designation\DesignationQuery.cshtml" />
+    <Content Include="Views\Permission\PermissionGet.cshtml" />
+    <Content Include="Views\Permission\PermissionGetList.cshtml" />
+    <Content Include="Views\Permission\PermissionQuery.cshtml" />
+    <Content Include="Views\Rise\RiseQuery.cshtml" />
+    <Content Include="Views\Rise\RiseGetList.cshtml" />
+    <Content Include="Views\Rise\RiseGet.cshtml" />
+    <Content Include="Views\TemporaryDuty\TemporaryDutyGetList.cshtml" />
+    <Content Include="Views\TemporaryDuty\TemporaryDutyGet.cshtml" />
+    <Content Include="Views\TemporaryDuty\TemporaryDutyQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

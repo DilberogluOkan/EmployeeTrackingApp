@@ -30,14 +30,19 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Course> Get(int courseId)
+        public IDataResult<Course> GetById(int courseId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Course>(_courseDal.Get(p => p.KursBilgiId == courseId));
         }
 
         public IDataResult<List<Course>> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Course>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(p => p.KursBilgiId == id));
         }
 
         public IResult Update(Course course)

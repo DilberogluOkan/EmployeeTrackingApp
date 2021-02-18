@@ -30,14 +30,20 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Criminal> Get(int criminalId)
+     
+        public IDataResult<List<Criminal>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Criminal>> GetAll()
+        public IDataResult<List<Criminal>> GetAllByIdentityId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Criminal>>(_criminalDal.GetAll(p => p.CezaBilgiId == id));
+        }
+
+        public IDataResult<Criminal> GetById(int criminalId)
+        {
+            return new SuccessDataResult<Criminal>(_criminalDal.Get(p => p.CezaBilgiId ==criminalId));
         }
 
         public IResult Update(Criminal criminal)

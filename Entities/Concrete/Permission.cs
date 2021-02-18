@@ -8,6 +8,7 @@ namespace Entities.Concrete
     public class Permission:IEntity
     {
         public int IzinBilgisiId { get; set; }
+        public int KimlikBilgisiId { get; set; }
         public string IzinSekli { get; set; }
         public string IzınSebebi { get; set; }
         public string Borclanma { get; set; }

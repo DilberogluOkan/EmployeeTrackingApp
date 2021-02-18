@@ -15,5 +15,6 @@ namespace Business.Abstract
         IResult Update(Award award);
         IDataResult<Award> GetById(int awardId);
         IDataResult<List<Award>> GetAll();
+        IDataResult<List<Award>> GetAllByIdentityId(int id);
     }
 }

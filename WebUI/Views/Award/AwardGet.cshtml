@@ -1,0 +1,53 @@
+﻿@using Entities.Concrete
+@model Award
+@{
+    ViewBag.Title = "AwardGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AwardGet</h2>
+
+<h2>PersonelOdulGetir</h2>
+
+
+@using (Html.BeginForm("AwardUpdate", "Award", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Ödül Veren Rütbe</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.KimlikBilgiId)
+                            @Html.HiddenFor(x => x.OdulBilgiId)
+                            @Html.TextBoxFor(x => x.OdulVerenRutbe, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Odul Taktir Bilgi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulTaktirCinsi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Verildiği Tarih</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.VerildigiTarih, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Ödül Veren Amir Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulVerenAmirAdı, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Ödül Veren Amir Rütbe</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulVerenAmirRutbe, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+

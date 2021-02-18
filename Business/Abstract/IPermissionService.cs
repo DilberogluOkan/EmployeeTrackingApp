@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(Permission permission);
         IResult Update(Permission permission);
         IDataResult<List<Permission>> GetAll();
-        IDataResult<Permission> Get(int permissionId);
+        IDataResult<Permission> GetById(int permissionId);
+        IDataResult<List<Permission>> GetAllByIdentityId(int id);
     }
 }

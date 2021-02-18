@@ -1,0 +1,55 @@
+﻿@using Entities.Concrete
+@model Promotion
+@{
+    ViewBag.Title = "RiseGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RiseGet</h2>
+<h2>PersonelGetir</h2>
+<h4>Genel Bilgiler</h4>
+@using (Html.BeginForm("RiseUpdate", "Rise", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Derece</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.KimlikBilgiId)
+                            @Html.HiddenFor(x => x.TerfiBilgiId)
+                            @Html.TextBoxFor(x => x.Derece, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Kademe</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Kademe, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Terfi Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.TerfiTarih, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Değişiklik Nedeni</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.DegisiklikNedeni, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Açıklama</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Aciklama, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Açıklama2</b></td>
+                        <td>
+                            @Html.TextBox("Açıklama2", null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+

@@ -35,10 +35,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Identity>>(_identityDal.GetAll());
         }
 
+        public IDataResult<List<Identity>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.PersonelKimlikId == id));
+        }
+
         public IDataResult<Identity> GetById(int identityId)
         {
             
-            return new SuccessDataResult<Identity>(_identityDal.Get(p=>p.KimlikId==identityId));
+            return new SuccessDataResult<Identity>(_identityDal.Get(p=>p.PersonelKimlikId==identityId));
         }
 
         public IResult Update(Identity identity)

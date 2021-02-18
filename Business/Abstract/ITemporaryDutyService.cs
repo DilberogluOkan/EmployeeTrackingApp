@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(TemporaryDuty temporaryDuty);
         IResult Update(TemporaryDuty temporaryDuty);
         IDataResult<List<TemporaryDuty>> GetAll();
-        IDataResult<TemporaryDuty> Get(int temporaryDutyId);
+        IDataResult<TemporaryDuty> GetById(int temporaryDutyId);
+        IDataResult<List<TemporaryDuty>> GetAllByIdentityId(int id);
     }
 }

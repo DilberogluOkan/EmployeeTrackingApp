@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(Criminal criminal);
         IResult Update(Criminal criminal);
         IDataResult<List<Criminal>> GetAll();
-        IDataResult<Criminal> Get(int criminalId);
+        IDataResult<Criminal> GetById(int criminalId);
+        IDataResult<List<Criminal>> GetAllByIdentityId(int id);
     }
 }

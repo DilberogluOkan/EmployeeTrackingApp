@@ -1,4 +1,6 @@
-﻿
+﻿@using Entities.Concrete
+@model List<Identity>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,16 +40,16 @@
                     </thead>
                     <tbody>
 
-                        @*@foreach (var k in Model)
-                        {*@
+                        @foreach (var k in Model)
+                        {
                             <tr role="row" class="odd">
-                                <td class="sorting_1"></td>
-                                <td></td>
+                                <td class="sorting_1">@k.KimlikId</td>
+                                <td>@k.Adi</td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="#" class="btn btn-success col-xs-pull-5">Seç</a></td>
                             </tr>
-                        @*}*@
+                        }
                     </tbody>
                 </table>
             </div>

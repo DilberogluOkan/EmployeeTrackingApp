@@ -30,9 +30,10 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Graduation> Get(int graduationId)
+        public IDataResult<Graduation> GetById(int graduationId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Graduation>(_graduationDal.Get(p => p.PersonelEgitimId == graduationId));
+
         }
 
         public IDataResult<List<Graduation>> GetAll()
@@ -40,9 +41,16 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        public IDataResult<List<Graduation>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Graduation>>(_graduationDal.GetAll(p => p.PersonelKimlikId == id));
+
+        }
+
         public IResult Update(Graduation graduation)
         {
-            throw new NotImplementedException();
+            _graduationDal.Update(graduation);
+            return new SuccessResult();
         }
     }
 }

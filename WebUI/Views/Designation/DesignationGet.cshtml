@@ -1,0 +1,51 @@
+﻿
+@using Entities.Concrete
+@model Designation
+@{
+    ViewBag.Title = "DesignationGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DesignationGet</h2>
+
+
+<h2>PersonelAtamaGetir</h2>
+
+<h4>Genel Bilgiler</h4>
+@using (Html.BeginForm("DesignationUpdate", "Designation", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>İş Yeri</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.KimlikBilgiId)
+                            @Html.HiddenFor(x => x.AtamaBilgiId)
+                            @Html.TextBoxFor(x => x.IsYeri, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Atama İsteği Durumu</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AtamaIstegiDurumu, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Katılış Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.KatilisTarihi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Ayrılış Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AyrilisTarihi, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}

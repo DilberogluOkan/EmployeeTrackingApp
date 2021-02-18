@@ -14,11 +14,11 @@ namespace Business.Concrete
 {
     public class AwardManager : IAwardService
     {
-        IAwardDal _AwardDal;
+        IAwardDal _awardDal;
 
         public AwardManager(IAwardDal AwardDal)
         {
-            _AwardDal = AwardDal;
+            _awardDal = AwardDal;
         }
 
         public IResult Add(Award award)
@@ -27,7 +27,7 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.AddNegative);
             }
-            _AwardDal.Add(award);
+            _awardDal.Add(award);
             return new SuccessResult(Messages.AddPositive);
         }
 
@@ -39,6 +39,11 @@ namespace Business.Concrete
         public IDataResult<List<Award>> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Award>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<Award>>(_awardDal.GetAll(p => p.OdulBilgiId == id));
         }
 
         public IDataResult<Award> GetById(int awardId)

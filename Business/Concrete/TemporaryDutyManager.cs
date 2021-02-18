@@ -30,9 +30,9 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<TemporaryDuty> Get(int temporaryDutyId)
+        public IDataResult<TemporaryDuty> GetById(int temporaryDutyId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<TemporaryDuty>(_temporaryDutyDal.Get(p => p.GeciciGorevBilgiId == temporaryDutyId));
         }
 
         public IDataResult<List<TemporaryDuty>> GetAll()
@@ -43,6 +43,11 @@ namespace Business.Concrete
         public IResult Update(TemporaryDuty temporaryDuty)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<TemporaryDuty>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<TemporaryDuty>>(_temporaryDutyDal.GetAll(p => p.KimlikBilgiId == id));
         }
     }
 }

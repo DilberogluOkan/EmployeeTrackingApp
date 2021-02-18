@@ -8,6 +8,7 @@ namespace Entities.Concrete
     public class Promotion:IEntity
     {
         public int TerfiBilgiId { get; set; }
+        public int KimlikBilgiId { get; set; }
         public string Derece { get; set; }
         public string Kademe { get; set; }
         public DateTime TerfiTarih { get; set; }

@@ -1,0 +1,59 @@
+﻿@using Entities.Concrete
+@model Course
+@{
+    ViewBag.Title = "CourseGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CourseGet</h2>
+<h2>PersonelKursGetir</h2>
+
+
+<h2>PersonelGetir</h2>
+<h4>Genel Bilgiler</h4>
+@using (Html.BeginForm("CourseUpdate", "Course", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Türü</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.KimlikBilgiId)
+                            @Html.HiddenFor(x => x.KursBilgiId)
+                            @Html.TextBoxFor(x => x.Turu, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Şekli</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Sekli, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Konusu</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Konusu, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Kurs Sınav Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.KursSinavAdi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Başlangıç Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BaslangicTarihi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Bitiş Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BitisTarihi, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+

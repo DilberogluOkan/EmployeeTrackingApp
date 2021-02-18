@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(Promotion promotion);
         IResult Update(Promotion promotion);
         IDataResult<List<Promotion>> GetAll();
-        IDataResult<Promotion> Get(int promotionId);
+        IDataResult<Promotion> GetById(int promotionId);
+        IDataResult<List<Promotion>> GetAllByIdentityId(int id);
     }
 }

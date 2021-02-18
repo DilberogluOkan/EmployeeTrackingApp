@@ -1,0 +1,44 @@
+﻿@using Entities.Concrete
+@model List<Adaptation>
+@{
+    ViewBag.Title = "AdaptationGetList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdaptationGetList</h2>
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">İntibak Bilgileri</h3>
+    </div>
+    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+        <thead>
+            <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Hizmetin Geçtiği Yer</th>
+
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hizmetin Geçtiği Kurum</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Başlama Tarihi</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bitiş Tarihi</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Prim Gün Sayısı</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var e in Model)
+            {
+                <tr role="row" class="odd">
+                    <td class="sorting_1">@e.HizmetinGecYer</td>
+                    <td>@e.HizmetinGecKurum</td>
+                    <td>@e.BaslamaTarihi</td>
+                    <td>@e.BitisTarihi</td>
+                    <td>@e.PrimGunSayisi</td>
+
+                    <td><a href="/Adaptation/AdaptationGet/@e.IntibakBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <!-- /.box-body -->
+</div>

@@ -30,14 +30,20 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Permission> Get(int permissionId)
+        
+        public IDataResult<List<Permission>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Permission>> GetAll()
+        public IDataResult<List<Permission>> GetAllByIdentityId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Permission>>(_permissionDal.GetAll(p => p.IzinBilgisiId == id));
+        }
+
+        public IDataResult<Permission> GetById(int permissionId)
+        {
+            return new SuccessDataResult<Permission>(_permissionDal.Get(p => p.IzinBilgisiId == permissionId));
         }
 
         public IResult Update(Permission permission)

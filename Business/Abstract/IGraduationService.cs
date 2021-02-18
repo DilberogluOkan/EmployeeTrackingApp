@@ -14,6 +14,7 @@ namespace Business.Abstract
         IResult Delete(Graduation graduation);
         IResult Update(Graduation graduation);
         IDataResult<List<Graduation>> GetAll();
-        IDataResult<Graduation> Get(int graduationId);
+        IDataResult<Graduation> GetById(int graduationId);
+        IDataResult<List<Graduation>> GetAllByIdentityId(int id);
     }
 }

@@ -1,0 +1,44 @@
+﻿@using Entities.Concrete
+@model List<Designation>
+@{
+    ViewBag.Title = "DesignationGetList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DesignationGetList</h2>
+
+<h2>PersonelAtamaGetirList</h2>
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Atama Bilgileri</h3>
+    </div>
+    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+        <thead>
+            <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">İş Yeri</th>
+
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Atama İsteği Durumu</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Katılış Tarihi</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ayrılış Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var e in Model)
+            {
+                <tr role="row" class="odd">
+                    <td class="sorting_1">@e.IsYeri</td>
+                    <td>@e.KatilisTarihi</td>
+                    <td>@e.AyrilisTarihi</td>
+                    <td>@e.AtamaIstegiDurumu</td>
+
+                    <td><a href="/Designation/DesignationGet/@e.AtamaBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <!-- /.box-body -->
+</div>
+
