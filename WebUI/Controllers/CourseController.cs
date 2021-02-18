@@ -12,6 +12,7 @@ namespace WebUI.Controllers
     public class CourseController : Controller
     {
         CourseManager manager = new CourseManager(new CourseDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Course
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace WebUI.Controllers
 
         public ActionResult CourseQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

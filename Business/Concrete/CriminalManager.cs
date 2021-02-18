@@ -38,12 +38,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Criminal>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Criminal>>(_criminalDal.GetAll(p => p.CezaBilgiId == id));
+            return new SuccessDataResult<List<Criminal>>(_criminalDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IDataResult<Criminal> GetById(int criminalId)
         {
-            return new SuccessDataResult<Criminal>(_criminalDal.Get(p => p.CezaBilgiId ==criminalId));
+            return new SuccessDataResult<Criminal>(_criminalDal.Get(p => p.PersonelCezaId ==criminalId));
         }
 
         public IResult Update(Criminal criminal)

@@ -44,12 +44,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Adaptation>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Adaptation>>(_adaptationDal.GetAll(p => p.IntibakBilgiId == id));
+            return new SuccessDataResult<List<Adaptation>>(_adaptationDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IDataResult<Adaptation> GetById(int adaptationId)
         {
-            return new SuccessDataResult<Adaptation>(_adaptationDal.Get(p => p.IntibakBilgiId == adaptationId));
+            return new SuccessDataResult<Adaptation>(_adaptationDal.Get(p => p.PersonelIntibakId == adaptationId));
         }
 
         public IResult Update(Adaptation adaptation)

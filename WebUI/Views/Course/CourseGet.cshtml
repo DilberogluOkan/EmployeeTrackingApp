@@ -23,8 +23,8 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1"><b>Türü</b></td>
                         <td>
-                            @Html.HiddenFor(x => x.KimlikBilgiId)
-                            @Html.HiddenFor(x => x.KursBilgiId)
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelKursId)
                             @Html.TextBoxFor(x => x.Turu, null, new { @class = "form-control" })
                         </td>
                         <td><b>Şekli</b></td>
@@ -43,7 +43,7 @@
                         </td>
                         <td><b>Başlangıç Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.BaslangicTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.BaslamaTarihi, null, new { @class = "form-control" })
                         </td>
                         <td><b>Bitiş Tarihi</b></td>
                         <td>

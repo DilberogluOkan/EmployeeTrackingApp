@@ -22,13 +22,13 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1"><b>Ödül Veren Rütbe</b></td>
                         <td>
-                            @Html.HiddenFor(x => x.KimlikBilgiId)
-                            @Html.HiddenFor(x => x.OdulBilgiId)
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelOdulId)
                             @Html.TextBoxFor(x => x.OdulVerenRutbe, null, new { @class = "form-control" })
                         </td>
                         <td><b>Odul Taktir Bilgi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.OdulTaktirCinsi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.OdulTaktirBilgi, null, new { @class = "form-control" })
                         </td>
                         <td><b>Verildiği Tarih</b></td>
                         <td>
@@ -38,7 +38,7 @@
                     <tr>
                         <td><b>Ödül Veren Amir Adı</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.OdulVerenAmirAdı, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.OdulVerenAmirAdi, null, new { @class = "form-control" })
                         </td>
                         <td><b>Ödül Veren Amir Rütbe</b></td>
                         <td>

@@ -38,12 +38,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Permission>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Permission>>(_permissionDal.GetAll(p => p.IzinBilgisiId == id));
+            return new SuccessDataResult<List<Permission>>(_permissionDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IDataResult<Permission> GetById(int permissionId)
         {
-            return new SuccessDataResult<Permission>(_permissionDal.Get(p => p.IzinBilgisiId == permissionId));
+            return new SuccessDataResult<Permission>(_permissionDal.Get(p => p.PersonelIzinId == permissionId));
         }
 
         public IResult Update(Permission permission)

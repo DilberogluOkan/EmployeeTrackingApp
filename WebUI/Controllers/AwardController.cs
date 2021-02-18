@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace WebUI.Controllers
     public class AwardController : Controller
     {
         AwardManager manager = new AwardManager(new AwardDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Award
         public ActionResult Index()
         {
@@ -20,7 +22,7 @@ namespace WebUI.Controllers
 
         public ActionResult AwardQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace WebUI.Controllers
     public class BirthCertificateController : Controller
     {
         BirthCertificateManager manager = new BirthCertificateManager(new BirthCertificateDal());
-
+        IdentityManager key = new IdentityManager(new IdentityDal());
         public ActionResult Index()
         {
             return View();
@@ -20,7 +21,7 @@ namespace WebUI.Controllers
 
         public ActionResult BirthCertificateQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

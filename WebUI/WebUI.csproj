@@ -234,6 +234,7 @@
     <Content Include="Views\TemporaryDuty\TemporaryDutyGetList.cshtml" />
     <Content Include="Views\TemporaryDuty\TemporaryDutyGet.cshtml" />
     <Content Include="Views\TemporaryDuty\TemporaryDutyQuery.cshtml" />
+    <Content Include="Views\MultiAdded\Added.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

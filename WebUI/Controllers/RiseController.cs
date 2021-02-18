@@ -12,6 +12,7 @@ namespace WebUI.Controllers
     public class RiseController : Controller
     {
         PromotionManager manager = new PromotionManager(new PromotionDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Rise
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace WebUI.Controllers
 
         public ActionResult RiseQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

@@ -11,12 +11,13 @@ namespace WebUI.Controllers
     public class QueryController : Controller
     {
         IdentityManager manager = new IdentityManager(new IdentityDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
 
         [HttpGet]
         public ActionResult Index(string tcNo)
         {
            
-            var result = manager.GetAll().Data;
+            var result = key.GetAll().Data;
             if (!string.IsNullOrEmpty(tcNo))
             {
                 foreach (var item in result)

@@ -42,12 +42,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Promotion>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Promotion>>(_promotionDal.GetAll(p => p.KimlikBilgiId== id));
+            return new SuccessDataResult<List<Promotion>>(_promotionDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IDataResult<Promotion> GetById(int promotionId)
         {
-            return new SuccessDataResult<Promotion>(_promotionDal.Get(p => p.TerfiBilgiId == promotionId));
+            return new SuccessDataResult<Promotion>(_promotionDal.Get(p => p.PersonelTerfiId == promotionId));
         }
 
         public IResult Update(Promotion promotion)

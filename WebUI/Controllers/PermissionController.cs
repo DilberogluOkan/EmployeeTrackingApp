@@ -13,6 +13,7 @@ namespace WebUI.Controllers
     {
        
         PermissionManager manager = new PermissionManager(new PermissionDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Permission
         public ActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace WebUI.Controllers
 
         public ActionResult PermissionQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

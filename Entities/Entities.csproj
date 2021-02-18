@@ -64,6 +64,7 @@
     <Compile Include="Concrete\Identity.cs" />
     <Compile Include="Concrete\MaritalStatus.cs" />
     <Compile Include="Concrete\Military.cs" />
+    <Compile Include="Concrete\MultiModelDto.cs" />
     <Compile Include="Concrete\Permission.cs" />
     <Compile Include="Concrete\Promotion.cs" />
     <Compile Include="Concrete\Provice.cs" />

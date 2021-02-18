@@ -24,6 +24,7 @@ namespace Entities.Concrete
         public string Statu { get; set; }
 
         public string BorclanmaDurumu { get; set; }
+        
 
     }
 }

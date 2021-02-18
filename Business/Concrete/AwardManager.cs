@@ -23,7 +23,7 @@ namespace Business.Concrete
 
         public IResult Add(Award award)
         {
-            if (award.OdulVerenAmirAdı==null)
+            if (award.OdulVerenAmirAdi==null)
             {
                 return new ErrorResult(Messages.AddNegative);
             }
@@ -43,12 +43,13 @@ namespace Business.Concrete
 
         public IDataResult<List<Award>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Award>>(_awardDal.GetAll(p => p.OdulBilgiId == id));
+            return new SuccessDataResult<List<Award>>(_awardDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IDataResult<Award> GetById(int awardId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Award>(_awardDal.Get(p => p.PersonelOdulId == awardId));
+
         }
 
         public IResult Update(Award award)

@@ -13,6 +13,7 @@ namespace WebUI.Controllers
     {
 
         DesignationManager manager = new DesignationManager(new DesignationDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Designation
         public ActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace WebUI.Controllers
 
         public ActionResult DesignationQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

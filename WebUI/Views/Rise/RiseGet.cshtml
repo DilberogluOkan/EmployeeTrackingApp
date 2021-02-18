@@ -20,8 +20,8 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1"><b>Derece</b></td>
                         <td>
-                            @Html.HiddenFor(x => x.KimlikBilgiId)
-                            @Html.HiddenFor(x => x.TerfiBilgiId)
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelTerfiId)
                             @Html.TextBoxFor(x => x.Derece, null, new { @class = "form-control" })
                         </td>
                         <td><b>Kademe</b></td>
@@ -30,7 +30,7 @@
                         </td>
                         <td><b>Terfi Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.TerfiTarih, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.TerfiTarihi, null, new { @class = "form-control" })
                         </td>
                     </tr>
                     <tr>

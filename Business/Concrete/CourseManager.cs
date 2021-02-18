@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<Course> GetById(int courseId)
         {
-            return new SuccessDataResult<Course>(_courseDal.Get(p => p.KursBilgiId == courseId));
+            return new SuccessDataResult<Course>(_courseDal.Get(p => p.PersonelKursId == courseId));
         }
 
         public IDataResult<List<Course>> GetAll()
@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Course>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(p => p.KursBilgiId == id));
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(p => p.PersonelKimlikId == id));
         }
 
         public IResult Update(Course course)

@@ -13,6 +13,7 @@ namespace WebUI.Controllers
     {
 
         CriminalManager manager = new CriminalManager(new CriminalDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Criminal
         public ActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace WebUI.Controllers
 
         public ActionResult CriminalQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

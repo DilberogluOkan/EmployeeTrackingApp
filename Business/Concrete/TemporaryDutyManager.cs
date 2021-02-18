@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<TemporaryDuty> GetById(int temporaryDutyId)
         {
-            return new SuccessDataResult<TemporaryDuty>(_temporaryDutyDal.Get(p => p.GeciciGorevBilgiId == temporaryDutyId));
+            return new SuccessDataResult<TemporaryDuty>(_temporaryDutyDal.Get(p => p.PersonelGeciciGorevId == temporaryDutyId));
         }
 
         public IDataResult<List<TemporaryDuty>> GetAll()
@@ -47,7 +47,7 @@ namespace Business.Concrete
 
         public IDataResult<List<TemporaryDuty>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<TemporaryDuty>>(_temporaryDutyDal.GetAll(p => p.KimlikBilgiId == id));
+            return new SuccessDataResult<List<TemporaryDuty>>(_temporaryDutyDal.GetAll(p => p.PersonelKimlikId == id));
         }
     }
 }

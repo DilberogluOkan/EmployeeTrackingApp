@@ -13,6 +13,7 @@ namespace WebUI.Controllers
     {
        
         IdentityManager manager = new IdentityManager(new IdentityDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
 
         public ActionResult Index(int identityId)
         {

@@ -1,0 +1,591 @@
+﻿@using Entities.Concrete
+@model MultiModelDto
+@{
+    ViewBag.Title = "Added";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Added</h2>
+<h2>Yeni Personel Ekle</h2>
+<form method="post">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Genel">Genel Bilgiler</a></li>
+        <li><a data-toggle="tab" href="#Nufus">Nüfus Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#Egitim">Eğitim Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#Askerlik">Askerlik Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#Terfi">Terfi Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#intibak">İntibak Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#izinDil">İzin Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#Atama">Atama Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#Odul">Ödül Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#Kurs">Kurs Bilgileri </a></li>
+        <li><a data-toggle="tab" href="#Ceza">Ceza Bilgileri</a></li>
+        <li><a data-toggle="tab" href="#GeciciGorev">Geçici Görev Bilgileri</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+
+        <div id="Genel" class="tab-pane fade in active">
+
+            <h4>Genel Bilgiler</h4>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>TC Kimlik No</b></td>
+                                <td>
+                                    @Html.HiddenFor(x => x.Identity.PersonelKimlikId)
+                                    @Html.TextBoxFor(x => x.Identity.TcKimlikNo, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Adı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.Adi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Soyadı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.Soyadi, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Sicil No</b></td>
+                                <td>@Html.TextBoxFor(x => x.Identity.SicilNo, null, new { @class = "form-control" })</td>
+                                <td><b>Doğum Tarihi</b></td>
+                                <td>@Html.TextBoxFor(x => x.Identity.DogumTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" }) </td>
+                                <td><b>Doğum Yeri</b></td>
+                                <td>@Html.TextBoxFor(x => x.Identity.DogumYeri, null, new { @class = "form-control" })</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Cinsiyet</b></td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Identity.CinsiyetId, (List<SelectListItem>)ViewBag.DropCinsiyet, new { @class = "form-control" })
+                                    @Html.TextBoxFor(x => x.Identity.CinsiyetId, null, new { @class = "form-control" })
+
+                                </td>
+                                <td><b>Özel Durum</b></td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Identity.OzelDurumId, (List<SelectListItem>)ViewBag.DropOzelDurum, new { @class = "form-control" })
+
+                                </td>
+                                <td><b>Katılış Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.MsbKatilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                                </td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Boy</b></td>
+                                <td>
+                                    @Html.TextBox("txtBoy", null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Kilo</b></td>
+                                <td>
+                                    @Html.TextBox("txtKilo", null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Medeni Hali</b></td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Identity.MedeniHalId, (List<SelectListItem>)ViewBag.DropMedeniHal, new { @class = "form-control" })
+
+                                </td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Kan Grubu</b></td>
+                                <td>
+
+                                    @Html.DropDownListFor(x => x.Identity.KanGrupId, ViewBag.BloodGrpList as SelectList,"--Kan Grubu Seçiniz--", new { @class = "form-control" })
+                                </td>
+                                <td><b>Sınıfı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.Sinif, null, new { @class = "form-control" })
+
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div id="Nufus" class="tab-pane fade ">
+            <h2>Nüfus</h2>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Seri No</b></td>
+                                <td>
+                                    @Html.HiddenFor(x => x.Identity.PersonelNufusId)
+
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.SeriNo, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Cilt No</b></td>
+                                <td>@Html.TextBoxFor(x => x.Identity.BirthCertificates.CiltNo, null, new { @class = "form-control" })</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+
+
+                                <td class="sorting_1"><b>Sıra No</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.SiraNo, null, new { @class = "form-control" })
+                                </td>
+
+                                <td class="sorting_1"><b>İl</b></td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Identity.IlId, (List<SelectListItem>)ViewBag.DropIl, new { @class = "form-control" })
+
+                                    @*@Html.TextBoxFor(x => x.Item1.PersonelNufus.Il, null, new { @class = "form-control" })*@
+                                </td>
+
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Aile Sıra No</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.AileSiraNo, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Nüfus Açıklama 1</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.NufusAciklama1, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+
+                            <tr role="row" class="odd">
+                                <td><b>Nüfus Açıklama 2</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.NufusAciklama2, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Giriş Yapan</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Identity.BirthCertificates.GirisYapan, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="Egitim" class="tab-pane fade ">
+            <h2>Eğitim</h2>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Okul Türü</b></td>
+                                <td>
+                                    @Html.HiddenFor(x => x.Graduation.PersonelEgitimId)
+                                    @Html.TextBoxFor(x => x.Graduation.OkulTuru, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Fakülte/Lise Tür</b></td>
+                                <td>@Html.TextBoxFor(x => x.Graduation.FakulteLiseTur, null, new { @class = "form-control" })</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+
+
+                                <td class="sorting_1"><b>Tahsil Derecesi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Graduation.TahsilDerece, null, new { @class = "form-control" })
+                                </td>
+
+                                <td class="sorting_1"><b>Bölümü</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Graduation.Bolum, null, new { @class = "form-control" })
+                                </td>
+
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Okul Adı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Graduation.OkulAd, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Mezuniyet Durumu</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Graduation.MezuniyetDurum, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="Askerlik" class="tab-pane fade ">
+            <h2>Askerlik Bilgileri</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Askerlikten Muaf Mı?</b></td>
+                                <td>
+                                    @Html.HiddenFor(x => x.Identity.Militaries.PersonelAskerlikId)
+                                    @Html.TextBoxFor(x => x.Identity.Militaries.AskerliktenMuafMi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Askerlik Baş. Tarihi</b></td>
+                                <td> @Html.TextBoxFor(x => x.Identity.Militaries.AskerlikBasTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+
+
+                                <td class="sorting_1"><b>Terhis Tarihi</b></td>
+                                <td> @Html.TextBoxFor(x => x.Identity.Militaries.TerhisTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })</td>
+                                <td class="sorting_1"><b>Hizmet Süresi</b></td>
+                                <td> @Html.TextBox("txtMuafiyet", null, new { @class = "form-control" })</td>
+
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Statü</b></td>
+                                <td> @Html.TextBoxFor(x => x.Identity.Militaries.Statu, new { @class = "form-control" })</td>
+                                <td><b>Borclanma Durumu</b></td>
+                                <td> @Html.TextBoxFor(x => x.Identity.Militaries.BorclanmaDurumu, new { @class = "form-control" })</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="Terfi" class="tab-pane fade ">
+            <h2>Terfi Bilgileri</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Derece</b></td>
+                                <td>
+                                   
+                                    @Html.HiddenFor(x => x.Promotion.PersonelTerfiId)
+                                    @Html.TextBoxFor(x => x.Promotion.Derece, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Kademe</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Promotion.Kademe, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Terfi Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Promotion.TerfiTarihi, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Değişiklik Nedeni</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Promotion.DegisiklikNedeni, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Açıklama</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Promotion.Aciklama, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Açıklama2</b></td>
+                                <td>
+                                    @Html.TextBox("Açıklama2", null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div id="intibak" class="tab-pane fade ">
+            <h2>İntibak Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Hizmetin Gectiği Yer</b></td>
+                                <td>
+                                   
+                                    @Html.HiddenFor(x => x.Adaptation.PersonelIntibakId)
+                                    @Html.TextBoxFor(x => x.Adaptation.HizmetinGecYer, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Hizmetin Geçtiği Kurum</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Adaptation.HizmetinGecKurum, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Başlama Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Adaptation.BaslamaTarihi, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Bitiş Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Adaptation.BitisTarihi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Prim Gün Sayısı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Adaptation.PrimGunSayisi, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div id="izinDil" class="tab-pane fade ">
+            <h2>YabanciDil</h2>
+
+        </div>
+
+        <div id="Atama" class="tab-pane fade ">
+            <h2>Atama Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>İş Yeri</b></td>
+                                <td>
+                                   
+                                    @Html.HiddenFor(x => x.Designation.PersonelAtamaId)
+                                    @Html.TextBoxFor(x => x.Designation.IsYeri, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Atama İsteği Durumu</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Designation.AtamaIstegiDurumu, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Katılış Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Designation.KatilisTarihi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Ayrılış Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Designation.AyrilisTarihi, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+
+                    </table>
+                    <button class="btn btn-warning">Güncelle</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="Odul" class="tab-pane fade ">
+            <h2>Ödül Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Ödül Veren Rütbe</b></td>
+                                <td>
+                                   
+                                    @Html.HiddenFor(x => x.Award.PersonelOdulId)
+                                    @Html.TextBoxFor(x => x.Award.OdulVerenRutbe, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Odul Taktir Bilgi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Award.OdulTaktirBilgi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Verildiği Tarih</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Award.VerildigiTarih, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Ödül Veren Amir Adı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Award.OdulVerenAmirAdi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Ödül Veren Amir Rütbe</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Award.OdulVerenAmirRutbe, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                    </table>
+                
+                </div>
+            </div>
+        </div>
+
+        <div id="Kurs" class="tab-pane fade">
+            <h2>Kurs Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Türü</b></td>
+                                <td>
+                                   
+                                    @Html.HiddenFor(x => x.Course.PersonelKursId)
+                                    @Html.TextBoxFor(x => x.Course.Turu, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Şekli</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Course.Sekli, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Konusu</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Course.Konusu, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Kurs Sınav Adı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Course.KursSinavAdi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Başlangıç Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Course.BaslamaTarihi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Bitiş Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Course.BitisTarihi, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="Ceza" class="tab-pane fade ">
+            <h2>Ceza Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Ceza Veren Amir</b></td>
+                                <td>
+                                    
+                                    @Html.HiddenFor(x => x.Criminal.PersonelKimlikId)
+                                    @Html.TextBoxFor(x => x.Criminal.CezaVerenAmir, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Verilen Ceza</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Criminal.VerilenCeza, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Suç Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Criminal.SucTarihi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Cezayı Veren Kişinin Adı</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Criminal.CezayiVerenKisiAdi, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="GeciciGorev" class="tab-pane fade ">
+            <h2>Geçici Görevlendirme Bilgisi</h2>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Görevlendirildiği Birlik</b></td>
+                                <td>
+                                    @Html.HiddenFor(x => x.TemporaryDuty.PersonelKimlikId)
+                                    @Html.HiddenFor(x => x.TemporaryDuty.PersonelGeciciGorevId)
+                                    @Html.TextBoxFor(x => x.TemporaryDuty.GorevlendigiBirlik, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Görev Yeri</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.TemporaryDuty.GorevYeri, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Başlama Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.TemporaryDuty.BaslamaTarihi, null, new { @class = "form-control" })
+                                </td>
+                                <td><b>Bitiş Tarihi</b></td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.TemporaryDuty.BitisTarihi, null, new { @class = "form-control" })
+                                </td>
+
+                            </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <button class="btn btn-success">Kaydet</button>
+</form>
+

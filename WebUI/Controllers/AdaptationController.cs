@@ -12,7 +12,7 @@ namespace WebUI.Controllers
     public class AdaptationController : Controller
     {
         AdaptationManager manager = new AdaptationManager(new AdaptationDal());
-
+        IdentityManager key = new IdentityManager(new IdentityDal());
         public ActionResult Index()
         {
             return View();
@@ -20,7 +20,7 @@ namespace WebUI.Controllers
 
         public ActionResult AdaptationQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {

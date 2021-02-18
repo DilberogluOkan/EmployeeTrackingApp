@@ -12,6 +12,7 @@ namespace WebUI.Controllers
     public class GraduationController : Controller
     {
         GraduationManager manager = new GraduationManager(new GraduationDal());
+        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Graduation
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace WebUI.Controllers
 
         public ActionResult GraduationQuery(string id)
         {
-            var result = manager.GetAll();
+            var result = key.GetAll();
 
             if (!string.IsNullOrEmpty(id))
             {
