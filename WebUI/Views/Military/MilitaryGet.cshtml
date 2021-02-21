@@ -1,0 +1,51 @@
+﻿@using Entities.Concrete
+@model Military
+@{
+    ViewBag.Title = "MilitaryGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Askerlik Bilgisi Güncelle</h3>
+@using (Html.BeginForm("MilitaryUpdate", "Military", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Askerlikten Muaf Mı?</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelAskerlikId)
+                            @Html.TextBoxFor(x => x.AskerliktenMuafMi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Askerlik Baş. Tarihi</b></td>
+                        <td> @Html.TextBoxFor(x => x.AskerlikBasTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })</td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+
+
+                        <td class="sorting_1"><b>Terhis Tarihi</b></td>
+                        <td> @Html.TextBoxFor(x => x.TerhisTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })</td>
+                        <td class="sorting_1"><b>Hizmet Süresi</b></td>
+                        <td> @Html.TextBox("txtMuafiyet", null, new { @class = "form-control" })</td>
+
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td><b>Statü</b></td>
+                        <td> @Html.TextBoxFor(x => x.Statu, new { @class = "form-control" })</td>
+                        <td><b>Borclanma Durumu</b></td>
+                        <td> @Html.TextBoxFor(x => x.BorclanmaDurumu, new { @class = "form-control" })</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}

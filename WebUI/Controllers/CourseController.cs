@@ -19,28 +19,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult CourseQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult CourseGetList(int id)
         {
 
-            var courseGetList = manager.GetAllByIdentityId(id);
+            var courseGetList = manager.GetAllByIdentityId(id).Data;
             return View("CourseGetList", courseGetList);
         }
 
         public ActionResult CourseGet(int id)
         {
-            var courseGet = manager.GetById(id);
+            var courseGet = manager.GetById(id).Data;
 
             return View("CourseGet", courseGet);
         }

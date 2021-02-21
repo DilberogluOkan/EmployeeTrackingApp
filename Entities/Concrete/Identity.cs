@@ -11,6 +11,7 @@ namespace Entities.Concrete
         [Key]
         public int PersonelKimlikId { get; set; }
         public int PersonelNufusId { get; set; }
+        public int PersonelAskerlikId { get; set; }
         public int CinsiyetId { get; set; }
         public int OzelDurumId { get; set; }
         public int MedeniHalId { get; set; }
@@ -153,25 +154,25 @@ namespace Entities.Concrete
 
         public virtual BirthCertificate BirthCertificates { get; set; }
 
-        public virtual ICollection<Graduation> Graduations { get; set; }
-        public virtual ICollection<Designation> Designations { get; set; }
-        public virtual ICollection<Criminal> Criminals { get; set; }
-        public virtual ICollection<TemporaryDuty> TemporaryDuties { get; set; }
-        public virtual ICollection<Adaptation> Adaptations { get; set; }
-        public virtual ICollection<Permission> Permissions { get; set; }
-        public virtual ICollection<Course> Courses { get; set; }
-        public virtual ICollection<Award> Awards { get; set; }
-        public virtual ICollection<Promotion> Promotions { get; set; }
+        //public virtual ICollection<Graduation> Graduations { get; set; }
+        //public virtual ICollection<Designation> Designations { get; set; }
+        //public virtual ICollection<Criminal> Criminals { get; set; }
+        //public virtual ICollection<TemporaryDuty> TemporaryDuties { get; set; }
+        //public virtual ICollection<Adaptation> Adaptations { get; set; }
+        //public virtual ICollection<Permission> Permissions { get; set; }
+        //public virtual ICollection<Course> Courses { get; set; }
+        //public virtual ICollection<Award> Awards { get; set; }
+        //public virtual ICollection<Promotion> Promotions { get; set; }
 
         public virtual Military Militaries { get; set; }
 
         public virtual Gender Gender { get; set; }
 
-        public virtual BloodGroup BloodGroups { get; set; }
+        public virtual BloodGroup BloodGroup { get; set; }
 
-        public virtual MaritalStatus MaritalStatuses { get; set; }
-        public virtual DisabilityStatus DisabilityStatuses { get; set; }
-        public virtual Province Provinces { get; set; }
+        public virtual MaritalStatus MaritalStatus { get; set; }
+        public virtual DisabilityStatus DisabilityStatus { get; set; }
+        public virtual Province Province { get; set; }
 
     }
 }

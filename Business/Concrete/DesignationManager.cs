@@ -42,7 +42,8 @@ namespace Business.Concrete
 
         public IResult Update(Designation designation)
         {
-            throw new NotImplementedException();
+            _designationDal.Update(designation);
+            return new SuccessResult();
         }
 
         public IDataResult<List<Designation>> GetAllByIdentityId(int id)

@@ -20,28 +20,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult AwardQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult AwardGetList(int id)
         {
 
-            var awardGetList = manager.GetAllByIdentityId(id);
+            var awardGetList = manager.GetAllByIdentityId(id).Data;
             return View("AwardGetList", awardGetList);
         }
 
         public ActionResult AwardGet(int id)
         {
-            var awardGet = manager.GetById(id);
+            var awardGet = manager.GetById(id).Data;
 
             return View("AwardGet", awardGet);
         }

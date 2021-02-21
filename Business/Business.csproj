@@ -48,6 +48,7 @@
     <Compile Include="Abstract\ICourseService.cs" />
     <Compile Include="Abstract\ICriminalService.cs" />
     <Compile Include="Abstract\IDesignationService.cs" />
+    <Compile Include="Abstract\IDisabilityStatusService.cs" />
     <Compile Include="Abstract\IForeignLanguageService.cs" />
     <Compile Include="Abstract\IGenderService.cs" />
     <Compile Include="Abstract\IGraduationService.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Concrete\CourseManager.cs" />
     <Compile Include="Concrete\CriminalManager.cs" />
     <Compile Include="Concrete\DesignationManager.cs" />
+    <Compile Include="Concrete\DisabilityStatusManager.cs" />
     <Compile Include="Concrete\ForeignLanguageManager.cs" />
     <Compile Include="Concrete\GenderManager.cs" />
     <Compile Include="Concrete\GraduationManager.cs" />

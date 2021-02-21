@@ -48,7 +48,8 @@ namespace Business.Concrete
 
         public IResult Update(Criminal criminal)
         {
-            throw new NotImplementedException();
+            _criminalDal.Update(criminal);
+            return new SuccessResult();
         }
     }
 }

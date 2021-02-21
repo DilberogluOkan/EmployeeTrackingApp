@@ -1,15 +1,10 @@
 ﻿@using Entities.Concrete
 @model List<Identity>
 @{
-    ViewBag.Title = "CriminalQuery";
+    ViewBag.Title = "IndexQuery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>CriminalQuery</h2>
-<h2>PersonelCezaSorgu</h2>
-
-
-<h2>GuncelleSorgu</h2>
+<h3>Ceza Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Personel Ara</h3>
@@ -17,10 +12,10 @@
     <!-- /.box-header -->
     <!-- form start -->
 
-    @using (Html.BeginForm("CriminalQuery", "Criminal", FormMethod.Get))
+    @using (Html.BeginForm("IndexQuery", "Criminal", FormMethod.Post))
     {
 
-        @Html.TextBox("id")
+        @Html.TextBox("TcNo")
         <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
     }
 

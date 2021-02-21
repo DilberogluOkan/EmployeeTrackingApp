@@ -13,5 +13,12 @@ namespace WebUI.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
+        {
+           
+            return View();
+        }
     }
 }

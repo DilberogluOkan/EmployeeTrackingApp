@@ -33,6 +33,7 @@ namespace Business.Concrete
         public IDataResult<Course> GetById(int courseId)
         {
             return new SuccessDataResult<Course>(_courseDal.Get(p => p.PersonelKursId == courseId));
+           
         }
 
         public IDataResult<List<Course>> GetAll()
@@ -47,7 +48,8 @@ namespace Business.Concrete
 
         public IResult Update(Course course)
         {
-            throw new NotImplementedException();
+            _courseDal.Update(course);
+            return new SuccessResult();
         }
     }
 }

@@ -54,7 +54,8 @@ namespace Business.Concrete
 
         public IResult Update(Award award)
         {
-            throw new NotImplementedException();
+            _awardDal.Update(award);
+            return new SuccessResult();
         }
     }
 }

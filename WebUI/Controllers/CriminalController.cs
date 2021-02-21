@@ -20,28 +20,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult CriminalQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult CriminalGetList(int id)
         {
 
-            var criminalGetList = manager.GetAllByIdentityId(id);
+            var criminalGetList = manager.GetAllByIdentityId(id).Data;
             return View("CriminalGetList", criminalGetList);
         }
 
         public ActionResult CriminalGet(int id)
         {
-            var criminalGet = manager.GetById(id);
+            var criminalGet = manager.GetById(id).Data;
 
             return View("CriminalGet", criminalGet);
         }

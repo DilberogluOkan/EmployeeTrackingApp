@@ -1,0 +1,453 @@
+﻿@using Entities.Concrete
+@model MultiModelReportDto
+@{
+    ViewBag.Title = "ReportBuid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Rapor İşlemleri</h2>
+
+@foreach (var item in Model.Identity)
+{
+    <section class="content"> <!-- Main Box -->
+        <div class="box box-default">
+            <div class="box-header with-border">
+
+                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"><b>Tc Kimlik No</b></td>
+                            <td>@item.TcKimlikNo</td>
+                            <td><b>Sicil No</b></td>
+                            <td>@item.SicilNo</td>
+                            <td rowspan="3" style="width:120px"><img src="~/Image/portal.png" alt="Personel Görseli" /></td>
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"><b>Adı</b></td>
+                            <td>@item.Adi</td>
+                            <td class="sorting_1"><b>Doğum Tarih</b></td>
+                            <td>@item.DogumTarihi.ToShortDateString()</td>
+
+                        </tr>
+                        <tr role="row" class="odd">
+                            <td><b>Soyadı</b></td>
+                            <td>@item.Soyadi</td>
+                            <td><b>Doğum yeri</b></td>
+                            <td>@item.DogumYeri </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+ </div>
+        </div>
+        <!-- /.box -->
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- /.box -->
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Bilgiler</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Cinsiyet</b></td>
+                                <td>@item.Gender.Cinsiyeti</td>
+                                <td><b>Medeni Hali</b></td>
+                                <td>@item.MaritalStatus.MedeniHali</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1"><b>Özel Durum</b></td>
+                                <td>@item.DisabilityStatus.OzelDurumu</td>
+                                <td><b>Kan Grubu</b></td>
+                                <td>@item.BloodGroup.KanGrubu</td>
+
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Katılış Tarihi</b></td>
+                                <td>@item.MsbKatilisTarihi.ToShortDateString()</td>
+                                <td class="sorting_1"><b>Sınıfı</b></td>
+                                <td>@item.Sinif</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Boy</b></td>
+                                <td></td>
+                                <td><b>Kilo</b></td>
+                                <td></td></tr>
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">Eğitim Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Okul Türü</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Fakülte/Lise Tür</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tahsil Derece</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bölüm</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Okul Adı</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Mezuniyet Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var d in Model.Graduation)
+                            {
+
+
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@d.OkulTuru</td>
+                                    <td>@d.FakulteLiseTur</td>
+                                    <td>@d.TahsilDerece</td>
+                                    <td>@d.Bolum</td>
+                                    <td>@d.OkulAd</td>
+                                    <td>@d.MezuniyetDurum</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Terfi Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Derece</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Kademe</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Terfi Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Değişiklik Nedeni</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Promotion)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.Derece</td>
+                                    <td>@p.Kademe</td>
+                                    <td>@p.TerfiTarihi</td>
+                                    <td>@p.DegisiklikNedeni</td>
+                                    <td>@p.Aciklama</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">İzin Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">İzin Şekli</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İzin Sebebi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Borclanma</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Yıl</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ay</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Gün</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Başlama Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Bitiş Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Onay Durumu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Permission)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.IzinSekli</td>
+                                    <td>@p.IzinSebebi</td>
+                                    <td>@p.Borclanma</td>
+                                    <td>@p.Yil</td>
+                                    <td>@p.Ay</td>
+                                    <td>@p.Gun</td>
+                                    <td>@p.BaslamaTarihi.ToShortDateString()</td>
+                                    <td>@p.BitisTarihi.ToShortDateString()</td>
+                                    <td>@p.OnayDurum</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-default">
+                    <div class="box-header">
+                        <h3 class="box-title">Atama Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">İş Yeri</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Atama İsteği Durumu</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Katılış Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ayrılış Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Designation)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.IsYeri</td>
+                                    <td>@p.AtamaIstegiDurumu</td>
+                                    <td>@p.KatilisTarihi.ToShortDateString()</td>
+                                    <td>@p.KatilisTarihi.ToShortDateString()</td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (left) -->
+            <div class="col-md-6">
+                <!-- /.box -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Askerlik Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">Askerlikten Muaf Mı</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Askerlik Baş.Tarih</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Terhis Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Hizmet Süresi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Statüsü</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Borclanma Durumu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">@item.Militaries.AskerliktenMuafMi</td>
+                                <td>@item.Militaries.AskerlikBasTarih.ToShortDateString()</td>
+                                <td> @item.Militaries.TerhisTarih.ToShortDateString()</td>
+                                <td>@item.Militaries.HizmetSuresi</td>
+                                <td>@item.Militaries.Statu</td>
+                                <td>@item.Militaries.BorclanmaDurumu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Ödül Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Ödül Veren Rütbe</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ödül Taktir Bilgi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Verildiği Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Ödül Veren Amir Adı</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ödül Veren Amir Rütbe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var p in Model.Award)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.OdulVerenRutbe</td>
+                                    <td>@p.OdulTaktirBilgi</td>
+                                    <td>@p.VerildigiTarih.ToShortDateString()</td>
+                                    <td>@p.OdulVerenAmirAdi</td>
+                                    <td>@p.OdulVerenAmirRutbe</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Kurs Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">Türü</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Şekli</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Konusu</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Kurs Sınav Adı</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Başlangıç Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Bitiş Tarihi</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Course)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.Turu</td>
+                                    <td>@p.Sekli</td>
+                                    <td>@p.Konusu</td>
+                                    <td>@p.KursSinavAdi</td>
+                                    <td>@p.BaslamaTarihi.ToShortDateString()</td>
+                                    <td>@p.BitisTarihi.ToShortDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+                <div class="box box-default">
+                    <div class="box-header">
+                        <h3 class="box-title">Ceza Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">Ceza Veren Amir</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Verilen Ceza</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Suç Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Cezayı Veren Kişinin Adı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Criminal)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.CezaVerenAmir</td>
+                                    <td>@p.VerilenCeza</td>
+                                    <td>@p.SucTarihi.ToShortDateString()</td>
+                                    <td>@p.CezayiVerenKisiAdi</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-info">
+                    <div class="box-header">
+                        <h3 class="box-title">İntibak Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Hizmetin Geçtiği Yer</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hizmetin Geçtiği Kurum</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Başlama Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bitiş Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Prim Gün Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Adaptation)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.HizmetinGecYer</td>
+                                    <td>@p.HizmetinGecKurum</td>
+                                    <td>@p.BaslamaTarihi.ToShortDateString()</td>
+                                    <td>@p.BitisTarihi.ToShortDateString()</td>
+                                    <td>@p.PrimGunSayisi</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Geçici Görev Bilgileri</h3>
+                    </div>
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">Görevlendirildiği Birlik</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Görev Yeri</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Başlama Tarihi</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Bitiş Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.TemporaryDuty)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">@p.GorevlendigiBirlik</td>
+                                    <td>@p.GorevYeri</td>
+                                    <td>@p.BaslamaTarihi.ToShortDateString()</td>
+                                    <td>@p.BitisTarihi.ToShortDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <div>
+        <a href="@*/PersonelGuncelle/PersonelGetir/@p.PersonelKimlikId*@" class="btn btn-warning" data-toggle="modal" data-target="#Modal1">Güncelle</a>
+        <a href="#" class="btn btn-instagram">Yazdır</a>
+        <a href="#/" class="btn btn-github">Mail At</a>
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Güncellemek istediğiniz Bilgiyi Seçiniz</h2>
+                        <table id="example2">
+                            <tr><td> <a href="/AdaptationGetList/@item.PersonelKimlikId" class="btn btn-success">İntibak Bilgisi</a></td> </tr>
+                            <tr> <td> <a href="/GraduationGetList/@item.PersonelKimlikId" class="btn btn-success">Askerlik Bilgisi</a> </td> </tr>
+                            <tr> <td>  <a href="/AwardGetList/@item.PersonelKimlikId" class="btn btn-success">Ödül Bilgisi</a></td> </tr>
+                            <tr> <td> <a href="/IdentityGetList/@item.PersonelKimlikId" class="btn btn-success">Kimlik Bilgisi</a> </td>  </tr> 
+                            <tr>  <td> <a href="/BirthCertificateGetList/@item.PersonelNufusId" class="btn btn-success">Nüfus Bilgisi</a></td> </tr>
+                            <tr><td> <a href="/DesignationGetList/@item.PersonelKimlikId" class="btn btn-success">Atama Bilgisi</a> </td> </tr>
+                            <tr> <td> <a href="/CriminalGetList/@item.PersonelKimlikId" class="btn btn-success">Ceza Bilgisi</a> </td>  </tr>
+                            <tr><td><a href="/PermissionGetList/@item.PersonelKimlikId" class="btn btn-success">İzin Bilgisi</a> </td> </tr>
+                            <tr>  <td><a href="/CourseGetList/@item.PersonelKimlikId" class="btn btn-success">Kurs Bilgisi</a> </td>   </tr>
+                            <tr> <td><a href="/MilitaryGetList/@item.PersonelAskerlikId" class="btn btn-success">Askerlik Bilgisi</a> </td></tr>
+                            <tr>  <td>   <a href="/PromotionGetList/@item.PersonelKimlikId" class="btn btn-success">Terfi Bilgisi</a></td> </tr>
+                            <tr> <td> <a href="/TemporaryDutyGetList/@item.PersonelKimlikId" class="btn btn-success">Geçici Görev Bilgisi</a>  </td>  </tr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

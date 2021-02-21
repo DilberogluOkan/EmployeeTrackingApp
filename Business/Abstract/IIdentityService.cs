@@ -12,13 +12,15 @@ namespace Business.Abstract
     {
         
         IDataResult<List<Identity>> GetAllByIdentityId(int id);
-        
-       // IDataResult<List<DetailDto>> GetProductDetails();
+       
+        IDataResult<List<PersonDto>> GetPersonDetails();
        
         IResult Add(Identity identity);
         IResult Delete(Identity identity);
         IResult Update(Identity identity);
         IDataResult<Identity> GetById(int identityId);
+        IDataResult<List<Identity>> GetBytc(string tc);
         IDataResult<List<Identity>> GetAll();
+        
     }
 }

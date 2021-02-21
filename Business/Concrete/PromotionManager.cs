@@ -52,7 +52,9 @@ namespace Business.Concrete
 
         public IResult Update(Promotion promotion)
         {
-            throw new NotImplementedException();
+            _promotionDal.Update(promotion);
+            return new SuccessResult();
+           
         }
     }
 }

@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CriminalGet</h2>
-<h2>PersonelCezaGetir</h2>
-
-
-<h4>Genel Bilgiler</h4>
+<h3>Ceza Bilgisi Güncelle</h3>
 @using (Html.BeginForm("CriminalUpdate", "Criminal", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -23,7 +19,7 @@
                         <td class="sorting_1"><b>Ceza Veren Amir</b></td>
                         <td>
                             @Html.HiddenFor(x => x.PersonelKimlikId)
-                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelCezaId)
                             @Html.TextBoxFor(x => x.CezaVerenAmir, null, new { @class = "form-control" })
                         </td>
                         <td><b>Verilen Ceza</b></td>
@@ -35,7 +31,7 @@
                     <tr>
                         <td><b>Suç Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.SucTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.SucTarihi, "{0:yyyy-MM-dd}",  new { @class = "form-control", @type="Date" })
                         </td>
                         <td><b>Cezayı Veren Kişinin Adı</b></td>
                         <td>

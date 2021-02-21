@@ -5,12 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PermissionGet</h2>
-
-<h2>PersonelIzinGetir</h2>
-
-<h2>PersonelGetir</h2>
-<h4>Genel Bilgiler</h4>
+<h3>İzin Bilgisi Güncelle</h3>
 @using (Html.BeginForm("PermissionUpdate", "Permission", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -23,13 +18,13 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1"><b>İzin Şekli</b></td>
                         <td>
-                            @Html.HiddenFor(x => x.KimlikBilgisiId)
-                            @Html.HiddenFor(x => x.IzinBilgisiId)
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelIzinId)
                             @Html.TextBoxFor(x => x.IzinSekli, null, new { @class = "form-control" })
                         </td>
                         <td><b>İzin Sebebi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.IzınSebebi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.IzinSebebi, null, new { @class = "form-control" })
                         </td>
                         <td><b>Borçlanma</b></td>
                         <td>
@@ -54,15 +49,15 @@
                     <tr>
                         <td><b>Başlama Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.BaslamaTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.BaslamaTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                         <td><b>Bitiş Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.BitisTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.BitisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                         <td><b>Onay Durumu</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.OnayDurumu, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.OnayDurum, null, new { @class = "form-control" })
                         </td>
 
                     </tr>

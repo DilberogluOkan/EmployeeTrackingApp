@@ -13,33 +13,31 @@ namespace WebUI.Controllers
     {
         AdaptationManager manager = new AdaptationManager(new AdaptationDal());
         IdentityManager key = new IdentityManager(new IdentityDal());
+
+        
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult AdaptationQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
+       
 
         public ActionResult AdaptationGetList(int id)
         {
 
-            var adaptationGetList = manager.GetAllByIdentityId(id);
+            var adaptationGetList = manager.GetAllByIdentityId(id).Data;
             return View("AdaptationGetList", adaptationGetList);
         }
 
         public ActionResult AdaptationGet(int id)
         {
-            var adaptationGet = manager.GetById(id);
+            var adaptationGet = manager.GetById(id).Data;
 
             return View("AdaptationGet", adaptationGet);
         }

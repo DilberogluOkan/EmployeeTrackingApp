@@ -33,7 +33,7 @@ namespace Entities.Concrete
         public string KimlikSeriNo { get; set; }
         public string KimlikUyrugu { get; set; }
         public DateTime KimlikSonGecerlikTarih { get; set; }
-        //  public  PersonelKimlik PersonelKimlik { get; set; }
+        //public  PersonelKimlik PersonelKimlik { get; set; }
 
     }
 }

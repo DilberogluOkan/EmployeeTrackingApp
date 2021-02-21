@@ -15,5 +15,6 @@ namespace Business.Abstract
         IResult Update(BirthCertificate birthCertificate);
         IDataResult<List<BirthCertificate>> GetAll();
         IDataResult<BirthCertificate> Get(int birthCertificateId);
+        IDataResult<BirthCertificate> GetById(int birthCertificateId);
     }
 }

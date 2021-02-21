@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RiseGetList</h2>
-<h2>PersonelTerfiGetirList</h2>
-
+<h3>Terfi Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header">
         <h3 class="box-title">Terfi Bilgileri</h3>
@@ -30,10 +28,10 @@
                 <tr role="row" class="odd">
                     <td class="sorting_1">@t.Derece</td>
                     <td>@t.Kademe</td>
-                    <td>@t.TerfiTarih</td>
+                    <td>@t.TerfiTarihi</td>
                     <td>@t.DegisiklikNedeni</td>
                     <td>@t.Aciklama</td>
-                    <td><a href="/Rise/RiseGet/@t.TerfiBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <td><a href="/Rise/RiseGet/@t.PersonelTerfiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                 </tr>
             }
 

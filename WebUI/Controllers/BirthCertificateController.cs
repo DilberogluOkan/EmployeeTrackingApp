@@ -19,31 +19,19 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult BirthCertificateQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
-        public ActionResult BirthCertificateGetList(int id)
-        {
-
-            //var birthCertificateGetList = manager.GetAllByIdentityId(id);
-            //return View("BirthCertificateGetList", birthCertificateGetList);
-            return View();
-        }
+        
 
         public ActionResult BirthCertificateGet(int id)
         {
-            //var birthCertificateGet = manager.GetById(id);
-            return View();
-            //return View("BirthCertificateGet", birthCertificateGet);
+            var birthCertificateGet = manager.GetById(id).Data;
+            return View("BirthCertificateGet", birthCertificateGet);
         }
 
 

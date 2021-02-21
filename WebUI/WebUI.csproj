@@ -162,6 +162,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\portal.png" />
     <Content Include="Scripts\adminlte.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -209,22 +210,21 @@
     <Content Include="Views\Graduation\GraduationQuery.cshtml" />
     <Content Include="Views\Graduation\GraduationGetList.cshtml" />
     <Content Include="Views\Graduation\GraduationGet.cshtml" />
-    <Content Include="Views\Adaptation\AdaptationQuery.cshtml" />
     <Content Include="Views\Adaptation\AdaptationGetList.cshtml" />
     <Content Include="Views\Adaptation\AdaptationGet.cshtml" />
-    <Content Include="Views\Award\AwardQuery.cshtml" />
+    <Content Include="Views\Award\IndexQuery.cshtml" />
     <Content Include="Views\Award\AwardGetList.cshtml" />
     <Content Include="Views\Award\AwardGet.cshtml" />
     <Content Include="Views\BirthCertificate\BirthCertificateQuery.cshtml" />
-    <Content Include="Views\Course\CourseQuery.cshtml" />
+    <Content Include="Views\Course\IndexQuery.cshtml" />
     <Content Include="Views\Course\CourseGet.cshtml" />
     <Content Include="Views\Course\CourseGetList.cshtml" />
     <Content Include="Views\Criminal\CriminalGet.cshtml" />
     <Content Include="Views\Criminal\CriminalGetList.cshtml" />
-    <Content Include="Views\Criminal\CriminalQuery.cshtml" />
+    <Content Include="Views\Criminal\IndexQuery.cshtml" />
     <Content Include="Views\Designation\DesignationGetList.cshtml" />
     <Content Include="Views\Designation\DesignationGet.cshtml" />
-    <Content Include="Views\Designation\DesignationQuery.cshtml" />
+    <Content Include="Views\Designation\IndexQuery.cshtml" />
     <Content Include="Views\Permission\PermissionGet.cshtml" />
     <Content Include="Views\Permission\PermissionGetList.cshtml" />
     <Content Include="Views\Permission\PermissionQuery.cshtml" />
@@ -235,6 +235,17 @@
     <Content Include="Views\TemporaryDuty\TemporaryDutyGet.cshtml" />
     <Content Include="Views\TemporaryDuty\TemporaryDutyQuery.cshtml" />
     <Content Include="Views\MultiAdded\Added.cshtml" />
+    <Content Include="Views\Query\ReportBuid.cshtml" />
+    <Content Include="Views\Query\IndexQuery.cshtml" />
+    <Content Include="Views\Adaptation\IndexQuery.cshtml" />
+    <Content Include="Views\TemporaryDuty\IndexQuery.cshtml" />
+    <Content Include="Views\Rise\IndexQuery.cshtml" />
+    <Content Include="Views\Permission\IndexQuery.cshtml" />
+    <Content Include="Views\Graduation\IndexQuery.cshtml" />
+    <Content Include="Views\BirthCertificate\IndexQuery.cshtml" />
+    <Content Include="Views\BirthCertificate\BirthCertificateGet.cshtml" />
+    <Content Include="Views\Military\IndexQuery.cshtml" />
+    <Content Include="Views\Military\MilitaryGet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

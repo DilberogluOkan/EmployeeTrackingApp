@@ -15,6 +15,6 @@ namespace Entities.Concrete
         [StringLength(5)]
         public string Cinsiyeti { get; set; }
 
-        // public ICollection<PersonelKimlik> PersonelKimliks { get; set; }
+        
     }
 }

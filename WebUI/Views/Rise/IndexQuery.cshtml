@@ -1,14 +1,13 @@
-﻿@using Entities.Concrete
+﻿
+@using Entities.Concrete
 @model List<Identity>
 @{
-    ViewBag.Title = "AwardQuery";
+    ViewBag.Title = "IndexQuery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AwardQuery</h2>
+<h2>IndexQuery</h2>
 
-
-<h2>GuncelleSorgu</h2>
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Personel Ara</h3>
@@ -16,10 +15,10 @@
     <!-- /.box-header -->
     <!-- form start -->
 
-    @using (Html.BeginForm("AwardQuery", "Award", FormMethod.Get))
+    @using (Html.BeginForm("IndexQuery", "Rise", FormMethod.Post))
     {
 
-        @Html.TextBox("id")
+        @Html.TextBox("TcNo")
         <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
     }
 
@@ -50,7 +49,7 @@
                                 <td>@k.Adi</td>
                                 <td>@k.Soyadi</td>
                                 <td>@k.CalistigiKurum</td>
-                                <td><a href="/Award/AwardGetList/@k.PersonelKimlikId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                                <td><a href="/Rise/RiseGetList/@k.PersonelKimlikId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                             </tr>
                         }
                     </tbody>
@@ -59,4 +58,3 @@
         </div>
     </div>
 </div>
-

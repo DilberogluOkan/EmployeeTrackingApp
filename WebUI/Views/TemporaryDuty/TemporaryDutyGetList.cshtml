@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TemporaryDutyGetList</h2>
-
-<h2>PersonelGeciciGorevGetirList</h2>
+<h3>Geçici Görev Bilgisi Güncelle</h3>
 
 
 <div class="box box-info">
@@ -30,12 +28,12 @@
             @foreach (var e in Model)
             {
                 <tr role="row" class="odd">
-                    <td class="sorting_1">@e.GorevlendirildigiBirlik</td>
+                    <td class="sorting_1">@e.GorevlendigiBirlik</td>
                     <td>@e.GorevYeri</td>
                     <td>@e.BaslamaTarihi</td>
                     <td>@e.BitisTarihi</td>
 
-                    <td><a href="/TemporaryDuty/TemporaryDutyGet/@e.GeciciGorevBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <td><a href="/TemporaryDuty/TemporaryDutyGet/@e.PersonelGeciciGorevId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                 </tr>
             }
 

@@ -30,9 +30,9 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<Military> Get(int militaryId)
+        public IDataResult<Military> GetById(int militaryId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Military>(_militaryDal.Get(p => p.PersonelAskerlikId == militaryId));
         }
 
         public IDataResult<List<Military>> GetAll()
@@ -42,7 +42,8 @@ namespace Business.Concrete
 
         public IResult Update(Military military)
         {
-            throw new NotImplementedException();
+            _militaryDal.Update(military);
+            return new SuccessResult();
         }
     }
 }

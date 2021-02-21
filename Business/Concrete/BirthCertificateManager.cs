@@ -40,9 +40,15 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        public IDataResult<BirthCertificate> GetById(int birthCertificateId)
+        {
+            return new SuccessDataResult<BirthCertificate>(_birthCertificateDal.Get(p => p.PersonelNufusId == birthCertificateId));
+        }
+
         public IResult Update(BirthCertificate birthCertificate)
         {
-            throw new NotImplementedException();
+            _birthCertificateDal.Update(birthCertificate);
+            return new SuccessResult();
         }
     }
 }

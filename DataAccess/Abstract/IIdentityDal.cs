@@ -8,5 +8,6 @@ namespace DataAccess.Abstract
 {
     public interface IIdentityDal:IEntityRepository<Identity>
     {
+        List<PersonDto> GetPersonDetails();
     }
 }

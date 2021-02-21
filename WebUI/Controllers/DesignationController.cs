@@ -20,28 +20,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult DesignationQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult DesignationGetList(int id)
         {
 
-            var designationGetList = manager.GetAllByIdentityId(id);
+            var designationGetList = manager.GetAllByIdentityId(id).Data;
             return View("DesignationGetList", designationGetList);
         }
 
         public ActionResult DesignationGet(int id)
         {
-            var designationGet = manager.GetById(id);
+            var designationGet = manager.GetById(id).Data;
 
             return View("DesignationGet", designationGet);
         }

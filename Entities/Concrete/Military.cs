@@ -10,7 +10,6 @@ namespace Entities.Concrete
     {
         [Key]
         public int PersonelAskerlikId { get; set; }
-
         public bool AskerliktenMuafMi { get; set; }
 
         [DataType(DataType.Date)]

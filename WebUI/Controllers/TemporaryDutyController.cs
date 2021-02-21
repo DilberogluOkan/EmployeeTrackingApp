@@ -21,28 +21,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult TemporaryDutyQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult TemporaryDutyGetList(int id)
         {
 
-            var temporaryDutyGetList = manager.GetAllByIdentityId(id);
+            var temporaryDutyGetList = manager.GetAllByIdentityId(id).Data;
             return View("TemporaryDutyGetList", temporaryDutyGetList);
         }
 
         public ActionResult TemporaryDutyGet(int id)
         {
-            var temporaryDutyGet = manager.GetById(id);
+            var temporaryDutyGet = manager.GetById(id).Data;
 
             return View("TemporaryDutyGet", temporaryDutyGet);
         }

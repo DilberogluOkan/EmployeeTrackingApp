@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RiseGet</h2>
-<h2>PersonelGetir</h2>
-<h4>Genel Bilgiler</h4>
+<h3>Terfi Bilgisi Güncelle</h3>
 @using (Html.BeginForm("RiseUpdate", "Rise", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -30,7 +28,7 @@
                         </td>
                         <td><b>Terfi Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.TerfiTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.TerfiTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                     </tr>
                     <tr>

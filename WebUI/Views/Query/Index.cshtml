@@ -1,12 +1,11 @@
 ﻿@using Entities.Concrete
 @model List<Identity>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Aranacak Personel</h2>
+<h3>Raporla</h3>
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Personel Ara</h3>
@@ -14,10 +13,10 @@
     <!-- /.box-header -->
     <!-- form start -->
 
-    @using (Html.BeginForm("Query", "Index", FormMethod.Get))
+    @using (Html.BeginForm("IndexQuery", "Query", FormMethod.Post))
     {
 
-        @Html.TextBox("id")
+        @Html.TextBox("tcNo")
         <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
     }
 
@@ -39,17 +38,13 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach (var k in Model)
-                        {
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">@k.KimlikId</td>
-                                <td>@k.Adi</td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="#" class="btn btn-success col-xs-pull-5">Seç</a></td>
-                            </tr>
-                        }
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

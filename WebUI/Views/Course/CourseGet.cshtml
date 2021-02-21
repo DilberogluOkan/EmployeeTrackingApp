@@ -5,12 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CourseGet</h2>
-<h2>PersonelKursGetir</h2>
-
-
-<h2>PersonelGetir</h2>
-<h4>Genel Bilgiler</h4>
+<h3>Kurs Bilgisi Güncelle</h3>
 @using (Html.BeginForm("CourseUpdate", "Course", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -43,11 +38,11 @@
                         </td>
                         <td><b>Başlangıç Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.BaslamaTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.BaslamaTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                         <td><b>Bitiş Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.BitisTarihi, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.BitisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
 
                     </tr>

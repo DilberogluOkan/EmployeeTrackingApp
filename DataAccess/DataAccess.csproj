@@ -60,6 +60,7 @@
     <Compile Include="Abstract\ICourseDal.cs" />
     <Compile Include="Abstract\ICriminalDal.cs" />
     <Compile Include="Abstract\IDesignationDal.cs" />
+    <Compile Include="Abstract\IDisabilityStatusDal.cs" />
     <Compile Include="Abstract\IForeignLanguageDal.cs" />
     <Compile Include="Abstract\IGenderDal.cs" />
     <Compile Include="Abstract\IGraduationDal.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Concrete\EntityFramework\CourseDal.cs" />
     <Compile Include="Concrete\EntityFramework\CriminalDal.cs" />
     <Compile Include="Concrete\EntityFramework\DesignationDal.cs" />
+    <Compile Include="Concrete\EntityFramework\DisabilityStatusDal.cs" />
     <Compile Include="Concrete\EntityFramework\EmployeeContext.cs" />
     <Compile Include="Concrete\EntityFramework\ForeignLanguageDal.cs" />
     <Compile Include="Concrete\EntityFramework\GenderDal.cs" />

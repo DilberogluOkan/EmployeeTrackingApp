@@ -4,12 +4,7 @@
     ViewBag.Title = "AwardGet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>AwardGet</h2>
-
-<h2>PersonelOdulGetir</h2>
-
-
+<h3>Ödül Bilgisi Güncelle</h3>
 @using (Html.BeginForm("AwardUpdate", "Award", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -32,7 +27,7 @@
                         </td>
                         <td><b>Verildiği Tarih</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.VerildigiTarih, null, new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.VerildigiTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                     </tr>
                     <tr>

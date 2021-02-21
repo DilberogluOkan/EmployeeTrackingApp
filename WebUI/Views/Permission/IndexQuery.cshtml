@@ -1,15 +1,11 @@
 ﻿@using Entities.Concrete
 @model List<Identity>
 @{
-    ViewBag.Title = "CourseQuery";
+    ViewBag.Title = "PermissionQuery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CourseQuery</h2>
-
-<h2>PersonelKursSorgu</h2>
-
-<h2>GuncelleSorgu</h2>
+<h3>İzin Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Personel Ara</h3>
@@ -17,10 +13,10 @@
     <!-- /.box-header -->
     <!-- form start -->
 
-    @using (Html.BeginForm("CourseQuery", "Course", FormMethod.Get))
+    @using (Html.BeginForm("IndexQuery", "Permission", FormMethod.Post))
     {
 
-        @Html.TextBox("id")
+        @Html.TextBox("TcNo")
         <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
     }
 
@@ -51,7 +47,7 @@
                                 <td>@k.Adi</td>
                                 <td>@k.Soyadi</td>
                                 <td>@k.CalistigiKurum</td>
-                                <td><a href="/Course/CourseGetList/@k.PersonelKimlikId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                                <td><a href="/Permission/PermissionGetList/@k.PersonelKimlikId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                             </tr>
                         }
                     </tbody>

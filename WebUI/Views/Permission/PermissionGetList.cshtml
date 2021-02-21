@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PermissionGetList</h2>
-
-<h2>PersonelIzinGetirList</h2>
+<h3>İzin Bilgisi Güncelle</h3>
 
 <div class="box box-info">
     <div class="box-header">
@@ -34,15 +32,15 @@
             {
                 <tr role="row" class="odd">
                     <td class="sorting_1">@e.IzinSekli</td>
-                    <td>@e.IzınSebebi</td>
+                    <td>@e.IzinSebebi</td>
                     <td>@e.Borclanma</td>
                     <td>@e.Yil</td>
                     <td>@e.Ay</td>
                     <td>@e.Gun</td>
                     <td>@e.BaslamaTarihi</td>
                     <td>@e.BitisTarihi</td>
-                    <td>@e.OnayDurumu</td>
-                    <td><a href="/Permission/PermissionGet/@e.IzinBilgisiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <td>@e.OnayDurum</td>
+                    <td><a href="/Permission/PermissionGet/@e.PersonelIzinId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                 </tr>
             }
 

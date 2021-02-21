@@ -42,7 +42,8 @@ namespace Business.Concrete
 
         public IResult Update(TemporaryDuty temporaryDuty)
         {
-            throw new NotImplementedException();
+            _temporaryDutyDal.Update(temporaryDuty);
+            return new SuccessResult();
         }
 
         public IDataResult<List<TemporaryDuty>> GetAllByIdentityId(int id)

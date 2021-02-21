@@ -48,7 +48,8 @@ namespace Business.Concrete
 
         public IResult Update(Permission permission)
         {
-            throw new NotImplementedException();
+            _permissionDal.Update(permission);
+            return new SuccessResult();
         }
     }
 }

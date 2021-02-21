@@ -15,9 +15,15 @@ namespace WebUI.Controllers
         IdentityManager manager = new IdentityManager(new IdentityDal());
         IdentityManager key = new IdentityManager(new IdentityDal());
 
-        public ActionResult Index(int identityId)
+        public ActionResult Index()
         {
-            var result= manager.GetById(identityId).Data;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
+        {
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
     }

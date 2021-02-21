@@ -6,10 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CourseGetList</h2>
-
-<h2>PersonelKursGetirList</h2>
-
+<h3>Kurs Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header">
         <h3 class="box-title">Kurs Bilgileri</h3>
@@ -36,9 +33,9 @@
                     <td>@k.Sekli</td>
                     <td>@k.Konusu</td>
                     <td>@k.KursSinavAdi</td>
-                    <td>@k.BaslangicTarihi</td>
+                    <td>@k.BaslamaTarihi</td>
                     <td>@k.BitisTarihi</td>
-                    <td><a href="/Course/CourseGet/@k.KursBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <td><a href="/Course/CourseGet/@k.PersonelKursId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                 </tr>
             }
 

@@ -20,28 +20,23 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public ActionResult PermissionQuery(string id)
+        [HttpPost]
+        public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetAll();
-
-            if (!string.IsNullOrEmpty(id))
-            {
-
-                return View();
-            }
+            var result = key.GetBytc(tcNo).Data;
             return View(result);
         }
 
         public ActionResult PermissionGetList(int id)
         {
 
-            var permissionGetList = manager.GetAllByIdentityId(id);
+            var permissionGetList = manager.GetAllByIdentityId(id).Data;
             return View("PermissionGetList", permissionGetList);
         }
 
         public ActionResult PermissionGet(int id)
         {
-            var permissionGet = manager.GetById(id);
+            var permissionGet = manager.GetById(id).Data;
 
             return View("PermissionGet",permissionGet);
         }

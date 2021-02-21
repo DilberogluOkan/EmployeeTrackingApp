@@ -5,10 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CriminalGetList</h2>
-<h2>PersonelCezaGetirList</h2>
-
-
+<h3>Ceza Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header">
         <h3 class="box-title">Ceza Bilgileri</h3>
@@ -29,11 +26,11 @@
             @foreach (var c in Model)
             {
                 <tr role="row" class="odd">
-                    <td class="sorting_1">@c.CezayiVerenAmir</td>
+                    <td class="sorting_1">@c.CezaVerenAmir</td>
                     <td>@c.VerilenCeza</td>
                     <td>@c.SucTarihi</td>
                     <td>@c.CezayiVerenKisiAdi</td>
-                    <td><a href="/Criminal/CriminalGet/@c.CezaBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <td><a href="/Criminal/CriminalGet/@c.PersonelCezaId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                 </tr>
             }
 

@@ -14,6 +14,6 @@ namespace Business.Abstract
         IResult Delete(Military military);
         IResult Update(Military military);
         IDataResult<List<Military>> GetAll();
-        IDataResult<Military> Get(int militaryId);
+        IDataResult<Military> GetById(int militaryId);
     }
 }

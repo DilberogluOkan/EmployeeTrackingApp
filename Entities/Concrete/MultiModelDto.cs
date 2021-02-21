@@ -19,7 +19,6 @@ namespace Entities.Concrete
         public Award Award { get; set; }
         public Course Course { get; set; }
         public Criminal Criminal { get; set; }
-        public BirthCertificate BirthCertificate { get; set; }
         public TemporaryDuty TemporaryDuty { get; set; }
        
 
