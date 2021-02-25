@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IBloodGroup
+    public interface IBloodGroupDal
     {
         List<BloodGroup> GetAll(Expression<Func<BloodGroup, bool>> filter = null);
     }

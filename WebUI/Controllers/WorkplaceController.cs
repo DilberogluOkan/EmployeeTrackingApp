@@ -14,7 +14,6 @@ namespace WebUI.Controllers
     {
         WorkplaceManager manager = new WorkplaceManager(new WorkplaceDal());
         IdentityManager key = new IdentityManager(new IdentityDal());
-
         ShiftInfoManager _shiftInfo = new ShiftInfoManager(new ShiftInfoDal());
         WorkingStatusManager _workingStatus = new WorkingStatusManager(new WorkingStatusDal());
         ServiceInfoManager _serviceInfo = new ServiceInfoManager(new ServiceInfoDal());

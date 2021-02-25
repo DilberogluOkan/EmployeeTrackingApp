@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class BloodGroupDal : IBloodGroup
+    public class BloodGroupDal : IBloodGroupDal
     {
         public List<BloodGroup> GetAll(Expression<Func<BloodGroup, bool>> filter = null)
         {

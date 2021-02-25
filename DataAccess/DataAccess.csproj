@@ -57,7 +57,7 @@
     <Compile Include="Abstract\IAdminStatusDal.cs" />
     <Compile Include="Abstract\IAwardDal.cs" />
     <Compile Include="Abstract\IBirthCertificateDal.cs" />
-    <Compile Include="Abstract\IBloodGroup.cs" />
+    <Compile Include="Abstract\IBloodGroupDal.cs" />
     <Compile Include="Abstract\ICourseDal.cs" />
     <Compile Include="Abstract\ICriminalDal.cs" />
     <Compile Include="Abstract\IDailyWorkingTimeDal.cs" />
