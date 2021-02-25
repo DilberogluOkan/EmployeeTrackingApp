@@ -255,6 +255,17 @@
     <Content Include="Views\WorkingPrice\IndexQuery.cshtml" />
     <Content Include="Views\WorkingPrice\WorkingPriceGetList.cshtml" />
     <Content Include="Views\WorkingPrice\WorkingPriceGet.cshtml" />
+    <Content Include="Views\Adaptation\AdaptationAdd.cshtml" />
+    <Content Include="Views\Award\AwardAdd.cshtml" />
+    <Content Include="Views\Course\CourseAdd.cshtml" />
+    <Content Include="Views\Criminal\CriminalAdd.cshtml" />
+    <Content Include="Views\Designation\DesignationAdd.cshtml" />
+    <Content Include="Views\Graduation\GraduationAdd.cshtml" />
+    <Content Include="Views\Permission\PermissionAdd.cshtml" />
+    <Content Include="Views\Rise\RiseAdd.cshtml" />
+    <Content Include="Views\TemporaryDuty\TemporaryDutyAdd.cshtml" />
+    <Content Include="Views\WorkingPrice\WorkingPriceAdd.cshtml" />
+    <Content Include="Views\Workplace\WorkplaceAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

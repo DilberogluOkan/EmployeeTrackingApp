@@ -1,0 +1,48 @@
+﻿
+@using Entities.Concrete
+@model Criminal
+@{
+    ViewBag.Title = "CriminalAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Ceza Bilgisi Ekle</h3>
+@using (Html.BeginForm("CriminalAdd", "Criminal", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Ceza Veren Amir</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelCezaId)
+                            @Html.TextBoxFor(x => x.CezaVerenAmir, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Verilen Ceza</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.VerilenCeza, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Suç Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.SucTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+                        <td><b>Cezayı Veren Kişinin Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.CezayiVerenKisiAdi, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+}
+

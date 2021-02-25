@@ -56,5 +56,20 @@ namespace WebUI.Controllers
 
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult GraduationAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult GraduationAdd(Graduation graduation)
+
+        {
+            manager.Add(graduation);
+
+            return RedirectToAction("");
+        }
     }
 }

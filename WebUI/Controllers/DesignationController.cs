@@ -56,5 +56,19 @@ namespace WebUI.Controllers
             manager.Update(designation);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult DesignationAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult DesignationAdd(Designation designation)
+
+        {
+            manager.Add(designation);
+            return RedirectToAction("");
+        }
     }
 }

@@ -1,0 +1,55 @@
+﻿@using Entities.Concrete
+@model Graduation
+@{
+    ViewBag.Title = "GraduationAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Eğitim Bilgisi Ekle</h3>
+@using (Html.BeginForm("GraduationAdd", "Graduation", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Okul Türü</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelEgitimId)
+                            @Html.TextBoxFor(x => x.OkulTuru, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Fakülte / Lise Tür</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.FakulteLiseTur, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Tahsil Derecesi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.TahsilDerece, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Bölüm</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Bolum, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Okul Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OkulAd, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Mezuniyet Durumu</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.MezuniyetDurum, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+}
+

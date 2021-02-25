@@ -56,5 +56,19 @@ namespace WebUI.Controllers
             manager.Update(criminal);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult CriminalAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult CriminalAdd(Criminal criminal)
+
+        {
+            manager.Add(criminal);
+            return RedirectToAction("CriminalGetList");
+        }
     }
 }

@@ -1,0 +1,47 @@
+﻿@using Entities.Concrete
+@model TemporaryDuty
+@{
+    ViewBag.Title = "TemporaryDutyAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Geçici Görev Bilgisi Ekle</h3>
+@using (Html.BeginForm("TemporaryDutyAdd", "TemporaryDuty", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Görevlendirildiği Birlik</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelGeciciGorevId)
+                            @Html.TextBoxFor(x => x.GorevlendigiBirlik, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Görev Yeri</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.GorevYeri, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><b>Başlama Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BaslamaTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+                        <td><b>Bitiş Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BitisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+}

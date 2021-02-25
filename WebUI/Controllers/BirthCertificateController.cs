@@ -49,5 +49,20 @@ namespace WebUI.Controllers
             manager.Update(birthCertificate);
             return RedirectToAction("");
         }
+
+        [HttpGet]
+        public ActionResult BirthCertificateAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult BirthCertificateAdd(BirthCertificate birthCertificate)
+
+        {
+            manager.Add(birthCertificate);
+            return RedirectToAction("birthCertificateGetList");
+        }
     }
 }

@@ -55,5 +55,20 @@ namespace WebUI.Controllers
             manager.Update(course);
             return RedirectToAction("");
         }
+
+        [HttpGet]
+        public ActionResult CourseAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult CourseAdd(Course course)
+
+        {
+            manager.Add(course);
+            return RedirectToAction("CourseGetList");
+        }
     }
 }

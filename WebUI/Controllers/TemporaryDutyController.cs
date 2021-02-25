@@ -57,5 +57,19 @@ namespace WebUI.Controllers
             manager.Update(temporaryDuty);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult TemporaryDutyAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult TemporaryDutyAdd(TemporaryDuty temporaryDuty)
+
+        {
+            manager.Add(temporaryDuty);
+            return RedirectToAction("");
+        }
     }
 }

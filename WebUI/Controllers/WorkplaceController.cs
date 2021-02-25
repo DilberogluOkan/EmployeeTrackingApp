@@ -36,15 +36,7 @@ namespace WebUI.Controllers
 
         public ActionResult WorkplaceGet(int id)
         {
-            var shiftGrp = _shiftInfo.GetAll().Data.ToList();
-            var workingStatusGrp = _workingStatus.GetAll().Data.ToList();
-            var serviceInfoGrp = _serviceInfo.GetAll().Data.ToList();
-          
-
-            ViewBag.ShiftGrpList = new SelectList(shiftGrp, "VardiyaId", "Vardiya");
-            ViewBag.WorkingStatusGrpList = new SelectList(workingStatusGrp, "IstihtamDurumId", "IstihtamDurum");
-            ViewBag.ServiceInfoGrpList = new SelectList(serviceInfoGrp, "ServisBilgisiId", "ServisBilgisi");
-
+            Dropbox();
             var workplaceGet = manager.GetById(id).Data;
             return View("WorkplaceGet", workplaceGet);
         }
@@ -63,6 +55,33 @@ namespace WebUI.Controllers
         {
             manager.Update(workplace);
             return RedirectToAction("");
+        }
+        [HttpGet]
+        public ActionResult WorkplaceAdd()
+        {
+            Dropbox();
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult WorkplaceAdd(Workplace workplace)
+
+        {
+            manager.Add(workplace);
+            return RedirectToAction("");
+        }
+
+        private void Dropbox()
+        {
+            var shiftGrp = _shiftInfo.GetAll().Data.ToList();
+            var workingStatusGrp = _workingStatus.GetAll().Data.ToList();
+            var serviceInfoGrp = _serviceInfo.GetAll().Data.ToList();
+
+
+            ViewBag.ShiftGrpList = new SelectList(shiftGrp, "VardiyaId", "Vardiya");
+            ViewBag.WorkingStatusGrpList = new SelectList(workingStatusGrp, "IstihtamDurumId", "IstihtamDurum");
+            ViewBag.ServiceInfoGrpList = new SelectList(serviceInfoGrp, "ServisBilgisiId", "ServisBilgisi");
         }
     }
 }

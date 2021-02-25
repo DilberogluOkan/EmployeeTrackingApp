@@ -73,5 +73,20 @@ namespace WebUI.Controllers
             manager.Update(workingPrice);
             return RedirectToAction("");
         }
+
+        [HttpGet]
+        public ActionResult WorkingPriceAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult WorkingPriceAdd(WorkingPrice workingPrice)
+
+        {
+            manager.Add(workingPrice);
+            return RedirectToAction("");
+        }
     }
 }

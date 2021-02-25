@@ -1,0 +1,50 @@
+﻿@using Entities.Concrete
+@model Award
+@{
+    ViewBag.Title = "AwardAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Ödül Bilgisi Ekle</h3>
+@using (Html.BeginForm("AwardAdd", "Award", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Ödül Veren Rütbe</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelOdulId)
+                            @Html.TextBoxFor(x => x.OdulVerenRutbe, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Odul Taktir Bilgi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulTaktirBilgi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Verildiği Tarih</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.VerildigiTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Ödül Veren Amir Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulVerenAmirAdi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Ödül Veren Amir Rütbe</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.OdulVerenAmirRutbe, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+}
+
+

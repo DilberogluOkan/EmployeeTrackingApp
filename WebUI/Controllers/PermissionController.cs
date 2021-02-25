@@ -56,5 +56,19 @@ namespace WebUI.Controllers
             manager.Update(permission);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult PermissionAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult PermissionAdd(Permission permission)
+
+        {
+            manager.Add(permission);
+            return RedirectToAction("");
+        }
     }
 }

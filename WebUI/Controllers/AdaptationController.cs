@@ -57,5 +57,20 @@ namespace WebUI.Controllers
             manager.Update(adaptation);
             return RedirectToAction("");
         }
+
+        [HttpGet]
+        public ActionResult AdaptationAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AdaptationAdd(Adaptation adaptation)
+
+        {
+            manager.Add(adaptation);
+            return RedirectToAction("AdaptationGetList");
+        }
     }
 }

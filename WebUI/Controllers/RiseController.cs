@@ -55,5 +55,19 @@ namespace WebUI.Controllers
             manager.Update(promotion);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult RiseAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult RiseAdd(Promotion promotion)
+
+        {
+            manager.Add(promotion);
+            return RedirectToAction("");
+        }
     }
 }

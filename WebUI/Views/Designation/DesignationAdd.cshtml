@@ -1,0 +1,45 @@
+﻿@using Entities.Concrete
+@model Designation
+@{
+    ViewBag.Title = "DesignationAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Atama Bilgisi Ekle</h3>
+@using (Html.BeginForm("DesignationAdd", "Designation", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>İş Yeri</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.PersonelAtamaId)
+                            @Html.TextBoxFor(x => x.IsYeri, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Atama İsteği Durumu</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AtamaIstegiDurumu, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Katılış Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.KatilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+                        <td><b>Ayrılış Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AyrilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </td>
+                    </tr>
+
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+}

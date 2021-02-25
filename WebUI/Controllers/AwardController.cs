@@ -56,5 +56,19 @@ namespace WebUI.Controllers
             manager.Update(award);
             return RedirectToAction("");
         }
+        [HttpGet]
+        public ActionResult AwardAdd()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AwardAdd(Award award)
+
+        {
+            manager.Add(award);
+            return RedirectToAction("AwardGetList");
+        }
     }
 }
