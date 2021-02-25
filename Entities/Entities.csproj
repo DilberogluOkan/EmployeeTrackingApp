@@ -51,16 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Adaptation.cs" />
+    <Compile Include="Concrete\AdminStatus.cs" />
     <Compile Include="Concrete\Award.cs" />
     <Compile Include="Concrete\BirthCertificate.cs" />
     <Compile Include="Concrete\BloodGroup.cs" />
     <Compile Include="Concrete\Course.cs" />
     <Compile Include="Concrete\Criminal.cs" />
+    <Compile Include="Concrete\DailyWorkingTime.cs" />
     <Compile Include="Concrete\Designation.cs" />
     <Compile Include="Concrete\DisabilityStatus.cs" />
     <Compile Include="Concrete\ForeignLanguage.cs" />
     <Compile Include="Concrete\Gender.cs" />
     <Compile Include="Concrete\Graduation.cs" />
+    <Compile Include="Concrete\GraduationStatus.cs" />
     <Compile Include="Concrete\Identity.cs" />
     <Compile Include="Concrete\MaritalStatus.cs" />
     <Compile Include="Concrete\Military.cs" />
@@ -68,9 +71,17 @@
     <Compile Include="Concrete\MultiModelReportDto.cs" />
     <Compile Include="Concrete\Permission.cs" />
     <Compile Include="Concrete\PersonDto.cs" />
+    <Compile Include="Concrete\PriceGrade.cs" />
+    <Compile Include="Concrete\PriceGradeRise.cs" />
+    <Compile Include="Concrete\PriceType.cs" />
     <Compile Include="Concrete\Promotion.cs" />
     <Compile Include="Concrete\Provice.cs" />
+    <Compile Include="Concrete\ServiceInfo.cs" />
+    <Compile Include="Concrete\ShiftInfo.cs" />
     <Compile Include="Concrete\TemporaryDuty.cs" />
+    <Compile Include="Concrete\WorkingPrice.cs" />
+    <Compile Include="Concrete\WorkingStatus.cs" />
+    <Compile Include="Concrete\Workplace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

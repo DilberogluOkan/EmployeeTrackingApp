@@ -143,6 +143,8 @@
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\RiseController.cs" />
     <Compile Include="Controllers\TemporaryDutyController.cs" />
+    <Compile Include="Controllers\WorkingPriceController.cs" />
+    <Compile Include="Controllers\WorkplaceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +248,13 @@
     <Content Include="Views\BirthCertificate\BirthCertificateGet.cshtml" />
     <Content Include="Views\Military\IndexQuery.cshtml" />
     <Content Include="Views\Military\MilitaryGet.cshtml" />
+    <Content Include="Views\Workplace\IndexQuery.cshtml" />
+    <Content Include="Views\Workplace\Index.cshtml" />
+    <Content Include="Views\Workplace\WorkplaceGet.cshtml" />
+    <Content Include="Views\WorkingPrice\Index.cshtml" />
+    <Content Include="Views\WorkingPrice\IndexQuery.cshtml" />
+    <Content Include="Views\WorkingPrice\WorkingPriceGetList.cshtml" />
+    <Content Include="Views\WorkingPrice\WorkingPriceGet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,8 @@ namespace Entities.Concrete
         public int MedeniHalId { get; set; }
         public int IlId { get; set; }
         public int KanGrupId { get; set; }
+        public int PersonelIsyeriId { get; set; }
+        
 
         [StringLength(11)]
         public string TcKimlikNo { get; set; }
