@@ -44,7 +44,7 @@ namespace WebUI
             builder.RegisterType<MaritalStatusManager>().As<IMaritalStatusService>();
             builder.RegisterType<MilitaryManager>().As<IMilitaryService>();
             builder.RegisterType<PermissionManager>().As<IPermissionService>();
-            builder.RegisterType<PriceGradeManager>().As<IPriceGradeRiseService>();
+            builder.RegisterType<PriceGradeManager>().As<IPriceGradeService>();
             builder.RegisterType<PriceGradeRiseManager>().As<IPriceGradeRiseService>();
             builder.RegisterType<PriceTypeManager>().As<IPriceTypeService>();
             builder.RegisterType<PromotionManager>().As<IPromotionService>();
@@ -73,7 +73,7 @@ namespace WebUI
             builder.RegisterType<MaritalStatusDal>().As<IMaritalStatusDal>();
             builder.RegisterType<MilitaryDal>().As<IMilitaryDal>();
             builder.RegisterType<PermissionDal>().As<IPermissionDal>();
-            builder.RegisterType<PriceGradeDal>().As<IPriceGradeRiseDal>();
+            builder.RegisterType<PriceGradeDal>().As<IPriceGradeDal>();
             builder.RegisterType<PriceGradeRiseDal>().As<IPriceGradeRiseDal>();
             builder.RegisterType<PriceTypeDal>().As<IPriceTypeDal>();
             builder.RegisterType<PromotionDal>().As<IPromotionDal>();

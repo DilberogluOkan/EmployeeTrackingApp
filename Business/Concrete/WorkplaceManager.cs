@@ -36,7 +36,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Workplace>> GetAllByIdentityId(int id)
         {
-            //return new SuccessDataResult<List<Workplace>>(_workplaceDal.GetAll(p => p.PersonelIsyeriId== id));
+           return new SuccessDataResult<List<Workplace>>(_workplaceDal.GetAll(p => p.PersonelIsyeriId== id));
 
         }
 
