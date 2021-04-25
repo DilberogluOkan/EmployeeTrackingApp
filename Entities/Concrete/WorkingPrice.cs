@@ -11,17 +11,14 @@ namespace Entities.Concrete
     public class WorkingPrice:IEntity
     {
         [Key]
-        public int CalısmaUcretiBilgiId { get; set; }
+        public int CalismaUcretBilgiId { get; set; }
         public int PersonelKimlikId { get; set; }
         public int UcretTurId { get; set; }
-        public int GunlukCalismaSuresiId { get; set; }
-        public int UcretDereceId { get; set; }
+        public int GunlukCalismaSureId { get; set; }
+        public string UcretDerece { get; set; }
         public int UcretDerecesineTerfiId { get; set; }
+        public DateTime SonUcretDerecesineYukselmeTarih { get; set; }
 
-        public PriceType PriceType { get; set; }
-        public DailyWorkingTime DailyWorkingTime { get; set; }
-        public PriceGrade PriceGrade { get; set; }
-        public PriceGradeRise PriceGradeRise { get; set; }
 
     }
 }

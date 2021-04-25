@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace Business.Concrete
 
         public IResult Add(Permission permission)
         {
-            throw new NotImplementedException();
+            _permissionDal.Add(permission);
+            return new SuccessResult();
         }
 
         public IResult Delete(Permission permission)
@@ -44,6 +46,11 @@ namespace Business.Concrete
         public IDataResult<Permission> GetById(int permissionId)
         {
             return new SuccessDataResult<Permission>(_permissionDal.Get(p => p.PersonelIzinId == permissionId));
+        }
+
+        public IDataResult<List<PermissionDto>> GetPermissionDetails(int id)
+        {
+            return new SuccessDataResult<List<PermissionDto>>(_permissionDal.GetPermissionDetails(p => p.PersonelKimlikId == id));
         }
 
         public IResult Update(Permission permission)

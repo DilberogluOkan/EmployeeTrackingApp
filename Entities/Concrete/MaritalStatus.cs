@@ -12,7 +12,7 @@ namespace Entities.Concrete
     {
         [Key]
         public int MedeniHalId { get; set; }
-        [StringLength(5)]
+        
         public string MedeniHali { get; set; }
     }
 }

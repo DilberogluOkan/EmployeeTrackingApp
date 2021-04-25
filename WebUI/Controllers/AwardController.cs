@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -12,8 +13,16 @@ namespace WebUI.Controllers
 {
     public class AwardController : Controller
     {
-        AwardManager manager = new AwardManager(new AwardDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+       
+       
+        IIdentityService _identityService;
+        IAwardService _awardService;
+        public AwardController(IIdentityService identityService, IAwardService awardService)
+        {
+            _identityService = identityService;
+            _awardService = awardService;
+        }
+
         // GET: Award
         public ActionResult Index()
         {
@@ -23,20 +32,21 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _identityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult AwardGetList(int id)
         {
 
-            var awardGetList = manager.GetAllByIdentityId(id).Data;
+            var awardGetList = _awardService.GetAllByIdentityId(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("AwardGetList", awardGetList);
         }
 
         public ActionResult AwardGet(int id)
         {
-            var awardGet = manager.GetById(id).Data;
+            var awardGet = _awardService.GetById(id).Data;
 
             return View("AwardGet", awardGet);
         }
@@ -53,12 +63,13 @@ namespace WebUI.Controllers
         public ActionResult AwardUpdate(Award award)
 
         {
-            manager.Update(award);
+            _awardService.Update(award);
             return RedirectToAction("");
         }
         [HttpGet]
-        public ActionResult AwardAdd()
+        public ActionResult AwardAdd(int id)
         {
+            ViewBag.PersonelKimlikId = id;
             return View();
         }
 
@@ -67,8 +78,8 @@ namespace WebUI.Controllers
         public ActionResult AwardAdd(Award award)
 
         {
-            manager.Add(award);
-            return RedirectToAction("AwardGetList");
+            _awardService.Add(award);
+            return RedirectToAction("");
         }
     }
 }

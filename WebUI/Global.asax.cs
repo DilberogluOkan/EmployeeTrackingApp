@@ -1,10 +1,14 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Business.Abstract;
+using Business.Abstract.Dynamic;
 using Business.Concrete;
+using Business.Concrete.Dynamic;
 using DataAccess.Abstract;
+using DataAccess.Abstract.Dynamic;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using DataAccess.Concrete.EntityFramework.Dynamic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +58,22 @@ namespace WebUI
             builder.RegisterType<WorkingPriceManager>().As<IWorkingPriceService>();
             builder.RegisterType<WorkingStatusManager>().As<IWorkingStatusService>();
             builder.RegisterType<WorkplaceManager>().As<IWorkplaceService>();
+            builder.RegisterType<ReasonForPermissionManager>().As<IReasonForPermissionService>();
+            builder.RegisterType<ReasonForDesignationManager>().As<IReasonForDesignationService>();
+            builder.RegisterType<PermissionTypeManager>().As<IPermissionTypeService>();
+            builder.RegisterType<ReasonForCriminalManager>().As<IReasonForCriminalService>();
+            builder.RegisterType<TradeUnionInfoManager>().As<ITradeUnionInfoService>();
+            builder.RegisterType<TradeUnionStatusManager>().As<ITradeUnionStatusService>();
+            builder.RegisterType<TradeUnionNameManager>().As<ITradeUnionNameService>();
+            builder.RegisterType<CurrentStatusManager>().As<ICurrentStatusService>();
+            builder.RegisterType<ProvinceManager>().As<IProvinceService>();
+            builder.RegisterType<PrivateStatusManager>().As<IPrivateStatusService>();
+            builder.RegisterType<TisJobCodeManager>().As<ITisJobCodeService>();
+            builder.RegisterType<SgkJobCodeManager>().As<ISgkJobCodeService>();
+            builder.RegisterType<MilitaryStatusManager>().As<IMilitaryStatusService>();
+            builder.RegisterType<DesignationStatusManager>().As<IDesignationStatusService>();
+            builder.RegisterType<LanguageNameManager>().As<ILanguageNameService>();
+            builder.RegisterType<DesignationApprovalManager>().As<IDesignationApprovalService>();
 
             builder.RegisterType<AdaptationDal>().As<IAdaptationDal>();
             builder.RegisterType<AdminStatusDal>().As<IAdminStatusDal>();
@@ -83,7 +103,22 @@ namespace WebUI
             builder.RegisterType<WorkingPriceDal>().As<IWorkingPriceDal>();
             builder.RegisterType<WorkingStatusDal>().As<IWorkingStatusDal>();
             builder.RegisterType<WorkplaceDal>().As<IWorkplaceDal>();
-
+            builder.RegisterType<ReasonForPermissionDal>().As<IReasonForPermissionDal>();
+            builder.RegisterType<ReasonForDesignationDal>().As<IReasonForDesignationDal>();
+            builder.RegisterType<PermissionTypeDal>().As<IPermissionTypeDal>();
+            builder.RegisterType<ReasonForCriminalDal>().As<IReasonForCriminalDal>();
+            builder.RegisterType<TradeUnionInfoDal>().As<ITradeUnionInfoDal>();
+            builder.RegisterType<TradeUnionStatusDal>().As<ITradeUnionStatusDal>();
+            builder.RegisterType<TradeUnionNameDal>().As<ITradeUnionNameDal>();
+            builder.RegisterType<CurrentStatusDal>().As<ICurrentStatusDal>();
+            builder.RegisterType<ProvinceDal>().As<IProvinceDal>();
+            builder.RegisterType<PrivateStatusDal>().As<IPrivateStatusDal>();
+            builder.RegisterType<TisJobCodeDal>().As<ITisJobCodeDal>();
+            builder.RegisterType<SgkJobCodeDal>().As<ISgkJobCodeDal>();
+            builder.RegisterType<MilitaryStatusDal>().As<IMilitaryStatusDal>();
+            builder.RegisterType<DesignationStatusDal>().As<IDesignationStatusDal>();
+            builder.RegisterType<LanguageNameDal>().As<ILanguageNameDal>();
+            builder.RegisterType<DesignationApprovalDal>().As<IDesignationApprovalDal>();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

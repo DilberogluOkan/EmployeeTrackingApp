@@ -16,36 +16,19 @@
                 </thead>
                 <tbody>
                     <tr role="row" class="odd">
-                        <td class="sorting_1"><b>İzin Şekli</b></td>
+                        <td class="sorting_1"><b>İzin Türü</b></td>
                         <td>
                             @Html.HiddenFor(x => x.PersonelKimlikId)
                             @Html.HiddenFor(x => x.PersonelIzinId)
-                            @Html.TextBoxFor(x => x.IzinSekli, null, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.IzinTurId, ViewBag.PermissionTypeGrpList as SelectList, new { @class = "form-control" })
                         </td>
                         <td><b>İzin Sebebi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.IzinSebebi, null, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.IzinNedenId, ViewBag.ReasonForPermissionGrpList as SelectList, new { @class = "form-control" })
                         </td>
-                        <td><b>Borçlanma</b></td>
-                        <td>
-                            @Html.TextBoxFor(x => x.Borclanma, null, new { @class = "form-control" })
-                        </td>
+                        
                     </tr>
-                    <tr>
-                        <td><b>Yil</b></td>
-                        <td>
-                            @Html.TextBoxFor(x => x.Yil, null, new { @class = "form-control" })
-                        </td>
-                        <td><b>Ay</b></td>
-                        <td>
-                            @Html.TextBoxFor(x => x.Ay, null, new { @class = "form-control" })
-                        </td>
-                        <td><b>Gün</b></td>
-                        <td>
-                            @Html.TextBoxFor(x => x.Gun, null, new { @class = "form-control" })
-                        </td>
-
-                    </tr>
+                   
                     <tr>
                         <td><b>Başlama Tarihi</b></td>
                         <td>
@@ -55,11 +38,7 @@
                         <td>
                             @Html.TextBoxFor(x => x.BitisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
-                        <td><b>Onay Durumu</b></td>
-                        <td>
-                            @Html.TextBoxFor(x => x.OnayDurum, null, new { @class = "form-control" })
-                        </td>
-
+                      
                     </tr>
             </table>
             <button class="btn btn-warning">Güncelle</button>

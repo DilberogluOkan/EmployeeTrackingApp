@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -12,8 +13,16 @@ namespace WebUI.Controllers
 {
     public class BirthCertificateController : Controller
     {
-        BirthCertificateManager manager = new BirthCertificateManager(new BirthCertificateDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+      
+        IBirthCertificateService _birthCertificateService;
+        IIdentityService _identityService;
+
+        public BirthCertificateController(IIdentityService identityService, IBirthCertificateService birthCertificateService)
+        {
+            _identityService = identityService;
+            _birthCertificateService = birthCertificateService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -22,7 +31,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _identityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
@@ -30,7 +39,7 @@ namespace WebUI.Controllers
 
         public ActionResult BirthCertificateGet(int id)
         {
-            var birthCertificateGet = manager.GetById(id).Data;
+            var birthCertificateGet = _birthCertificateService.GetById(id).Data;
             return View("BirthCertificateGet", birthCertificateGet);
         }
 
@@ -46,7 +55,7 @@ namespace WebUI.Controllers
         public ActionResult BirthCertificateUpdate(BirthCertificate birthCertificate)
 
         {
-            manager.Update(birthCertificate);
+            _birthCertificateService.Update(birthCertificate);
             return RedirectToAction("");
         }
 
@@ -61,7 +70,7 @@ namespace WebUI.Controllers
         public ActionResult BirthCertificateAdd(BirthCertificate birthCertificate)
 
         {
-            manager.Add(birthCertificate);
+            _birthCertificateService.Add(birthCertificate);
             return RedirectToAction("birthCertificateGetList");
         }
     }

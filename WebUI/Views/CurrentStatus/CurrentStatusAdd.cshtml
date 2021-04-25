@@ -1,0 +1,30 @@
+﻿
+@using Entities.Concrete.DynamicDataEntity
+@model CurrentStatus
+@{
+    ViewBag.Title = "CurrentStatusAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Mevcut Statü Ekle</h3>
+<form method="post">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Mevcut Statu</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.MevcutStatuId)
+                            @Html.TextBoxFor(x => x.MevcutStatu, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+</form>
+

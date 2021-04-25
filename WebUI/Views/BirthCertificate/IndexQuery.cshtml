@@ -1,26 +1,32 @@
-﻿@using Entities.Concrete
-@model List<Identity>
+﻿@using Entities.Dto
+@model List<PersonDto>
 @{
     ViewBag.Title = "IndexQuery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h3>Ödül Bilgisi Güncelle</h3>
-<div class="box box-info">
+<div class="container box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">Personel Ara</h3>
+        <h3 class="box-title">TC Kimlik No İle Personel Ara</h3><br />
+        <br />
+        @using (Html.BeginForm("IndexQuery", "BirthCertificate", FormMethod.Post))
+        {
+            <div class="row">
+
+                <table>
+                    <tr>
+                        <td class="col-md-6">@Html.TextBox("TcNo", null, new { @class = "form-control" })</td>
+                        <td><button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        }
     </div>
-    <!-- /.box-header -->
-    <!-- form start -->
-
-    @using (Html.BeginForm("IndexQuery", "BirthCertificate", FormMethod.Post))
-    {
-
-        @Html.TextBox("TcNo")
-        <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
-    }
-
 </div>
+
 
 <!-- /.box-body -->
 <div class="box-footer">
@@ -31,6 +37,7 @@
                 <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                     <thead>
                         <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
                             <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">TC Kimlik No</th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Adı</th>
                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Soyadı</th>
@@ -43,11 +50,12 @@
                         @foreach (var k in Model)
                         {
                             <tr role="row" class="odd">
-                                <td class="sorting_1">@k.TcKimlikNo</td>
+                                <td class="sorting_1"></td>
+                                <td>@k.TcNo</td>
                                 <td>@k.Adi</td>
                                 <td>@k.Soyadi</td>
-                                <td>@k.CalistigiKurum</td>
-                                <td><a href="/BirthCertificate/BirthCertificateGet/@k.PersonelNufusId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                                <td>@k.CalistigiKurum  @k.Birimi</td>
+                                <td><a href="/BirthCertificate/BirthCertificateGet/" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                             </tr>
                         }
                     </tbody>

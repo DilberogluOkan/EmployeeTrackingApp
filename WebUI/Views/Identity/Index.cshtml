@@ -1,103 +1,65 @@
-﻿@using Entities.Concrete
-@model List<Identity>
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br />
-<br />
-<br />
 
-<div class="box box-default">
+
+<h3>Genel Bilgileri Güncelle</h3>
+<div class="container box box-info">
     <div class="box-header with-border">
+        <h3 class="box-title">TC Kimlik No İle Personel Ara</h3><br />
+        <br />
+        @using (Html.BeginForm("IndexQuery", "Identity", FormMethod.Post))
+        {
+            <div class="row">
 
-        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-            <thead>
+                <table>
+                    <tr>
+                        <td class="col-md-6">@Html.TextBox("TcNo", null, new { @class = "form-control" })</td>
+                        <td><button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button></td>
+                    </tr>
+                </table>
 
-            </thead>
-            <tbody>
-                <tr role="row" class="odd">
-                    <td class="sorting_1"><b>Tc Kimlik No</b></td>
-                    <td></td>
-                    <td><b>Sicil No</b></td>
-                    <td></td>
-                    <td rowspan="3" style="width:120px"></td>
-                </tr>
-                <tr role="row" class="odd">
-                    <td class="sorting_1"><b>Adı</b></td>
-                    <td></td>
-                    <td class="sorting_1"><b>Doğum Tarih</b></td>
-                    <td></td>
+            </div>
 
-
-                </tr>
-                <tr role="row" class="odd">
-                    <td><b>Soyadı</b></td>
-                    <td></td>
-                    <td><b>Doğum yeri</b></td>
-                    <td> </td>
-
-                </tr>
-@foreach (var item in Model)
-{
-
-
-                <tr role="row" class="odd">
-                    <td><b>@item.Id</b></td>
-                    <td>@item.Id</td>
-                   
-
-                </tr>}
-
-            </tbody>
-        </table>
-
+        }
     </div>
 </div>
-<!-- /.box -->
-<!-- /.box -->
-<div class="box box-danger">
-    <div class="box-header">
-        <h3 class="box-title">Bilgiler</h3>
+<!-- /.box-body -->
+<div class="box-footer">
+    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+        <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">TC Kimlik No</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Adı</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Soyadı</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Çalıştığı Kurum</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr role="row" class="odd">
+                            <td class="sorting_1"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead>
-
-        </thead>
-        <tbody>
-            <tr role="row" class="odd">
-                <td class="sorting_1"><b>Cinsiyet</b></td>
-                <td></td>
-                <td><b>Medeni Hali</b></td>
-                <td></td>
-
-            </tr>
-            <tr role="row" class="odd">
-                <td class="sorting_1"><b>Özel Durum</b></td>
-                <td></td>
-                <td><b>Kan Grubu</b></td>
-                <td></td>
-
-
-            </tr>
-            <tr role="row" class="odd">
-                <td><b>Katılış Tarihi</b></td>
-                <td></td>
-                <td class="sorting_1"><b>Sınıfı</b></td>
-                <td></td>
-
-            </tr>
-            <tr role="row" class="odd">
-                <td><b>Boy</b></td>
-                <td></td>
-                <td><b>Kilo</b></td>
-                <td></td>
-
-            </tr>
-
-        </tbody>
-    </table>
-    <!-- /.box-body -->
 </div>
+
+
 
 

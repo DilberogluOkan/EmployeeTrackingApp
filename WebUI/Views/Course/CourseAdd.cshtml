@@ -19,7 +19,7 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1"><b>Türü</b></td>
                         <td>
-                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.Hidden("PersonelKimlikId", (int)ViewBag.PersonelKimlikId)
                             @Html.HiddenFor(x => x.PersonelKursId)
                             @Html.TextBoxFor(x => x.Turu, null, new { @class = "form-control" })
                         </td>

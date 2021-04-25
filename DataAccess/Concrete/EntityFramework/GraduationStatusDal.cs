@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.DynamicDataEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

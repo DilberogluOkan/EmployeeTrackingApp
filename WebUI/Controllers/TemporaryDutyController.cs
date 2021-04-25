@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -12,8 +13,14 @@ namespace WebUI.Controllers
     public class TemporaryDutyController : Controller
     {
 
-        TemporaryDutyManager manager = new TemporaryDutyManager(new TemporaryDutyDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+        IIdentityService _ıdentityService;
+        ITemporaryDutyService _temporaryDutyService;
+
+        public TemporaryDutyController(IIdentityService ıdentityService, ITemporaryDutyService temporaryDutyService)
+        {
+            _ıdentityService = ıdentityService;
+            _temporaryDutyService = temporaryDutyService;
+        }
 
         // GET: TemporaryDuty
         public ActionResult Index()
@@ -24,20 +31,20 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult TemporaryDutyGetList(int id)
         {
 
-            var temporaryDutyGetList = manager.GetAllByIdentityId(id).Data;
+            var temporaryDutyGetList = _temporaryDutyService.GetTemporaryDutyDetails(id).Data;
             return View("TemporaryDutyGetList", temporaryDutyGetList);
         }
 
         public ActionResult TemporaryDutyGet(int id)
         {
-            var temporaryDutyGet = manager.GetById(id).Data;
+            var temporaryDutyGet = _temporaryDutyService.GetTemporaryDutyDetails(id).Data;
 
             return View("TemporaryDutyGet", temporaryDutyGet);
         }
@@ -54,13 +61,15 @@ namespace WebUI.Controllers
         public ActionResult TemporaryDutyUpdate(TemporaryDuty temporaryDuty)
 
         {
-            manager.Update(temporaryDuty);
+            _temporaryDutyService.Update(temporaryDuty);
             return RedirectToAction("");
         }
         [HttpGet]
-        public ActionResult TemporaryDutyAdd()
+        public ActionResult TemporaryDutyAdd(int id)
         {
-            return View();
+            var temporaryDutyAdd = _temporaryDutyService.GetTemporaryDutyDetails(id).Data;
+
+            return View("TemporaryDutyAdd", temporaryDutyAdd);
         }
 
 
@@ -68,7 +77,7 @@ namespace WebUI.Controllers
         public ActionResult TemporaryDutyAdd(TemporaryDuty temporaryDuty)
 
         {
-            manager.Add(temporaryDuty);
+            _temporaryDutyService.Add(temporaryDuty);
             return RedirectToAction("");
         }
     }

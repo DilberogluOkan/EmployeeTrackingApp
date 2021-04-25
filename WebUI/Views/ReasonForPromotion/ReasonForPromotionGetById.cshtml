@@ -1,0 +1,31 @@
+﻿
+@using Entities.Concrete.DynamicDataEntity
+@model ReasonForPromotion
+@{
+    ViewBag.Title = "ReasonForPromotionGetById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Terfi Nedeni Güncelle</h3>
+@using (Html.BeginForm("ReasonForPromotionUpdate", "ReasonForPromotion", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>İzin Nedeni</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.TerfiNedenId)
+                            @Html.TextBoxFor(x => x.TerfiNeden, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+

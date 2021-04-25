@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,12 +12,22 @@ namespace WebUI.Controllers
 {
     public class WorkingPriceController : Controller
     {
-        WorkingPriceManager manager = new WorkingPriceManager(new WorkingPriceDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
-        PriceTypeManager _priceType = new PriceTypeManager(new PriceTypeDal());
-        DailyWorkingTimeManager _dailyWorkingTime = new DailyWorkingTimeManager(new DailyWorkingTimeDal());
-        PriceGradeManager _priceGrade = new PriceGradeManager(new PriceGradeDal());
-        PriceGradeRiseManager _priceGradeRise = new PriceGradeRiseManager(new PriceGradeRiseDal());
+      
+        IWorkingPriceService _workingPriceService;
+        IIdentityService _ıdentityService;
+        IPriceTypeService _priceTypeService;
+        IDailyWorkingTimeService _dailyWorkingTimeService;
+        IPriceGradeService _priceGradeService;
+        IPriceGradeRiseService _priceGradeRiseService;
+        public WorkingPriceController(IWorkingPriceService workingPriceService, IIdentityService ıdentityService, IPriceGradeRiseService priceGradeRiseService, IPriceGradeService priceGradeService, IPriceTypeService priceTypeService, IDailyWorkingTimeService dailyWorkingTimeService)
+        {
+            _workingPriceService = workingPriceService;
+            _ıdentityService = ıdentityService;
+            _priceGradeRiseService = priceGradeRiseService;
+            _priceGradeService = priceGradeService;
+            _priceTypeService = priceTypeService;
+            _dailyWorkingTimeService = dailyWorkingTimeService;
+        }
 
         // GET: WorkingPrice
         public ActionResult Index()
@@ -29,31 +40,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult WorkingPriceGetList(int id)
         {
-
-            var workingPriceGetList = manager.GetAllByIdentityId(id).Data;
+            var workingPriceGetList = _workingPriceService.GetPriceDetails(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("WorkingPriceGetList", workingPriceGetList);
         }
 
         public ActionResult WorkingPriceGet(int id)
         {
-            var priceTypeGrp = _priceType.GetAll().Data.ToList();
-            var dailyWorkingTimeGrp = _dailyWorkingTime.GetAll().Data.ToList();
-            var priceGradeGrp = _priceGrade.GetAll().Data.ToList();
-            var priceGradeRiseGrp = _priceGradeRise.GetAll().Data.ToList();
+            DropBoxItem();
 
-
-            ViewBag.ShiftGrpList = new SelectList(priceTypeGrp, "UcretTurId", "UcretTuru");
-            ViewBag.WorkingStatusGrpList = new SelectList(dailyWorkingTimeGrp, "GunlukCalismaSureId", "GunlukCalismaSuresi");
-            ViewBag.PriceGradeGrpList = new SelectList(priceGradeGrp, "UcretDereceId", "UcretDerecesi");
-            ViewBag.PriceGradeRiseGrpList = new SelectList(priceGradeRiseGrp, "UcretDerecesiTerfiId", "UcretDerecesiTerfiNedeni");
-
-            var workingPriceGet = manager.GetById(id).Data;
+            var workingPriceGet = _workingPriceService.GetById(id).Data;
 
             return View("WorkingPriceGet", workingPriceGet);
         }
@@ -70,7 +72,7 @@ namespace WebUI.Controllers
         public ActionResult WorkingPriceUpdate(WorkingPrice workingPrice)
 
         {
-            manager.Update(workingPrice);
+            _workingPriceService.Update(workingPrice);
             return RedirectToAction("");
         }
 
@@ -81,12 +83,31 @@ namespace WebUI.Controllers
         }
 
 
+        public ActionResult WorkingPriceAddGet(int id)
+        {
+            DropBoxItem();
+            ViewBag.PersonelKimlikId = id;
+            var workingPriceAddGet = _workingPriceService.GetById(id).Data;
+            return View("WorkingPriceAddGet", workingPriceAddGet);
+        }
+
         [HttpPost]
         public ActionResult WorkingPriceAdd(WorkingPrice workingPrice)
 
         {
-            manager.Add(workingPrice);
+            _workingPriceService.Add(workingPrice);
             return RedirectToAction("");
+        }
+        private void DropBoxItem()
+        {
+            var priceTypeGrp = _priceTypeService.GetAll().Data.ToList();
+            var dailyWorkingTimeGrp = _dailyWorkingTimeService.GetAll().Data.ToList();
+            
+            var priceGradeRiseGrp = _priceGradeRiseService.GetAll().Data.ToList();
+            ViewBag.PriceTypeGrpList = new SelectList(priceTypeGrp, "UcretTurId", "UcretTuru");
+            ViewBag.DailyWorkingTimeGrpList = new SelectList(dailyWorkingTimeGrp, "GunlukCalismaSureId", "GunlukCalismaSuresi");
+           
+            ViewBag.PriceGradeRiseGrpList = new SelectList(priceGradeRiseGrp, "UcretDerecesineTerfiId", "UcretDerecesineTerfiNedeni");
         }
     }
 }

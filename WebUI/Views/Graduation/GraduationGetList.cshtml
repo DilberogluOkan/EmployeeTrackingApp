@@ -1,5 +1,5 @@
-﻿@using Entities.Concrete
-@model List<Graduation>
+﻿@using Entities.Dto
+@model List<GraduationDto>
 @{
     ViewBag.Title = "GraduationGetList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,35 +11,42 @@
     <div class="box-header">
         <h3 class="box-title">Eğitim Bilgileri</h3>
     </div>
-    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead>
-            <tr role="row">
-                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Okul Türü</th>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Okul Türü</th>
 
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Fakülte/Lise Tür</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tahsil Derece</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bölüm</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Okul Adı</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Mezuniyet Durum</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var e in Model)
-            {
-                <tr role="row" class="odd">
-                    <td class="sorting_1">@e.OkulTuru</td>
-                    <td>@e.FakulteLiseTur</td>
-                    <td>@e.TahsilDerece</td>
-                    <td>@e.Bolum</td>
-                    <td>@e.OkulAd</td>
-                    <td>@e.MezuniyetDurum</td>
-                    <td><a href="/Graduation/GraduationGet/@e.PersonelEgitimId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Fakülte/Lise Tür</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tahsil Derece</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bölüm</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Okul Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Mezuniyet Durum</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
-    <!-- /.box-body -->
+                @foreach (var e in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"></td>
+                        <td>@e.OkulTuru</td>
+                        <td>@e.FakulteLiseTur</td>
+                        <td>@e.TahsilDerece</td>
+                        <td>@e.Bolum</td>
+                        <td>@e.OkulAd</td>
+                        <td>@e.EgitimDurumu</td>
+                        <td>
+                            <a href="/Graduation/GraduationGet/@e.PersonelEgitimId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a href="/Graduation/GraduationGetAdd/@ViewBag.PersonelKimlikId" class="btn btn-success col-xs-pull-5">Yeni Eğitim Bilgisi Ekle</a>
+    </div>
 </div>

@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace Business.Abstract
         IResult Delete(ForeignLanguage foreignLanguage);
         IResult Update(ForeignLanguage foreignLanguage);
         IDataResult<List<ForeignLanguage>> GetAll();
-        IDataResult<ForeignLanguage> Get(int foreignLanguageId);
+      
+        IDataResult<ForeignLanguage> GetById(int foreignLanguageId);
+        IDataResult<List<ForeignLanguage>> GetAllByIdentityId(int id);
+        IDataResult<List<ForeignLanguageDto>> GetForeignLanguageDetails(int id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace Business.Abstract
         IDataResult<List<TemporaryDuty>> GetAll();
         IDataResult<TemporaryDuty> GetById(int temporaryDutyId);
         IDataResult<List<TemporaryDuty>> GetAllByIdentityId(int id);
+        IDataResult<List<TemporaryDutyDto>> GetAllTemporaryDutyDetails(int id);
+        IDataResult<List<TemporaryDutyDto>> GetTemporaryDutyDetails(int id);
     }
 }

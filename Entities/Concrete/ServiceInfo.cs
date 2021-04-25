@@ -11,7 +11,7 @@ namespace Entities.Concrete
     public class ServiceInfo:IEntity
     {
         [Key]
-        public int ServisBilgisiId { get; set; }
+        public int ServisBilgiId { get; set; }
         public string ServisBilgisi { get; set; }
     }
 }

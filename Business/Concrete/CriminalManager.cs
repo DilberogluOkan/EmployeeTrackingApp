@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace Business.Concrete
 
         public IResult Add(Criminal criminal)
         {
-            throw new NotImplementedException();
+            _criminalDal.Add(criminal);
+            return new SuccessResult();
         }
 
         public IResult Delete(Criminal criminal)
@@ -44,6 +46,11 @@ namespace Business.Concrete
         public IDataResult<Criminal> GetById(int criminalId)
         {
             return new SuccessDataResult<Criminal>(_criminalDal.Get(p => p.PersonelCezaId ==criminalId));
+        }
+
+        public IDataResult<List<CriminalDto>> GetCriminalDetails(int id)
+        {
+            return new SuccessDataResult<List<CriminalDto>>(_criminalDal.GetCriminalDetails(p => p.PersonelKimlikId == id));
         }
 
         public IResult Update(Criminal criminal)

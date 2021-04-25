@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -12,9 +13,9 @@ namespace Business.Concrete
 {
     public class BloodGroupManager : IBloodGroupService
     {
-        BloodGroupDal _bloodGroupDal;
+        IBloodGroupDal _bloodGroupDal;
 
-        public BloodGroupManager(BloodGroupDal bloodGroupDal)
+        public BloodGroupManager(IBloodGroupDal bloodGroupDal)
         {
             _bloodGroupDal = bloodGroupDal;
         }

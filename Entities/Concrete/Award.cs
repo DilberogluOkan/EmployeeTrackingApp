@@ -16,6 +16,6 @@ namespace Entities.Concrete
         public DateTime VerildigiTarih { get; set; }
         public string OdulVerenAmirAdi { get; set; }
         public string OdulVerenAmirRutbe { get; set; }
-        public virtual Identity Identity { get; set; }
+       
     }
 }

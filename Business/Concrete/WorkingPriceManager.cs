@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace Business.Concrete
 
         public IResult Add(WorkingPrice workingPrice)
         {
-            throw new NotImplementedException();
+            _workingPriceDal.Add(workingPrice);
+            return new SuccessResult();
         }
 
         public IResult Delete(WorkingPrice workingPrice)
@@ -41,7 +43,12 @@ namespace Business.Concrete
 
         public IDataResult<WorkingPrice> GetById(int workingPriceId)
         {
-            return new SuccessDataResult<WorkingPrice>(_workingPriceDal.Get(p => p.CalısmaUcretiBilgiId == workingPriceId));
+            return new SuccessDataResult<WorkingPrice>(_workingPriceDal.Get(p => p.CalismaUcretBilgiId == workingPriceId));
+        }
+
+        public IDataResult<List<PriceDto>> GetPriceDetails(int id)
+        {
+            return new SuccessDataResult<List<PriceDto>>(_workingPriceDal.GetPriceDetails(p=>p.PersonelKimlikId==id));
         }
 
         public IResult Update(WorkingPrice workingPrice)

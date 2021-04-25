@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,8 +12,16 @@ namespace WebUI.Controllers
 {
     public class MilitaryController : Controller
     {
-        MilitaryManager manager = new MilitaryManager(new MilitaryDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+        
+        IIdentityService _ıdentityService;
+        IMilitaryService _militaryService;
+
+        public MilitaryController(IIdentityService ıdentityService, IMilitaryService militaryService)
+        {
+            _ıdentityService = ıdentityService;
+            _militaryService = militaryService;
+        }
+
         // GET: Military
         public ActionResult Index()
         {
@@ -22,7 +31,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetBytc(tcNo).Data;
             return View(result);
         }
        
@@ -30,7 +39,7 @@ namespace WebUI.Controllers
 
         public ActionResult MilitaryGet(int id)
         {
-            var militaryGet = manager.GetById(id).Data;
+            var militaryGet = _militaryService.GetById(id).Data;
             return View("MilitaryGet", militaryGet);
         }
 
@@ -46,7 +55,7 @@ namespace WebUI.Controllers
         public ActionResult MilitaryUpdate(Military military)
 
         {
-            manager.Update(military);
+            _militaryService.Update(military);
             return RedirectToAction("");
         }
     }

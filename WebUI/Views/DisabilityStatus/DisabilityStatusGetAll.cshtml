@@ -1,0 +1,47 @@
+﻿@using Entities.Concrete.DynamicDataEntity
+@model List<DisabilityStatus>
+@{
+    ViewBag.Title = "DisabilityStatusGetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Özel Durumlar</h3>
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Özel Durum</h3>
+    </div>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">#</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İzin Sebebi</th>
+
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var e in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1">@e.OzelDurumId</td>
+                        <td>@e.EngelDurumu</td>
+                        <td><a href="/DisabilityStatus/DisabilityStatusGetById/@e.OzelDurumId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                        <td><a href="/DisabilityStatus/DisabilityStatusDelete/@e.OzelDurumId" class="btn btn-danger col-xs-pull-5">Sil</a></td>
+
+                    </tr>
+                }
+                <tr role="row" class="odd">
+                    <td colspan="2"></td>
+                    <td>
+                        <a href="/DisabilityStatus/DisabilityStatusAdd" class="btn btn-success col-xs-pull-5" style="width:128px">Yeni Ekle</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

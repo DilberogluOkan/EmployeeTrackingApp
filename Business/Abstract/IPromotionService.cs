@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace Business.Abstract
         IDataResult<List<Promotion>> GetAll();
         IDataResult<Promotion> GetById(int promotionId);
         IDataResult<List<Promotion>> GetAllByIdentityId(int id);
+        IDataResult<List<PromotionDto>> GetPromotionDetails(int id);
     }
 }

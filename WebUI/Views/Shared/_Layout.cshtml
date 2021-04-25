@@ -15,8 +15,8 @@
 
     <link rel="stylesheet" href="~/content/dist/css/AdminLTE.min.css">
  
-    <link rel="stylesheet" href="~/content/dist/css/skins/skin-blue.min.css">
-
+ <link rel="stylesheet" href="~/content/dist/css/skins/skin-blue.min.css">
+   
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -207,18 +207,29 @@
                
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header"><i class="fa  fa-users"></i> PERSONEL İŞLEMLERİ</li>
-            
+
                     <li>
                         <a href="/Home/Index">
                             <i class="fa  fa-home ">
                             </i> <span>ANASAYFA</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="/Query/Index">
-                            <i class="fa  fa-print ">
-                            </i> <span>SORGULA ve RAPORLA</span>
+                  
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa  fa-print "></i> <span>SORGULAMALAR</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
+                        <ul class="treeview-menu">
+
+                            <li><a href="/Query/Index">RAPORLAMA</a></li>
+                            <li><a href="/Query/Inspection">YOKLAMA</a></li>
+                            <li><a href="/WorkingPrice/Index">SORGULAMALAR</a></li>
+                           
+
+                        </ul>
                     </li>
                     <li>
                         <a href="/MultiAdded/Added">
@@ -226,7 +237,7 @@
                             </i> <span>YENİ PERSONEL EKLE</span>
                         </a>
                     </li>
-
+                   
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-upload"></i> <span>PERSONEL GÜNCELLE</span>
@@ -235,14 +246,16 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+
+                            <li><a href="/Identity/Index">Genel Bilgileri</a></li>
                             <li><a href="/Graduation/Index">Eğitim Bilgileri</a></li>
+                            <li><a href="/WorkingPrice/Index">Terfi ve Ücret Bilgileri</a></li>
                             <li><a href="/BirthCertificate/Index">Nüfus Bilgileri</a></li>
-                            <li><a href="ForeingLanguage">Yabancı Dil Bilgileri</a></li>
+                            <li><a href="/ForeignLanguage/Index">Yabancı Dil Bilgileri</a></li>
                             <li><a href="/Military/Index">Askerlik Bilgileri</a></li>
-                            <li><a href="Rise/Index">Terfi Bilgileri</a></li>
                             <li><a href="/Adaptation/Index">İntibak Bilgileri</a></li>
-                            <li><a href="/Permission/Index">İzin Dil Bilgileri</a></li>
-                            <li><a href="/Designation/Index">Atama Bilgileri</a></li>
+                            <li><a href="/Permission/Index">İzin Bilgileri</a></li>
+                            <li><a href="/Designation/Index">Nakil Bilgileri</a></li>
                             <li><a href="/Award/Index">Ödül Bilgileri</a></li>
                             <li><a href="/Course/Index">Kurs Bilgileri</a></li>
                             <li><a href="/Criminal/Index">Ceza Bilgileri</a></li>
@@ -264,17 +277,22 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> İzin Nedeni Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Çalışma Durumu Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Terfi Nedeni Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> İzin Sebebi</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Özel Durum Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Atama İstek Durumu Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> İşyeri Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Geçici Görev Nedeni Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Ceza Nedeni Ekle</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Geçici Görev Nedeni Ekle</a></li>
-                           
+
+                            <li><a href="/ReasonForPermission/ReasonForPermissionGetAll"><i class="fa fa-circle-o text-yellow"></i> İzin Nedeni </a></li>
+                            <li><a href="/WorkingStatus/WorkingStatusGetAll"><i class="fa fa-circle-o text-yellow"></i> Çalışma Durumu </a></li>
+                            <li><a href="/PermissionType/PermissionTypeGetAll"><i class="fa fa-circle-o text-yellow"></i> İzin Sebebi</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Özel Durum </a></li>
+                            <li><a href="/ReasonForDesignation/ReasonForDesignationGetAll"><i class="fa fa-circle-o text-yellow"></i> Nakil Nedeni </a></li>
+                            <li><a href="/TisJobCode/TisJobCodeGetAll"><i class="fa fa-circle-o text-yellow"></i>Meslek Kolları </a></li>
+                            <li><a href="/DesignationStatus/DesignationStatusGetAll"><i class="fa fa-circle-o text-yellow"></i> Nakil Durumu </a></li>
+                            <li><a href="/Workplace/WorkplaceGetAll"><i class="fa fa-circle-o text-yellow"></i> İşyeri </a></li>
+                            <li><a href="/DailyWorkingTime/DailyWorkingTimeGetAll"><i class="fa fa-circle-o text-yellow"></i> Günlük Çalışma Süreleri </a></li>  
+                            <li><a href="/ReasonForCriminal/ReasonForCriminalGetAll"><i class="fa fa-circle-o text-yellow"></i> Ceza Nedeni </a></li>
+                           @* <li><a href="/ReasonForTemporartDuty/ReasonForTemporartDutyGetAll"><i class="fa fa-circle-o text-yellow"></i> Geçici Görev Nedeni </a></li>*@
+                            <li><a href="/CurrentStatus/CurrentStatusGetAll"><i class="fa fa-circle-o text-yellow"></i>Mevcut Statü </a></li>
+                            <li><a href="/TradeUnionName/TradeUnionNameGetAll"><i class="fa fa-circle-o text-yellow"></i> Sendika Ekle</a></li>
+                            <li><a href="/TradeUnionStatus/TradeUnionStatusGetAll"><i class="fa fa-circle-o text-yellow"></i> İşçi Sendika Durumu</a></li>
+
                         </ul>
                     </li>
 

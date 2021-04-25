@@ -1,7 +1,10 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Abstract.Dynamic;
+using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +15,30 @@ namespace WebUI.Controllers
 {
     public class MultiAddedController : Controller
     {
-        AdaptationManager manager = new AdaptationManager(new AdaptationDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
-        AwardManager award = new AwardManager(new AwardDal());
 
-        BloodGroupManager _bloodGroup = new BloodGroupManager(new BloodGroupDal());
-        GenderManager _genderManager= new GenderManager(new GenderDal());
-        MaritalStatusManager _maritalStatusManager= new MaritalStatusManager(new MaritalStatusDal());
-        DisabilityStatusManager _disabilityStatusManager= new DisabilityStatusManager(new DisabilityStatusDal());
+        IAdaptationService _adaptationService;
+        IIdentityService _ıdentityService;
+        IAwardService _awardService;
+        IBloodGroupService _bloodGroupService;
+        IGenderService _genderService;
+        IMaritalStatusService _maritalStatusService;
+        IDisabilityStatusService _disabilityStatusService;
+
+        public MultiAddedController(IAdaptationService adaptationService, IIdentityService ıdentityService,
+            IAwardService awardService, IBloodGroupService bloodGroupService, IGenderService genderService,
+            IMaritalStatusService maritalStatusService, IDisabilityStatusService disabilityStatusService)
+        {
+            _adaptationService = adaptationService;
+            _ıdentityService = ıdentityService;
+            _awardService = awardService;
+            _bloodGroupService = bloodGroupService;
+            _genderService = genderService;
+            _maritalStatusService = maritalStatusService;
+            _disabilityStatusService = disabilityStatusService;
+        }
+
         // GET: MultiAdded
-       
+
         public ActionResult Index()
         {
             return View();
@@ -30,10 +47,10 @@ namespace WebUI.Controllers
         public ActionResult Added()
         {
             
-            var bloodGrp = _bloodGroup.GetAll().Data.ToList();
-            var gender = _genderManager.GetAll().Data.ToList();
-            var maritalStatus = _maritalStatusManager.GetAll().Data.ToList();
-            var disabilityStatus = _disabilityStatusManager.GetAll().Data.ToList();
+            var bloodGrp = _bloodGroupService.GetAll().Data.ToList();
+            var gender = _genderService.GetAll().Data.ToList();
+            var maritalStatus = _maritalStatusService.GetAll().Data.ToList();
+            var disabilityStatus = _disabilityStatusService.GetAll().Data.ToList();
 
             ViewBag.BloodGrpList = new SelectList(bloodGrp, "KanGrupId", "KanGrubu");
             ViewBag.GenderList = new SelectList(gender, "CinsiyetId", "Cinsiyeti");
@@ -44,10 +61,9 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult Added(MultiModelDto multi)
         {
-            key.Add(multi.Identity);
-            manager.Add(multi.Adaptation);
-            
-            award.Add(multi.Award);
+            _ıdentityService.Add(multi.Identity);
+            _adaptationService.Add(multi.Adaptation);
+            _awardService.Add(multi.Award);
             return View();
         }
         

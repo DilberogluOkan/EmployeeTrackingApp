@@ -17,7 +17,7 @@ namespace Entities.Concrete
         public string KursSinavAdi { get; set; }
         public DateTime BaslamaTarihi { get; set; }
         public DateTime BitisTarihi { get; set; }
-        public virtual Identity Identity { get; set; }
+       
 
     }
 }

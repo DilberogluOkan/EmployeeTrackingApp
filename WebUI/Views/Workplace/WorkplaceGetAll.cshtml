@@ -1,0 +1,55 @@
+﻿
+
+@using Entities.Concrete.DynamicDataEntity
+@model List<Workplace>
+@{
+    ViewBag.Title = "WorkplaceGetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">İş Yerleri</h3>
+    </div>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">#</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İş Yeri Sicil</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İş Yeri Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Kuvvet</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Birim</th>
+
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var e in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1">@e.IsYeriId</td>
+                        <td>@e.IsYeriSicilNu</td>
+                        <td>@e.IsYeriAdi</td>
+                        <td>@e.Kuvvet</td>
+                        <td>@e.Birimi</td>
+                        <td>
+                            <a href="/WorkplaceWorkplaceUpdate/@e.IsYeriId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+                            <a href="/WorkplaceWorkplaceDelete/@e.IsYeriId" class="btn btn-danger col-xs-pull-5">Sil</a>
+                        </td>
+
+                    </tr>
+                }
+                <tr role="row" class="odd">
+                    <td colspan="5"></td>
+                    <td>
+                        <a href="/Workplace/WorkplaceAdd" class="btn btn-success col-xs-pull-5" style="width:128px">Yeni Ekle</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!-- /.box-body -->
+</div>
+

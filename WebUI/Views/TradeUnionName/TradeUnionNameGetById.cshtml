@@ -1,0 +1,33 @@
+﻿
+
+@using Entities.Concrete.DynamicDataEntity
+@model TradeUnionName
+@{
+    ViewBag.Title = "TradeUnionNameGetById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Sendika Adı Güncelle</h3>
+@using (Html.BeginForm("TradeUnionNameUpdate", "TradeUnionName", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Sendika Adı</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.SendikaAdId)
+                            @Html.TextBoxFor(x => x.SendikaAdId, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+
+

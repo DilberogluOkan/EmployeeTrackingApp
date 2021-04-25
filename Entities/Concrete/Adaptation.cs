@@ -15,8 +15,8 @@ namespace Entities.Concrete
         public string HizmetinGecKurum { get; set; }
         public DateTime BaslamaTarihi { get; set; }
         public DateTime BitisTarihi { get; set; }
-        public int PrimGunSayisi { get; set; }
-        public virtual Identity Identity { get; set; }
+        public string PrimGunSayisi { get; set; }
+       
 
     }
 }

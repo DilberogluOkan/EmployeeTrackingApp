@@ -1,4 +1,6 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Abstract.Dynamic;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -12,8 +14,19 @@ namespace WebUI.Controllers
     public class PermissionController : Controller
     {
        
-        PermissionManager manager = new PermissionManager(new PermissionDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+        IPermissionService _permissionService;
+        IIdentityService _ıdentityService;
+        IPermissionTypeService _permissionTypeService;
+        IReasonForPermissionService _reasonForPermissionService;
+
+        public PermissionController(IIdentityService ıdentityService, IPermissionService permissionService, IPermissionTypeService permissionTypeService, IReasonForPermissionService reasonForPermissionService)
+        {
+            _ıdentityService = ıdentityService;
+            _permissionService = permissionService;
+            _permissionTypeService = permissionTypeService;
+            _reasonForPermissionService = reasonForPermissionService;
+        }
+
         // GET: Permission
         public ActionResult Index()
         {
@@ -23,20 +36,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult PermissionGetList(int id)
         {
 
-            var permissionGetList = manager.GetAllByIdentityId(id).Data;
+            var permissionGetList = _permissionService.GetPermissionDetails(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("PermissionGetList", permissionGetList);
         }
 
         public ActionResult PermissionGet(int id)
         {
-            var permissionGet = manager.GetById(id).Data;
+            DropBoxItem();
+            var permissionGet = _permissionService.GetById(id).Data;
 
             return View("PermissionGet",permissionGet);
         }
@@ -53,13 +68,17 @@ namespace WebUI.Controllers
         public ActionResult PermissionUpdate(Permission permission)
 
         {
-            manager.Update(permission);
+            _permissionService.Update(permission);
             return RedirectToAction("");
         }
         [HttpGet]
-        public ActionResult PermissionAdd()
+        public ActionResult PermissionAdd(int id)
         {
-            return View();
+            DropBoxItem();
+
+            var permissionAdd = _permissionService.GetById(id).Data;
+            ViewBag.PersonelKimlikId = id;
+            return View("PermissionAdd", permissionAdd);
         }
 
 
@@ -67,8 +86,16 @@ namespace WebUI.Controllers
         public ActionResult PermissionAdd(Permission permission)
 
         {
-            manager.Add(permission);
+            _permissionService.Add(permission);
             return RedirectToAction("");
+        }
+        private void DropBoxItem()
+        {
+            var permissionTypeGrp = _permissionTypeService.GetAll().Data;
+            var reasonForPermissionGrp = _reasonForPermissionService.GetAll().Data;
+
+            ViewBag.PermissionTypeGrpList = new SelectList(permissionTypeGrp, "IzinTurId", "IzinTuru");
+            ViewBag.ReasonForPermissionGrpList = new SelectList(reasonForPermissionGrp, "IzinNedenId", "IzinNedeni");
         }
     }
 }

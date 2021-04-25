@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace Business.Abstract
         IDataResult<List<Permission>> GetAll();
         IDataResult<Permission> GetById(int permissionId);
         IDataResult<List<Permission>> GetAllByIdentityId(int id);
+        IDataResult<List<PermissionDto>> GetPermissionDetails(int id);
     }
 }

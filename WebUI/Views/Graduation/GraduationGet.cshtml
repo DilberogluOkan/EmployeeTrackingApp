@@ -42,7 +42,7 @@
                         </td>
                         <td><b>Mezuniyet Durumu</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.MezuniyetDurum, null, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.EgitimDurumId,ViewBag.GraduationGrpList as SelectList,"----Egitim Durumu---", new { @class = "form-control" })
                         </td>
 
                     </tr>

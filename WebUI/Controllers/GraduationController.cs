@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,8 +12,17 @@ namespace WebUI.Controllers
 {
     public class GraduationController : Controller
     {
-        GraduationManager manager = new GraduationManager(new GraduationDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+        IGraduationService _graduationService;
+        IIdentityService _ıdentityService;
+        IGraduationStatusService _graduationStatusService;
+
+        public GraduationController(IIdentityService ıdentityService, IGraduationService graduationService, IGraduationStatusService graduationStatusService)
+        {
+            _ıdentityService = ıdentityService;
+            _graduationService = graduationService;
+            _graduationStatusService = graduationStatusService;
+        }
+
         // GET: Graduation
         public ActionResult Index()
         {
@@ -22,20 +32,25 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult GraduationGetList(int id)
         {
 
-            var graduationGetList = manager.GetAllByIdentityId(id).Data;
+            var graduationGetList = _graduationService.GetGraduationDetails(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("GraduationGetList", graduationGetList);
         }
 
         public ActionResult GraduationGet(int id)
         {
-            var graduationGet = manager.GetById(id).Data;
+            var graduationGrp = _graduationStatusService.GetAll().Data;
+
+            ViewBag.GraduationGrpList = new SelectList(graduationGrp,"EgitimDurumId", "EgitimDurumu");
+
+            var graduationGet = _graduationService.GetById(id).Data;
 
             return View("GraduationGet", graduationGet);
         }
@@ -52,24 +67,39 @@ namespace WebUI.Controllers
         public ActionResult GraduationUpdate(Graduation graduation)
 
         {
-            manager.Update(graduation);
+            _graduationService.Update(graduation);
 
             return RedirectToAction("");
         }
         [HttpGet]
-        public ActionResult GraduationAdd()
+        public ActionResult GraduationGetAdd(int id)
         {
+
+            DropBoxItem();
+            ViewBag.PersonelKimlikId = id;
             return View();
         }
 
+        [HttpGet]
+        public ActionResult GraduationAdd()
+
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult GraduationAdd(Graduation graduation)
 
         {
-            manager.Add(graduation);
+            _graduationService.Add(graduation);
 
             return RedirectToAction("");
+        }
+        private void DropBoxItem()
+        {
+            var graduationGrp = _graduationStatusService.GetAll().Data;
+
+            ViewBag.GraduationGrpList = new SelectList(graduationGrp, "EgitimDurumId", "EgitimDurumu");
         }
     }
 }

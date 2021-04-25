@@ -1,0 +1,29 @@
+﻿@using Entities.Concrete.DynamicDataEntity
+@model ReasonForTemporaryDuty
+@{
+    ViewBag.Title = "ReasonForTemporaryDutyAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Geçici Görev Nedeni Ekle</h3>
+<form method="post">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Atama Nedeni</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.GeciciGorevNedenId)
+                            @Html.TextBoxFor(x => x.GeciciGorevNeden, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+</form>
+

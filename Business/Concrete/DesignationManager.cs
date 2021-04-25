@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace Business.Concrete
 
         public IResult Add(Designation designation)
         {
-            throw new NotImplementedException();
+            _designationDal.Add(designation);
+            return new SuccessResult();
         }
 
         public IResult Delete(Designation designation)
@@ -49,6 +51,11 @@ namespace Business.Concrete
         public IDataResult<List<Designation>> GetAllByIdentityId(int id)
         {
             return new SuccessDataResult<List<Designation>>(_designationDal.GetAll(p => p.PersonelKimlikId == id));
+        }
+
+        public IDataResult<List<DesignationDto>> GetDesignationDetails(int id)
+        {
+            return new SuccessDataResult<List<DesignationDto>>(_designationDal.GetDesignationDtos(p => p.PersonelKimlikId == id));
         }
     }
 }

@@ -11,35 +11,42 @@
     <div class="box-header">
         <h3 class="box-title">Kurs Bilgileri</h3>
     </div>
-    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead>
-            <tr role="row">
-                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Türü</th>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
 
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Şekli</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Konusu</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kurs Sınav Adı</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Başlangıç Tarihi</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bitiş Tarihi</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var k in Model)
-            {
-                <tr role="row" class="odd">
-                    <td class="sorting_1">@k.Turu</td>
-                    <td>@k.Sekli</td>
-                    <td>@k.Konusu</td>
-                    <td>@k.KursSinavAdi</td>
-                    <td>@k.BaslamaTarihi</td>
-                    <td>@k.BitisTarihi</td>
-                    <td><a href="/Course/CourseGet/@k.PersonelKursId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Türü</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Şekli</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Konusu</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Kurs Sınav Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Başlangıç Tarihi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Bitiş Tarihi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
-    <!-- /.box-body -->
+                @foreach (var k in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"></td>
+                        <td>@k.Turu</td>
+                        <td>@k.Sekli</td>
+                        <td>@k.Konusu</td>
+                        <td>@k.KursSinavAdi</td>
+                        <td>@k.BaslamaTarihi.ToShortDateString()</td>
+                        <td>@k.BitisTarihi.ToShortDateString()</td>
+                        <td>
+                            <a href="/Course/CourseGet/@k.PersonelKursId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a href="/Course/CourseAdd/@ViewBag.PersonelKimlikId" class="btn btn-success col-xs-pull-5">Yeni Kurs Bilgisi Ekle</a>
+    </div>
 </div>

@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace Business.Concrete
 
         public IResult Add(ForeignLanguage foreignLanguage)
         {
-            throw new NotImplementedException();
+            _foreignLanguageDal.Add(foreignLanguage);
+            return new SuccessResult();
         }
 
         public IResult Delete(ForeignLanguage foreignLanguage)
@@ -30,19 +32,30 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<ForeignLanguage> Get(int foreignLanguageId)
+        public IDataResult<ForeignLanguage> GetById(int foreignLanguageId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<ForeignLanguage>(_foreignLanguageDal.Get(p => p.YabanciDilBilgiId == foreignLanguageId));
         }
 
         public IDataResult<List<ForeignLanguage>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ForeignLanguage>>(_foreignLanguageDal.GetAll());
         }
 
         public IResult Update(ForeignLanguage foreignLanguage)
         {
-            throw new NotImplementedException();
+            _foreignLanguageDal.Update(foreignLanguage);
+            return new SuccessResult();
+        }
+
+        public IDataResult<List<ForeignLanguage>> GetAllByIdentityId(int id)
+        {
+            return new SuccessDataResult<List<ForeignLanguage>>(_foreignLanguageDal.GetAll(p => p.PersonelKimlikId == id));
+        }
+
+        public IDataResult<List<ForeignLanguageDto>> GetForeignLanguageDetails(int id)
+        {
+            return new SuccessDataResult<List<ForeignLanguageDto>>(_foreignLanguageDal.GetForeignLanguageDtos(p => p.PersonelKimlikId == id));
         }
     }
 }

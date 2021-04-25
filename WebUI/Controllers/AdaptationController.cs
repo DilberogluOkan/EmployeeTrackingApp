@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,10 +12,16 @@ namespace WebUI.Controllers
 {
     public class AdaptationController : Controller
     {
-        AdaptationManager manager = new AdaptationManager(new AdaptationDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
 
-        
+        IIdentityService _identityService;
+        IAdaptationService _adaptationService;
+
+        public AdaptationController(IAdaptationService adaptationService, IIdentityService identityService)
+        {
+            _adaptationService = adaptationService;
+            _identityService = identityService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -23,7 +30,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _identityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
        
@@ -31,13 +38,14 @@ namespace WebUI.Controllers
         public ActionResult AdaptationGetList(int id)
         {
 
-            var adaptationGetList = manager.GetAllByIdentityId(id).Data;
+            var adaptationGetList = _adaptationService.GetAllByIdentityId(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("AdaptationGetList", adaptationGetList);
         }
 
         public ActionResult AdaptationGet(int id)
         {
-            var adaptationGet = manager.GetById(id).Data;
+            var adaptationGet = _adaptationService.GetById(id).Data;
 
             return View("AdaptationGet", adaptationGet);
         }
@@ -54,14 +62,16 @@ namespace WebUI.Controllers
         public ActionResult AdaptationUpdate(Adaptation adaptation)
 
         {
-            manager.Update(adaptation);
+            _adaptationService.Update(adaptation);
             return RedirectToAction("");
         }
 
         [HttpGet]
-        public ActionResult AdaptationAdd()
+        public ActionResult AdaptationAdd(int id)
         {
-            return View();
+            var adaptationAdd = _adaptationService.GetById(id).Data;
+            ViewBag.PersonelKimlikId = id;
+            return View("AdaptationAdd", adaptationAdd);
         }
 
 
@@ -69,8 +79,8 @@ namespace WebUI.Controllers
         public ActionResult AdaptationAdd(Adaptation adaptation)
 
         {
-            manager.Add(adaptation);
-            return RedirectToAction("AdaptationGetList");
+            _adaptationService.Add(adaptation);
+            return RedirectToAction("");
         }
     }
 }

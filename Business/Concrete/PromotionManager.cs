@@ -2,6 +2,7 @@
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,11 @@ namespace Business.Concrete
         public IDataResult<Promotion> GetById(int promotionId)
         {
             return new SuccessDataResult<Promotion>(_promotionDal.Get(p => p.PersonelTerfiId == promotionId));
+        }
+
+        public IDataResult<List<PromotionDto>> GetPromotionDetails(int id)
+        {
+            return new SuccessDataResult<List<PromotionDto>>(_promotionDal.GetPromotionDetails(p => p.PersonelKimlikId == id));
         }
 
         public IResult Update(Promotion promotion)

@@ -22,7 +22,8 @@ namespace Business.Concrete
 
         public IResult Add(Course course)
         {
-            throw new NotImplementedException();
+            _courseDal.Add(course);
+            return new SuccessResult();
         }
 
         public IResult Delete(Course course)

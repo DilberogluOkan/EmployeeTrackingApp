@@ -11,7 +11,7 @@ namespace Entities.Concrete
     public class PriceGradeRise:IEntity
     {
         [Key]
-        public int UcretDerecesineTerfi { get; set; }
+        public int UcretDerecesineTerfiId { get; set; }
         public string UcretDerecesineTerfiNedeni { get; set; }
     }
 }

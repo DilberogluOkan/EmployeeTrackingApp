@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IDailyWorkingTimeDal
+    public interface IDailyWorkingTimeDal:IEntityRepository<DailyWorkingTime>
     {
-        List<DailyWorkingTime> GetAll(Expression<Func<DailyWorkingTime, bool>> filter = null);
+       
+        
     }
 }

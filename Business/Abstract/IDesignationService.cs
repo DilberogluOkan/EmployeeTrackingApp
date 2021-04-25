@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace Business.Abstract
         IDataResult<List<Designation>> GetAll();
         IDataResult<Designation> GetById(int designationId);
         IDataResult<List<Designation>> GetAllByIdentityId(int id);
+        IDataResult<List<DesignationDto>> GetDesignationDetails(int id);
     }
 }

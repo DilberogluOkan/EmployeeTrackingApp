@@ -1,0 +1,67 @@
+﻿
+@using Entities.Concrete
+@model Identity
+@{
+    ViewBag.Title = "IdentityUpdateLaterDesignation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Personel İş Yeri Güncelle</h3>
+@using (Html.BeginForm("IdentityUpdateLaterDesignation", "Identity", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>TC Kimlik No</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.TextBoxFor(x => x.TcKimlikNo, null, new { @class = "form-control", @readOnly = "ReadOnly" })
+                        </td>
+                        <td><b>Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Adi, null, new { @class = "form-control", @readOnly = "ReadOnly" })
+                        </td>
+                        <td><b>Soyadı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Soyadi, null, new { @class = "form-control", @readOnly = "ReadOnly" })
+                        </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>İş Yeri</b></td>
+                        <td>@Html.DropDownListFor(x => x.IsYeriId, ViewBag.WorkPlaceGrpList as SelectList, new { @class = "form-control" })</td>
+                        <td><b>Doğum Tarihi</b></td>
+                        <td>@Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date", @readOnly = "ReadOnly" }) </td>
+                      
+                    </tr>
+            </table>
+            @Html.HiddenFor(x => x.PersonelNufusId)
+            @Html.HiddenFor(x => x.PersonelAskerlikId)
+            @Html.HiddenFor(x => x.CinsiyetId)
+            @Html.HiddenFor(x => x.KanGrupId)
+            @Html.HiddenFor(x => x.EngelDurumId)
+            @Html.HiddenFor(x => x.IstihtamDurumId)
+            @Html.HiddenFor(x => x.ServisBilgiId)
+            @Html.HiddenFor(x => x.VardiyaBilgiId)
+            @Html.HiddenFor(x => x.MevcutStatuId)
+            @Html.HiddenFor(x => x.MedeniHalId)
+           
+            @Html.HiddenFor(x => x.SosyalGüvenlikNo)
+            @Html.HiddenFor(x => x.KizlikSoyadi)
+            @Html.HiddenFor(x => x.TisMeslekKolId)
+          @*  @Html.HiddenFor(x => x.dogumYeri)*@
+            @Html.HiddenFor(x => x.AnaAdi)
+            @Html.HiddenFor(x => x.BabaAdi)
+            @Html.HiddenFor(x => x.MsbKatilisTarih)
+            @Html.HiddenFor(x => x.IdarecilikDurumId)
+            @Html.HiddenFor(x => x.CocukSayisi)
+         
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}

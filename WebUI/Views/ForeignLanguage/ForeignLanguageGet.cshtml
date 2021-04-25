@@ -1,0 +1,45 @@
+﻿@using Entities.Concrete
+@model ForeignLanguage
+@{
+    ViewBag.Title = "ForeignLanguageGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Yabancı Dil Bilgisi Güncelle</h3>
+@using (Html.BeginForm("ForeignLanguageUpdate", "ForeignLanguage", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Yabancı Dil Adı</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.HiddenFor(x => x.YabanciDilBilgiId)
+                            @Html.DropDownListFor(x => x.YabanciDilId, ViewBag.LanguageNameGrpList as SelectList,"---- Yabancı Dil Adı----", new { @class = "form-control" })
+                        </td>
+                        <td><b>Sınav Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.SinavAdi, null, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Puanı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Puani, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Belge Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BelgeTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type ="date"})
+                        </td>
+                    </tr>
+            </table>
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}
+
+

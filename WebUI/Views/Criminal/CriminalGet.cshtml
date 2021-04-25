@@ -29,15 +29,18 @@
 
                     </tr>
                     <tr>
+                        <td><b>Ceza Nedeni</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.CezaNedenId, ViewBag.reasonForCriminalList as SelectList, "--Ceza Nedeni Seçiniz--", new { @class = "form-control" })
+                        </td>
                         <td><b>Suç Tarihi</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.SucTarihi, "{0:yyyy-MM-dd}",  new { @class = "form-control", @type="Date" })
+                            @Html.TextBoxFor(x => x.CezaTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                         <td><b>Cezayı Veren Kişinin Adı</b></td>
                         <td>
                             @Html.TextBoxFor(x => x.CezayiVerenKisiAdi, null, new { @class = "form-control" })
                         </td>
-
                     </tr>
             </table>
             <button class="btn btn-warning">Güncelle</button>

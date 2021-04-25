@@ -1,6 +1,9 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Abstract.Dynamic;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Concrete.DynamicDataEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +14,16 @@ namespace WebUI.Controllers
 {
     public class CriminalController : Controller
     {
+        IIdentityService _ıdentityService;
+        ICriminalService _criminalService;
+        IReasonForCriminalService _reasonForCriminalService;
+        public CriminalController(IIdentityService ıdentityService, ICriminalService criminalService, IReasonForCriminalService reasonForCriminalService)
+        {
+            _ıdentityService = ıdentityService;
+            _criminalService = criminalService;
+            _reasonForCriminalService = reasonForCriminalService;
+        }
 
-        CriminalManager manager = new CriminalManager(new CriminalDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
         // GET: Criminal
         public ActionResult Index()
         {
@@ -23,21 +33,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult CriminalGetList(int id)
         {
 
-            var criminalGetList = manager.GetAllByIdentityId(id).Data;
+            var criminalGetList = _criminalService.GetCriminalDetails(id).Data;
+            ViewBag.PersonelKimlikId = id;
             return View("CriminalGetList", criminalGetList);
         }
 
         public ActionResult CriminalGet(int id)
         {
-            var criminalGet = manager.GetById(id).Data;
-
+            DropBoxItem();
+            var criminalGet = _criminalService.GetById(id).Data;
             return View("CriminalGet", criminalGet);
         }
 
@@ -45,30 +56,38 @@ namespace WebUI.Controllers
         [HttpGet]
         public ActionResult CriminalUpdate()
         {
+            
             return View();
         }
 
 
         [HttpPost]
         public ActionResult CriminalUpdate(Criminal criminal)
-
         {
-            manager.Update(criminal);
+            _criminalService.Update(criminal);
             return RedirectToAction("");
         }
+
         [HttpGet]
-        public ActionResult CriminalAdd()
+        public ActionResult CriminalAdd(int id)
         {
-            return View();
+            DropBoxItem();
+            var criminalAdd = _criminalService.GetById(id).Data;
+            ViewBag.PersonelKimlikId = id;
+            return View("CriminalAdd", criminalAdd);
         }
 
 
         [HttpPost]
         public ActionResult CriminalAdd(Criminal criminal)
-
         {
-            manager.Add(criminal);
-            return RedirectToAction("CriminalGetList");
+            _criminalService.Add(criminal);
+            return RedirectToAction("");
+        }
+        private void DropBoxItem()
+        {
+            var reasonForCriminal = _reasonForCriminalService.GetAll().Data.ToList();
+            ViewBag.reasonForCriminalList = new SelectList(reasonForCriminal, "CezaNedenId", "CezaNedeni");
         }
     }
 }

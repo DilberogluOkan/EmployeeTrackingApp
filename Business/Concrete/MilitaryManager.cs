@@ -45,5 +45,10 @@ namespace Business.Concrete
             _militaryDal.Update(military);
             return new SuccessResult();
         }
+
+        public IDataResult<List<Military>> GetAllById(int militaryPersonId)
+        {
+            return new SuccessDataResult<List<Military>>(_militaryDal.GetAll(p => p.PersonelAskerlikId == militaryPersonId));
+        }
     }
 }

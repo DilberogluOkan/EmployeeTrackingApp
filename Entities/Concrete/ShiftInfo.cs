@@ -12,6 +12,6 @@ namespace Entities.Concrete
     {
         [Key]
         public int VardiyaBilgiId { get; set; }
-        public string Vardiya  { get; set; }
+        public string VardiyaBilgisi  { get; set; }
     }
 }

@@ -20,13 +20,14 @@
                         <td class="sorting_1"><b>Ücret Türü</b></td>
                         <td>
                             @Html.HiddenFor(x => x.PersonelKimlikId)
-                            @Html.HiddenFor(x => x.CalısmaUcretiBilgiId)
+                            @Html.HiddenFor(x => x.CalismaUcretBilgiId)
+
                             @Html.DropDownListFor(x => x.UcretTurId, ViewBag.PriceTypeGrpList as SelectList, "--Ücret Türü--", new { @class = "form-control" })
 
                         </td>
                         <td><b>Günlük Çalışma Süresi</b></td>
                         <td>
-                            @Html.DropDownListFor(x => x.GunlukCalismaSuresiId, ViewBag.DailyWorkingTimeGrpList as SelectList, "Günlük Çalışma Süresi", new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.GunlukCalismaSureId, ViewBag.DailyWorkingTimeGrpList as SelectList, "Günlük Çalışma Süresi", new { @class = "form-control" })
 
                         </td>
 
@@ -34,17 +35,26 @@
                     <tr>
                         <td><b>Ücret Derecesi</b></td>
                         <td>
-                            @Html.DropDownListFor(x => x.UcretDereceId, ViewBag.PriceGradeGrpList as SelectList, "--Ücret Derecesi--", new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.UcretDerece,  new { @class = "form-control" })
 
                         </td>
                         <td><b>ÜcretDerecesine Terfi</b></td>
                         <td>
-                            @Html.DropDownListFor(x => x.UcretDerecesineTerfiId, ViewBag.WorkingPriceRiseGrpList as SelectList, "--Ücret Derecesine Terfi--", new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.UcretDerecesineTerfiId, ViewBag.PriceGradeRiseGrpList as SelectList, "--Ücret Derecesine Terfi--", new { @class = "form-control" })
 
                         </td>
 
                     </tr>
-            </table>
+                    <tr>
+                        <td><b>Son Ücret Derecesine Yükselme Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.SonUcretDerecesineYukselmeTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+
+                        </td>
+                        <td colspan="2"><b></b></td>
+
+                    </tr>
+</table>
             <button class="btn btn-warning">Güncelle</button>
         </div>
     </div>

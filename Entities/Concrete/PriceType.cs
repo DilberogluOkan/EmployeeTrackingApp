@@ -14,5 +14,7 @@ namespace Entities.Concrete
         public int UcretTurId { get; set; }
         public string UcretTuru { get; set; }
 
+     
+
     }
 }

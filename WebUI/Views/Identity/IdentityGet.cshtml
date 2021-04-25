@@ -1,0 +1,150 @@
+﻿
+@using Entities.Concrete
+@model Identity
+@{
+    ViewBag.Title = "IdentityGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Genel Bilgi Güncelle</h3>
+@using (Html.BeginForm("IdentityUpdate", "Identity", FormMethod.Post))
+{
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>TC Kimlik No</b></td>
+                        <td>
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
+                            @Html.TextBoxFor(x => x.TcKimlikNo, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Adi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Soyadı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Soyadi, null, new { @class = "form-control" })
+                        </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Sicil No</b></td>
+                        <td>@Html.TextBox("sicilNo", null, new { @class = "form-control" })</td>
+                        <td><b>Doğum Tarihi</b></td>
+                        <td>@Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" }) </td>
+                        <td><b>Doğum Yeri</b></td>
+                        <td>@Html.TextBox("DogumYeri", null, new { @class = "form-control" })</td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Cinsiyet</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.CinsiyetId, ViewBag.GenderGrpList as SelectList, "--- Cinsiyet Seçiniz ---", new { @class = "form-control" })
+
+                        </td>
+                        <td><b>Sosyal Güvenlik Numarası</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.SosyalGüvenlikNo, null, new { @class = "form-control" })
+                        </td>
+                        <td><b>Katılış Tarihi</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.MsbKatilisTarih, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                        </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Ana Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AnaAdi, new { @class = "form-control" })
+
+                        </td>
+                        <td><b>Baba Adı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.BabaAdi, new { @class = "form-control" })
+
+                        </td>
+                        <td><b>Medeni Hali</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.MedeniHalId, ViewBag.MaritalStatusGrpList as SelectList, "--- Medeni Hal Seçiniz ---", new { @class = "form-control" })
+
+                        </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Kan Grubu</b></td>
+                        <td>
+
+                            @Html.DropDownListFor(x => x.KanGrupId, ViewBag.BloodGrpList as SelectList, "--- Kan Grubu Seçiniz ---", new { @class = "form-control" })
+                        </td>
+                        <td><b>İstihtam Durumu</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.IstihtamDurumId, ViewBag.WorkingStatusGrpList as SelectList, "--- İstihtam Durumu Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td><b>Servis Kullanım Durumu</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.ServisBilgiId, ViewBag.ServiceStatusGrpList as SelectList, "--- Servis Bilgisi Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Vardiya Şekli</b></td>
+                        <td>
+
+                            @Html.DropDownListFor(x => x.VardiyaBilgiId, ViewBag.ShiftInfoGrpList as SelectList, "--- Vardiya Bilgisi Seçiniz--", new { @class = "form-control" })
+                        </td>
+                        <td><b>Mevcut Statü Durumu</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.MevcutStatuId, ViewBag.CurrentStatusGrpList as SelectList, "--- Mevcut Statü Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td><b> İş Yeri</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.IsYeriId, ViewBag.WorkPlaceGrpList as SelectList, "--- İş Yeri Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>İdarecilik Durumu </b></td>
+                        <td>
+                           
+                            @Html.DropDownListFor(x => x.IdarecilikDurumId, ViewBag.AdminStatusGrpList as SelectList, "--- Yöneticilik Durumu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                        <td><b>Meslek Kol</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.TisMeslekKolId, ViewBag.TisJobGrpList as SelectList, "--- Meslek Kolu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                        <td><b> Çoçuk Sayısı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.CocukSayisi, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"><b>Kızlık Soyadı</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.KizlikSoyadi, null, new { @class = "form-control" })
+                        </td>
+                        <td><b></b></td>
+                        <td>
+                           
+                        </td>
+                        <td><b> </b></td>
+                        <td>
+                          
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            @Html.HiddenFor(x => x.PersonelNufusId)
+            @Html.HiddenFor(x => x.PersonelAskerlikId)
+            @Html.HiddenFor(x => x.EngelDurumId)
+           
+            <button class="btn btn-warning">Güncelle</button>
+        </div>
+    </div>
+}

@@ -1,6 +1,6 @@
 ﻿
-@using Entities.Concrete
-@model List<WorkingPrice>
+@using Entities.Dto
+@model List<PriceDto>
 @{
     ViewBag.Title = "WorkingPriceGetList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,35 +10,48 @@
 <h3>Çalışma Ücreti Bilgisi Güncelle</h3>
 <div class="box box-info">
     <div class="box-header">
-        <h3 class="box-title">Kurs Bilgileri</h3>
+        <h3 class="box-title">Çalışma Ücreti Bilgileri</h3>
     </div>
-    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead>
-            <tr role="row">
-                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Ücret Türü</th>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Ücret Türü</th>
 
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Günlük Çalışma Süresi</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ücret Derecesine Terfi</th>
-                
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
-            </tr>
-        </thead>
-        <tbody>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Günlük Çalışma Süresi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ücret Derecesi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ücret Derecesine Terfi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Tarih</th>
 
-            @foreach (var k in Model)
-            {
-                <tr role="row" class="odd">
-                    <td class="sorting_1">@k.PriceType.UcretTuru</td>
-                    <td>@k.DailyWorkingTime.GunlukCalismaSuresi</td>
-                    <td>@k.PriceGrade.UcretDerecesi</td>
-                    <td>@k.PriceGradeRise.UcretDerecesineTerfiNedeni</td>
-                    
-                    <td><a href="/WorkingPrice/WorkingPriceGet/@k.CalısmaUcretiBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
-    <!-- /.box-body -->
-</div>
+                @foreach (var k in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"></td>
+                        <td>@k.UcretTuru</td>
+                        <td>@k.GunlukCalismaSuresi</td>
+                        <td>@k.UcretDerecesi</td>
+                        <td>@k.UcretDerecesineTerfiNedeni</td>
+                        <td>@k.SonUcretDerecesineYukselmeTarih.ToShortDateString()</td>
+
+                        <td>
+                            <a href="/WorkingPrice/WorkingPriceGet/@k.CalismaUcretBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table><br />
+        <a href="/WorkingPrice/WorkingPriceAddGet/@ViewBag.PersonelKimlikId" class="btn btn-success col-xs-pull-5">Yeni Çalışma Ücreti Ekle</a>
+
+        <!-- /.box-body -->
+    </div>
+    </div>
 

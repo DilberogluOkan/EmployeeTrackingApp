@@ -10,35 +10,42 @@
     <div class="box-header">
         <h3 class="box-title">Ödül Bilgileri</h3>
     </div>
-    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead>
-            <tr role="row">
-                <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Odül Veren Rütbe</th>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
 
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ödül Taktir Bilgi</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Verildiği Tarih</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Ödül Veren Amir Adı</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ödül Veren Rütbe</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ödül Veren Rütbe</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ödül Taktir Bilgi</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Verildiği Tarih</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Ödül Veren Amir Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ödül Veren Rütbe</th>
 
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var o in Model)
-            {
-                <tr role="row" class="odd">
-                    <td class="sorting_1">@o.OdulVerenRutbe</td>
-                    <td>@o.OdulTaktirBilgi</td>
-                    <td>@o.VerildigiTarih</td>
-                    <td>@o.OdulVerenAmirAdi</td>
-                    <td>@o.OdulVerenAmirRutbe</td>
-
-                    <td><a href="/Award/AwardGet/@o.PersonelOdulId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
-    <!-- /.box-body -->
+                @foreach (var o in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"></td>
+                        <td>@o.OdulVerenRutbe</td>
+                        <td>@o.OdulTaktirBilgi</td>
+                        <td>@o.VerildigiTarih.ToShortDateString()</td>
+                        <td>@o.OdulVerenAmirAdi</td>
+                        <td>@o.OdulVerenAmirRutbe</td>
+
+                        <td>
+                            <a href="/Award/AwardGet/@o.PersonelOdulId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a href="/Award/AwardAdd/@ViewBag.PersonelKimlikId" class="btn btn-success col-xs-pull-5">Yeni Ödül Bilgisi Ekle</a>
+    </div>
 </div>

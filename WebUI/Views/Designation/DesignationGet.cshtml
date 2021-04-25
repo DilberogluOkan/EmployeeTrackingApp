@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Atama Bilgisi Güncelle</h3>
+<h3>Nakil Talep Bilgisi Güncelle</h3>
 @using (Html.BeginForm("DesignationUpdate", "Designation", FormMethod.Post))
 {
     <div class="box box-primary">
@@ -21,11 +21,11 @@
                         <td>
                             @Html.HiddenFor(x => x.PersonelKimlikId)
                             @Html.HiddenFor(x => x.PersonelAtamaId)
-                            @Html.TextBoxFor(x => x.IsYeri, null, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.IsYeriId, ViewBag.WorkPlaceGrpList as SelectList, "--İşyeri Seçiniz--", new { @class = "form-control" })
                         </td>
-                        <td><b>Atama İsteği Durumu</b></td>
+                        <td><b>Atama İsteği Nedeni</b></td>
                         <td>
-                            @Html.TextBoxFor(x => x.AtamaIstegiDurumu, null, new { @class = "form-control" })
+                            @Html.DropDownListFor(x => x.AtamaIstegiNedenId, ViewBag.ReasonForDesignationGrpList as SelectList, "--Nakil Nedeni Seçiniz--", new { @class = "form-control" })
                         </td>
                     </tr>
                     <tr>
@@ -38,8 +38,19 @@
                             @Html.TextBoxFor(x => x.AyrilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                     </tr>
+                    <tr>
+                        <td><b>Açıklama</b></td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+                        </td>
+                        <td><b>Nakil Durumu</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.NakilDurumId, ViewBag.DesignationStatusGrpList as SelectList, "--Nakil Durumu Seçiniz--", new { @class = "form-control" })
 
-            </table>
+                        </td>
+                    </tr>
+                    
+</table>
             <button class="btn btn-warning">Güncelle</button>
         </div>
     </div>

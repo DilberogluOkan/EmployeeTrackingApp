@@ -6,20 +6,25 @@
 }
 
 <h3>Raporla</h3>
-<div class="box box-info">
+<div class="container box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">Personel Ara</h3>
+        <h3 class="box-title">TC Kimlik No İle Personel Ara</h3><br />
+        <br />
+        @using (Html.BeginForm("IndexQuery", "Query", FormMethod.Post))
+        {
+            <div class="row">
+
+                <table>
+                    <tr>
+                        <td class="col-md-6">@Html.TextBox("TcNo", null, new { @class = "form-control" })</td>
+                        <td><button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        }
     </div>
-    <!-- /.box-header -->
-    <!-- form start -->
-
-    @using (Html.BeginForm("IndexQuery", "Query", FormMethod.Post))
-    {
-
-        @Html.TextBox("tcNo")
-        <button type="submit" class="btn btn-info col-xs-pull-5">Sorgula</button>
-    }
-
 </div>
 <!-- /.box-body -->
 <div class="box-footer">

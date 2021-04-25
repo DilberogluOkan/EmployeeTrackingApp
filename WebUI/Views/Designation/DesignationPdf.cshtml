@@ -1,0 +1,175 @@
+﻿@using Entities.Dto
+@model MultiModelReportDto
+
+@{
+    ViewBag.Title = "DesignationPdf";
+    Layout = "";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>İş ve İşçi Münasebetleri | Nakil Bilgileri</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <link rel="stylesheet" href="~/content/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/content/bower_components/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/content/bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/content/dist/css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="~/content/dist/css/skins/skin-blue.min.css">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body onload="window.print();">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-print"></i>Personel Nakil Talepleri Raporu
+                        <small class="pull-right">Tarih:@DateTime.Now.ToShortDateString()</small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="box-header with-border">
+                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PersonGeneralDto)
+                        {
+
+                            <tr role="row" class="odd">
+                                <td><b>Tc Kimlik No</b></td>
+                                <td>@item.TcKimlikNo</td>
+                                <td><b>Sicil No</b></td>
+                                <td>@item.SicilNo</td>
+                                <td rowspan="4" style="width:120px"><img src="~/Image/portal.png" alt="Personel Görseli" /></td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Adı</b></td>
+                                <td>@item.Adi</td>
+                                <td><b>Doğum Tarih</b></td>
+                                <td>@item.DogumTarihi.Value.ToShortDateString()</td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Soyadı</b></td>
+                                <td>@item.Soyadi</td>
+                                <td><b>Doğum yeri</b></td>
+                                <td>@item.DogumYeri </td>
+
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td><b>Meslek Kolu</b></td>
+                                <td>@item.MeslekKol</td>
+                                <td><b>Msb Katılış Tarihi</b></td>
+                                <td>@item.KatilisTarih.Value.ToShortDateString()</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>İş Yeri</th>
+                                <th>Nakil Nedeni</th>
+                                <th>Açıklama</th>
+                                <th>Katılış Tarihi</th>
+                                <th>Ayrılış Tarihi</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>Nakil Durumu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DesignationDto)
+                            {
+
+                            <tr>
+                                <td>@item.Birimi</td>
+                                <td>@item.AtamaIstegiNedeni</td>
+                                <td>@item.Aciklama</td>
+                                <td>
+                                    @if (@item.KatilisTarihi.HasValue)
+                                    {@item.KatilisTarihi.Value.ToShortDateString() }
+                                else
+                                {@item.KatilisTarihi}
+                                </td>
+                                <td>
+                                    @if (@item.AyrilisTarihi.HasValue)
+                                    {@item.AyrilisTarihi.Value.ToShortDateString() }
+                                else
+                                {@item.AyrilisTarihi}
+                                </td>
+                               
+                                <td><input type="checkbox" checked="@item.IsVerenVekiliOnay"></td>
+                                <td><input type="checkbox" checked="@item.IlgiliGenelMudurOnay"></td>
+                                <td><input type="checkbox" checked="@item.PersonelGenelMudurOnay"></td>
+
+                                <td>@item.NakilDurum</td>
+
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+
+                <div class="pull-right col-xs-4">
+                    <p>Açıklama</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:20%"><b>1:</b></th>
+                                <td>İş Veren Vekili Onayı</td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%"><b>2:</b></th>
+                                <td>İlgili Gn. Md. Onayı</td>
+                            </tr>
+                            <tr>
+                                <th style="width:20%"><b>3:</b></th>
+                                <td>Personel Gn. Md. Onayı</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>
+

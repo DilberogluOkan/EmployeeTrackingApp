@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,8 +12,16 @@ namespace WebUI.Controllers
 {
     public class RiseController : Controller
     {
-        PromotionManager manager = new PromotionManager(new PromotionDal());
-        IdentityManager key = new IdentityManager(new IdentityDal());
+      
+        IPromotionService _promotionService;
+        IIdentityService _ıdentityService;
+
+        public RiseController(IPromotionService promotionService, IIdentityService ıdentityService)
+        {
+            _promotionService = promotionService;
+            _ıdentityService = ıdentityService;
+        }
+
         // GET: Rise
         public ActionResult Index()
         {
@@ -22,20 +31,20 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
-            var result = key.GetBytc(tcNo).Data;
+            var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
 
         public ActionResult RiseGetList(int id)
         {
 
-            var riseGetList = manager.GetAllByIdentityId(id).Data;
+            var riseGetList = _promotionService.GetAllByIdentityId(id).Data;
             return View("RiseGetList", riseGetList);
         }
 
         public ActionResult RiseGet(int id)
         {
-            var riseGet = manager.GetById(id).Data;
+            var riseGet = _promotionService.GetById(id).Data;
 
             return View("RiseGet", riseGet);
         }
@@ -52,7 +61,7 @@ namespace WebUI.Controllers
         public ActionResult RiseUpdate(Promotion promotion)
 
         {
-            manager.Update(promotion);
+            _promotionService.Update(promotion);
             return RedirectToAction("");
         }
         [HttpGet]
@@ -66,7 +75,7 @@ namespace WebUI.Controllers
         public ActionResult RiseAdd(Promotion promotion)
 
         {
-            manager.Add(promotion);
+            _promotionService.Add(promotion);
             return RedirectToAction("");
         }
     }

@@ -162,7 +162,11 @@
     <Compile Include="Controllers\BirthCertificateController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CriminalController.cs" />
+    <Compile Include="Controllers\CurrentStatusController.cs" />
+    <Compile Include="Controllers\DailyWorkingTimeController.cs" />
     <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\DesignationStatusController.cs" />
+    <Compile Include="Controllers\DisabilityStatusController.cs" />
     <Compile Include="Controllers\ForeignLanguageController.cs" />
     <Compile Include="Controllers\GraduationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -170,10 +174,22 @@
     <Compile Include="Controllers\MilitaryController.cs" />
     <Compile Include="Controllers\MultiAddedController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\PermissionTypeController.cs" />
+    <Compile Include="Controllers\PrivateStatusController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
+    <Compile Include="Controllers\ReasonForCriminalController.cs" />
+    <Compile Include="Controllers\ReasonForDesignationController.cs" />
+    <Compile Include="Controllers\ReasonForPermissionController.cs" />
+    <Compile Include="Controllers\ReasonForPromotionController.cs" />
+    <Compile Include="Controllers\ReasonForTemporaryDutyController.cs" />
     <Compile Include="Controllers\RiseController.cs" />
+    <Compile Include="Controllers\SgkJobCodeController.cs" />
     <Compile Include="Controllers\TemporaryDutyController.cs" />
+    <Compile Include="Controllers\TisJobCodeController.cs" />
+    <Compile Include="Controllers\TradeUnionNameController.cs" />
+    <Compile Include="Controllers\TradeUnionStatusController.cs" />
     <Compile Include="Controllers\WorkingPriceController.cs" />
+    <Compile Include="Controllers\WorkingStatusController.cs" />
     <Compile Include="Controllers\WorkplaceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3620,7 +3636,6 @@
     <Content Include="Views\TemporaryDuty\Index.cshtml" />
     <Content Include="Views\Query\Index.cshtml" />
     <Content Include="Views\MultiAdded\Index.cshtml" />
-    <Content Include="Views\Graduation\GraduationQuery.cshtml" />
     <Content Include="Views\Graduation\GraduationGetList.cshtml" />
     <Content Include="Views\Graduation\GraduationGet.cshtml" />
     <Content Include="Views\Adaptation\AdaptationGetList.cshtml" />
@@ -3659,9 +3674,7 @@
     <Content Include="Views\BirthCertificate\BirthCertificateGet.cshtml" />
     <Content Include="Views\Military\IndexQuery.cshtml" />
     <Content Include="Views\Military\MilitaryGet.cshtml" />
-    <Content Include="Views\Workplace\IndexQuery.cshtml" />
-    <Content Include="Views\Workplace\Index.cshtml" />
-    <Content Include="Views\Workplace\WorkplaceGet.cshtml" />
+    <Content Include="Views\Workplace\WorkplaceGetById.cshtml" />
     <Content Include="Views\WorkingPrice\Index.cshtml" />
     <Content Include="Views\WorkingPrice\IndexQuery.cshtml" />
     <Content Include="Views\WorkingPrice\WorkingPriceGetList.cshtml" />
@@ -3670,12 +3683,10 @@
     <Content Include="Views\Award\AwardAdd.cshtml" />
     <Content Include="Views\Course\CourseAdd.cshtml" />
     <Content Include="Views\Criminal\CriminalAdd.cshtml" />
-    <Content Include="Views\Designation\DesignationAdd.cshtml" />
-    <Content Include="Views\Graduation\GraduationAdd.cshtml" />
+    <Content Include="Views\Graduation\GraduationGetAdd.cshtml" />
     <Content Include="Views\Permission\PermissionAdd.cshtml" />
     <Content Include="Views\Rise\RiseAdd.cshtml" />
     <Content Include="Views\TemporaryDuty\TemporaryDutyAdd.cshtml" />
-    <Content Include="Views\WorkingPrice\WorkingPriceAdd.cshtml" />
     <Content Include="Views\Workplace\WorkplaceAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -3688,6 +3699,67 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\ReasonForPermission\ReasonForPermissionGetAll.cshtml" />
+    <Content Include="Views\ReasonForPermission\ReasonForPermissionGetById.cshtml" />
+    <Content Include="Views\ReasonForPermission\ReasonForPermissionAdd.cshtml" />
+    <Content Include="Views\DisabilityStatus\DisabilityStatusGetAll.cshtml" />
+    <Content Include="Views\DisabilityStatus\DisabilityStatusGetById.cshtml" />
+    <Content Include="Views\DisabilityStatus\DisabilityStatusAdd.cshtml" />
+    <Content Include="Views\PermissionType\PermissionTypeGetAll.cshtml" />
+    <Content Include="Views\PermissionType\PermissionTypeGetById.cshtml" />
+    <Content Include="Views\PermissionType\PermissionTypeAdd.cshtml" />
+    <Content Include="Views\ReasonForCriminal\ReasonForCriminalGetAll.cshtml" />
+    <Content Include="Views\ReasonForCriminal\ReasonForCriminalGetById.cshtml" />
+    <Content Include="Views\ReasonForCriminal\ReasonForCriminalAdd.cshtml" />
+    <Content Include="Views\ReasonForDesignation\ReasonForDesignationGetAll.cshtml" />
+    <Content Include="Views\ReasonForDesignation\ReasonForDesignationGetById.cshtml" />
+    <Content Include="Views\ReasonForDesignation\ReasonForDesignationAdd.cshtml" />
+    <Content Include="Views\ReasonForPromotion\ReasonForPromotionGetAll.cshtml" />
+    <Content Include="Views\ReasonForPromotion\ReasonForPromotionGetById.cshtml" />
+    <Content Include="Views\ReasonForPromotion\ReasonForPromotionAdd.cshtml" />
+    <Content Include="Views\ReasonForTemporaryDuty\ReasonForTemporaryDutyGetAll.cshtml" />
+    <Content Include="Views\ReasonForTemporaryDuty\ReasonForTemporaryDutyGetById.cshtml" />
+    <Content Include="Views\ReasonForTemporaryDuty\ReasonForTemporaryDutyAdd.cshtml" />
+    <Content Include="Views\WorkingStatus\WorkingStatusGetAll.cshtml" />
+    <Content Include="Views\WorkingStatus\WorkingStatusGetById.cshtml" />
+    <Content Include="Views\WorkingStatus\WorkingStatusAdd.cshtml" />
+    <Content Include="Views\Workplace\WorkplaceGetAll.cshtml" />
+    <Content Include="Views\ForeignLanguage\IndexQuery.cshtml" />
+    <Content Include="Views\ForeignLanguage\ForeignLanguageGetList.cshtml" />
+    <Content Include="Views\ForeignLanguage\ForeignLanguageGet.cshtml" />
+    <Content Include="Views\ForeignLanguage\ForeignLanguageGetAdd.cshtml" />
+    <Content Include="Views\DailyWorkingTime\DailyWorkingTimeGetAll.cshtml" />
+    <Content Include="Views\DailyWorkingTime\DailyWorkingTimeGetById.cshtml" />
+    <Content Include="Views\DailyWorkingTime\DailyWorkingTimeAdd.cshtml" />
+    <Content Include="Views\WorkingPrice\WorkingPriceAddGet.cshtml" />
+    <Content Include="Views\Designation\DesignationGetAdd.cshtml" />
+    <Content Include="Views\CurrentStatus\CurrentStatusGetAll.cshtml" />
+    <Content Include="Views\CurrentStatus\CurrentStatusGetById.cshtml" />
+    <Content Include="Views\CurrentStatus\CurrentStatusAdd.cshtml" />
+    <Content Include="Views\TradeUnionName\TradeUnionNameGetAll.cshtml" />
+    <Content Include="Views\TradeUnionName\TradeUnionNameGetById.cshtml" />
+    <Content Include="Views\TradeUnionName\TradeUnionNameAdd.cshtml" />
+    <Content Include="Views\TradeUnionStatus\TradeUnionStatusGetAll.cshtml" />
+    <Content Include="Views\TradeUnionStatus\TradeUnionStatusGetById.cshtml" />
+    <Content Include="Views\TradeUnionStatus\TradeUnionStatusAdd.cshtml" />
+    <Content Include="Views\Identity\IdentityUpdateLaterDesignation.cshtml" />
+    <Content Include="Views\Identity\IndexQuery.cshtml" />
+    <Content Include="Views\Identity\IdentityGet.cshtml" />
+    <Content Include="Views\PrivateStatus\PrivateStatusGetAll.cshtml" />
+    <Content Include="Views\PrivateStatus\PrivateStatusGetById.cshtml" />
+    <Content Include="Views\PrivateStatus\PrivateStatusAdd.cshtml" />
+    <Content Include="Views\SgkJobCode\SgkJobCodeGetAll.cshtml" />
+    <Content Include="Views\SgkJobCode\SgkJobCodeGetById.cshtml" />
+    <Content Include="Views\SgkJobCode\SgkJobCodeAdd.cshtml" />
+    <Content Include="Views\TisJobCode\TisJobCodeGetAll.cshtml" />
+    <Content Include="Views\TisJobCode\TisJobCodeGetById.cshtml" />
+    <Content Include="Views\TisJobCode\TisJobCodeAdd.cshtml" />
+    <Content Include="Views\DesignationStatus\DesignationStatusGetAll.cshtml" />
+    <Content Include="Views\DesignationStatus\DesignationStatusGetById.cshtml" />
+    <Content Include="Views\DesignationStatus\DesignationStatusAdd.cshtml" />
+    <Content Include="Views\Designation\DesignationPdf.cshtml" />
+    <Content Include="Views\Query\Inspection.cshtml" />
+    <Content Include="Views\Query\InspectionPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">
@@ -3716,6 +3788,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

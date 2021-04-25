@@ -16,7 +16,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>14.000</h3>
+                    <h3>@ViewBag.AllEmployeeCount</h3>
 
                     <p>Toplam İşçi Sayısı</p>
                 </div>
@@ -31,7 +31,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>@ViewBag.WomenCount / @ViewBag.ManCount<sup style="font-size: 20px"></sup></h3>
 
                     <p>Kadın / Erkek Oranı</p>
                 </div>
@@ -46,9 +46,9 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>2140</h3>
+                    <h3>@ViewBag.AgeCount</h3>
 
-                    <p>En Son Eklenen İşçi Sayısı</p>
+                    <p>50 Yaş Üstü Çalışan Sayısı</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -61,7 +61,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>6520</h3>
+                    <h3>@ViewBag.CurrentStatusCount</h3>
 
                     <p>Sürekli İşçi Statüsüne Geçen Çalışan Sayısı</p>
                 </div>
@@ -79,7 +79,7 @@
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable ui-sortable">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="box">
+            <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">İş Yerleri İşçi Dağılımı</h3>
                 </div>
@@ -91,7 +91,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Birimler</th>
                                 <th>Oran</th>
-                                <th style="width: 40px">%</th>
+                                <th style="width: 100px">Kişi sayısı</th>
                             </tr>
                             <tr>
                                 <td>1.</td>
@@ -101,7 +101,7 @@
                                         <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-red">55%</span></td>
+                                <td><span class="badge bg-red">@ViewBag.TgmCount</span></td>
                             </tr>
                             <tr>
                                 <td>2.</td>
@@ -111,7 +111,7 @@
                                         <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-yellow">70%</span></td>
+                                <td><span class="badge bg-yellow">@ViewBag.AfgmCount</span></td>
                             </tr>
                             <tr>
                                 <td>3.</td>
@@ -121,7 +121,7 @@
                                         <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-blue">30%</span></td>
+                                <td><span class="badge bg-blue">@ViewBag.TedgmCount</span></td>
                             </tr>
                             <tr>
                                 <td>4.</td>
@@ -131,7 +131,7 @@
                                         <div class="progress-bar progress-bar-success" style="width: 60%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-green">60%</span></td>
+                                <td><span class="badge bg-green">@ViewBag.YhgmCount</span></td>
                             </tr>
                             <tr>
                                 <td>5.</td>
@@ -141,7 +141,7 @@
                                         <div class="progress-bar progress-bar-info" style="width: 35%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-aqua">35%</span></td>
+                                <td><span class="badge bg-aqua">@ViewBag.LgmCount</span></td>
                             </tr>
 
                             <tr>
@@ -152,7 +152,7 @@
                                         <div class="progress-bar progress-bar-yellow" style="width: 15%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-yellow">15%</span></td>
+                                <td><span class="badge bg-yellow">@ViewBag.HgmCount</span></td>
                             </tr>
 
                             <tr>
@@ -163,7 +163,7 @@
                                         <div class="progress-bar progress-bar-red" style="width: 56%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-red">56%</span></td>
+                                <td><span class="badge bg-red">@ViewBag.AsalCount</span></td>
                             </tr>
                             <tr>
                                 <td>8.</td>
@@ -173,7 +173,7 @@
                                         <div class="progress-bar progress-bar-green" style="width: 43%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-green">43%</span></td>
+                                <td><span class="badge bg-green">@ViewBag.KkkCount</span></td>
                             </tr>
                             <tr>
                                 <td>9.</td>
@@ -183,7 +183,7 @@
                                         <div class="progress-bar progress-bar-info" style="width: 20%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-aqua">20%</span></td>
+                                <td><span class="badge bg-aqua">@ViewBag.HvkkCount</span></td>
                             </tr>
                             <tr>
                                 <td>10.</td>
@@ -193,7 +193,7 @@
                                         <div class="progress-bar progress-bar-warning" style="width: 40%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-yellow">40%</span></td>
+                                <td><span class="badge bg-yellow">@ViewBag.DzkkCount</span></td>
                             </tr>
                             <tr>
                                 <td>11.</td>
@@ -203,7 +203,47 @@
                                         <div class="progress-bar progress-bar-light-blue" style="width: 45%"></div>
                                     </div>
                                 </td>
-                                <td><span class="badge bg-blue">45%</span></td>
+                                <td><span class="badge bg-blue">@ViewBag.MsuCount</span></td>
+                            </tr>
+                            <tr>
+                                <td>12.</td>
+                                <td>Askeri Sağlık Hizmerleri Genel Müdürlüğü</td>
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar progress-bar-info" style="width: 35%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-aqua">@ViewBag.AshgmCount</span></td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td>Genelkurmay Başkanlığı </td>
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar progress-bar-green" style="width: 20%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-green">@ViewBag.GnkurCount</span></td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td>Askeri Fabrika ve Tersane İşletme A.Ş.</td>
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" style="width: 35%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-yellow">@ViewBag.AsfatCount</span></td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>Toplam</td>
+                                <td>
+                                    <div class="progress progress-xs progress-striped active">
+                                        <div class="progress-bar progress-bar-light-blue" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-blue">@ViewBag.Sum</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -312,13 +352,13 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Toplam Müh. İşçi Sayısı</span>
-                        <span class="info-box-number">200</span>
+                        <span class="info-box-number">@ViewBag.EngineerPersonCount</span>
 
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 3%"></div>
                         </div>
                         <span class="progress-description">
-                            Toplam Oran: 50%
+                            Toplam Oran: @ViewBag.ModEngineerPerson %
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -329,13 +369,13 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Toplam Engelli İşçi Sayısı</span>
-                        <span class="info-box-number">100</span>
+                        <span class="info-box-number">@ViewBag.DisabilityStatus</span>
 
                         <div class="progress">
                             <div class="progress-bar" style="width: 20%"></div>
                         </div>
                         <span class="progress-description">
-                            Toplam Oran: 10%
+                            Toplam Oran: @ViewBag.ModDisabilityStatus %
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -346,13 +386,13 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Toplam Emekli Sayısı</span>
-                        <span class="info-box-number">1.200</span>
+                        <span class="info-box-number">0</span>
 
                         <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
+                            <div class="progress-bar" style="width: 0 %"></div>
                         </div>
                         <span class="progress-description">
-                            Toplam Oran: 70%
+                            Toplam Oran: 0%
                         </span>
                     </div>
                     <!-- /.info-box-content -->

@@ -1,0 +1,50 @@
+﻿@using Entities.Dto
+@model List<ForeignLanguageDto>
+@{
+    ViewBag.Title = "ForeignLanguageGetList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Yabancı Dil Bilgisi Güncelle</h3>
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Yabancı Dil Bilgileri</h3>
+    </div>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">#</th>
+
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Yabancı Dil Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Sınav Adı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Puanı</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Belge Tarihi</th>
+
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Seçim</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var e in Model)
+                {
+                    <tr role="row" class="odd">
+                        <td class="sorting_1"></td>
+                        <td>@e.YabanciDilAdi</td>
+                        <td>@e.SinavAdi</td>
+                        <td>@e.Puani</td>
+                        <td>@e.BelgeTarihi.Value.ToShortDateString()</td>
+
+                        <td>
+                            <a href="/ForeignLanguage/ForeignLanguageGet/@e.YabanciDilBilgiId" class="btn btn-warning col-xs-pull-5">Güncelle</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <a href="/ForeignLanguage/ForeignLanguageGetAdd/@ViewBag.PersonelKimlikId" class="btn btn-success col-xs-pull-5">Yeni Yabancı Dil Bilgisi Ekle</a>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Entities.Concrete.DynamicDataEntity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,10 +12,12 @@ namespace Entities.Concrete
         [Key]
         public int PersonelGeciciGorevId { get; set; }
         public int PersonelKimlikId { get; set; }
-        public string GorevlendigiBirlik { get; set; }
+        public int IsYeriId { get; set; }
+        public int GeciciGorevNedenId { get; set; }
         public string GorevYeri { get; set; }
         public DateTime BaslamaTarihi { get; set; }
         public DateTime BitisTarihi { get; set; }
-        public virtual Identity Identity { get; set; }
+
+      
     }
 }

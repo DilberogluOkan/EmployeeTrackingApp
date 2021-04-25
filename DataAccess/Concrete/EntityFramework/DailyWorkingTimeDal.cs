@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class DailyWorkingTimeDal : IDailyWorkingTimeDal
+    public class DailyWorkingTimeDal : EfEntityRepositoryBase<DailyWorkingTime, EmployeeContext>, IDailyWorkingTimeDal
     {
-        public List<DailyWorkingTime> GetAll(Expression<Func<DailyWorkingTime, bool>> filter = null)
-        {
-            using (EmployeeContext context = new EmployeeContext())
-            {
-                return filter == null ? context.Set<DailyWorkingTime>().ToList()
-                                      : context.Set<DailyWorkingTime>().Where(filter).ToList();
-            }
-        }
+       
     }
 }
