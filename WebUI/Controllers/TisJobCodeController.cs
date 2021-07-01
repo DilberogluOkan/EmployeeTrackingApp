@@ -27,7 +27,7 @@ namespace WebUI.Controllers
             var result = _tisJobCodeService.GetAll().Data.ToList();
             return View("TisJobCodeGetAll", result);
         }
-        public ActionResult TisJobCodeGetById(string id)
+        public ActionResult TisJobCodeGetById(int id)
         {
             var result = _tisJobCodeService.GetById(id).Data;
             return View("TisJobCodeGetById", result);

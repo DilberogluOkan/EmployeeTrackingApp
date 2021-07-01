@@ -13,11 +13,11 @@ namespace Entities.Dto
         public string TcKimlikNo { get; set; }
         public string Adi { get; set; }
         public string Soyadi { get; set; }
-     
         public string SicilNo { get; set; }
         public DateTime? DogumTarihi { get; set; }
         public string DogumYeri { get; set; }
         public DateTime? KatilisTarih { get; set; }
         public string MeslekKol { get; set; }
+        public string IsYeri { get; set; }
     }
 }

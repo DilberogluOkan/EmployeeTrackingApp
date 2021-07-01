@@ -22,11 +22,11 @@ namespace WebUI.Controllers
         IWorkplaceService _workplaceService;
         IDesignationStatusService _designationStatusService;
         IDesignationApprovalService _designationApprovalService;
-
+        ITisJobCodeService _tisJobCodeService;
 
 
         public DesignationController(IIdentityService ıdentityService, IDesignationService designationService,
-            IReasonForDesignationService reasonForDesignationService, IWorkplaceService workplaceService, IDesignationStatusService designationStatusService, IDesignationApprovalService designationApprovalService)
+            IReasonForDesignationService reasonForDesignationService, IWorkplaceService workplaceService, IDesignationStatusService designationStatusService, IDesignationApprovalService designationApprovalService, ITisJobCodeService tisJobCodeService)
         {
             _ıdentityService = ıdentityService;
             _designationService = designationService;
@@ -34,6 +34,7 @@ namespace WebUI.Controllers
             _workplaceService = workplaceService;
             _designationStatusService = designationStatusService;
             _designationApprovalService = designationApprovalService;
+            _tisJobCodeService = tisJobCodeService;
         }
 
         // GET: Designation
@@ -52,10 +53,12 @@ namespace WebUI.Controllers
         public ActionResult DesignationGetList(int id)
         {
             var designationGetList = _designationService.GetDesignationDetails(id).Data.ToList();
-           
+            var identityInfo = _ıdentityService.GetPersonGeneralDetails(id).Data.ToList();
+
             ViewBag.PersonelKimlikId = id;
-            
-            return View("DesignationGetList", designationGetList);
+
+            //return View("DesignationGetList", designationGetList);
+            return View(Tuple.Create(designationGetList, identityInfo));
         }
 
         public ActionResult DesignationGet(int id)
@@ -119,11 +122,13 @@ namespace WebUI.Controllers
             var designationStatusGrp = _designationStatusService.GetAll().Data.ToList();
             var reasonForDesignationGrp = _reasonForDesignationService.GetAll().Data.ToList();
             var designationApprovalGrp = _designationApprovalService.GetAll().Data.ToList();
+            var tisJobCodeGrp = _tisJobCodeService.GetAll().Data.ToList();
 
             ViewBag.DesignationApprovalGrpList = new SelectList(designationApprovalGrp, "OnayId", "OnayDurumValue");
-            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "Birimi");
+            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "IsYeriAdi");
             ViewBag.DesignationStatusGrpList = new SelectList(designationStatusGrp, "NakilDurumId", "NakilDurumu");
             ViewBag.ReasonForDesignationGrpList = new SelectList(reasonForDesignationGrp, "AtamaIstegiNedenId", "AtamaIstegiNedeni");
+            ViewBag.TisJobCodeGrpList = new SelectList(tisJobCodeGrp, "TisMeslekKodId", "TisMeslekAdi");
            
         }
     }

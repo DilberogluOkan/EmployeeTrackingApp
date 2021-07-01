@@ -1,0 +1,140 @@
+﻿
+@using Entities.Dto
+@model Tuple<List<FilterQueryDto>,CheckDto>
+@{
+    ViewBag.Title = "FilterQueryPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <div class="info-box">
+        <span class="info-box-icon bg-light-blue-active"><i class="fa fa-group "></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">@*@ViewBag.Workplace*@  @*@ViewBag.PriceType*@ Oluşturulan Sorguya Göre</span><br />
+            <span class="info-box-number">Toplam Personel Sayı: @ViewBag.PersonCount</span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+</div>
+
+<div class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">Sonuçlar</h3>
+    </div>
+    <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+            <thead>
+                <tr role="row">
+
+
+
+                    @if (Model.Item2.CheckGnMd == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Genel Müdürlük</th>
+                    }
+                    @if (Model.Item2.CheckIsYeri == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İş Yeri</th>
+                    }
+                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending">Tc Kimlik No</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Adı Soyadı</th>
+                    @if (Model.Item2.CheckUcretTur == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ücret Türü</th>
+                    }
+                    @if (Model.Item2.CheckGunlukCalismaSure == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Çalışma Süresi</th>
+                    }
+                    @if (Model.Item2.CheckCinsiyet == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Cinsiyet</th>
+                    }
+                    @if (Model.Item2.CheckMedeniHal == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Medeni Hal</th>
+                    }
+                    @if (Model.Item2.CheckMeslekKol == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Meslek Kolu</th>
+                    }
+                    @if (Model.Item2.CheckDogumTarihi == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Doğum Tarihi</th>
+                    }
+                    @if (Model.Item2.CheckMsbKatilisTarih == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">MSB Katılış Tarihi</th>
+                    }
+                    @if (Model.Item2.CheckIdarecilikDurum == "true")
+                    {
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">İdarecilik Durumu</th>
+                    }
+
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item1)
+                {
+                <tr role="row" class="odd">
+
+
+                    @if (Model.Item2.CheckGnMd == "true")
+                    {
+                        <td>@item.GenelMudurluk</td>
+                    }
+
+                    @if (Model.Item2.CheckIsYeri == "true")
+                    {
+                        <td>@item.IsYeriAdi</td>
+                    }
+                    <td class="sorting_1">@item.TcNo</td>
+                    <td>@item.Ad @item.Soyad</td>
+                    @if (Model.Item2.CheckUcretTur == "true")
+                    {
+                        <td>@item.UcretTuru</td>
+                    }
+                    @if (Model.Item2.CheckGunlukCalismaSure == "true")
+                    {
+                        <td>@item.GunlukCalismaSuresi</td>
+                    }
+                    @if (Model.Item2.CheckCinsiyet == "true")
+                    {
+                        <td>@item.Cinsiyeti</td>
+                    }
+                    @if (Model.Item2.CheckMedeniHal == "true")
+                    {
+                        <td>@item.MedeniHali</td>
+                    }
+                    @if (Model.Item2.CheckMeslekKol == "true")
+                    {
+                        <td>@item.MeslekKol</td>
+                    }
+                    @if (Model.Item2.CheckDogumTarihi == "true")
+                    {
+                        <td>@item.DogumTarihi.Value.ToShortDateString()</td>
+                    }
+                    @if (Model.Item2.CheckMsbKatilisTarih == "true")
+                    {
+                        <td>@item.KatilisTarihi.Value.ToShortDateString()</td>
+                    }
+                    @if (Model.Item2.CheckIdarecilikDurum == "true")
+                    {
+                        <td>@item.IdarecilikDurumu</td>
+                    }
+
+                </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

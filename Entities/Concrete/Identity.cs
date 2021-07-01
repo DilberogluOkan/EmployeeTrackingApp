@@ -20,7 +20,7 @@ namespace Entities.Concrete
         public int IstihtamDurumId { get; set; }
         public int ServisBilgiId { get; set; }
         public int VardiyaBilgiId { get; set; }
-        public string TisMeslekKolId { get; set; }
+        public int TisMeslekKolId { get; set; }
         //public int SendikaBilgiId { get; set; }
         public int MevcutStatuId { get; set; }
 

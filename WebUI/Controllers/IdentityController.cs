@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Abstract.Dynamic;
 using Business.Concrete;
+using Business.Factory;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.Dto;
@@ -50,6 +51,9 @@ namespace WebUI.Controllers
             _privateStatusService = privateStatusService;
         }
 
+
+
+
         public ActionResult Index()
         {
             return View();
@@ -58,6 +62,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult IndexQuery(string tcNo)
         {
+           
             var result = _ıdentityService.GetPersonDetails(tcNo).Data;
             return View(result);
         }
@@ -68,6 +73,7 @@ namespace WebUI.Controllers
             DropList();
             var ıdentityGet = _ıdentityService.GetById(id).Data;
             return View("IdentityGet", ıdentityGet);
+           
         }
 
         [HttpGet]
@@ -83,6 +89,7 @@ namespace WebUI.Controllers
         {
             _ıdentityService.Update(ıdentity);
             return RedirectToAction("");
+            
         }
 
         [HttpGet]
@@ -91,16 +98,16 @@ namespace WebUI.Controllers
             var result = _ıdentityService.GetById(d.PersonelKimlikId).Data;
             var workPlaceGrp = _workplaceService.GetAll().Data.ToList();
 
-            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "Birimi");
-
-           
+            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "IsYeriAdi");
             return View("IdentityUpdateLaterDesignation", result);
+            
         }
         [HttpPost]
         public ActionResult IdentityUpdateLaterDesignation(Identity ıdentity)
         {
             _ıdentityService.Update(ıdentity);
             return RedirectToAction("Index","Designation");
+            
         }
          
         private void DropList()
@@ -118,7 +125,7 @@ namespace WebUI.Controllers
             var provinceGrp = _provinceService.GetAll().Data.ToList();
             var tisJobGrp = _tisJobCodeService.GetAll().Data.ToList();
             ViewBag.AdminStatusGrpList = new SelectList(adminStatusGrp, "IdarecilikDurumId", "IdarecilikDurumu");
-            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "Birimi");
+            ViewBag.WorkPlaceGrpList = new SelectList(workPlaceGrp, "IsYeriId", "IsYeriAdi");
             ViewBag.GenderGrpList = new SelectList(genderGrp, "CinsiyetId", "Cinsiyeti");
             ViewBag.BloodGrpList = new SelectList(bloodGrp, "KanGrupId", "KanGrubu");
             ViewBag.MaritalStatusGrpList = new SelectList(maritalGrp, "MedeniHalId", "MedeniHali");

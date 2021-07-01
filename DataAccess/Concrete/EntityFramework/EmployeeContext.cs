@@ -60,6 +60,9 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<CurrentStatus> CurrentStatus { get; set; }
         public DbSet<DesignationStatus> DesignationStatus { get; set; }
         public DbSet<DesignationApproval> DesignationApprovals { get; set; }
+        public DbSet<WorkplaceHeadquarters> WorkplaceHeadquarters { get; set; }
+      
+
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

@@ -13,7 +13,63 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class IdentityDal : EfEntityRepositoryBase<Identity, EmployeeContext>, IIdentityDal
     {
-      
+
+
+        public List<FilterQueryDto> GetFilterQueryDetails(Expression<Func<FilterQueryDto, bool>> filter = null)
+        {
+            using (EmployeeContext context = new EmployeeContext())
+            {
+                var result = from i in context.Identities
+                             join w in context.Workplaces on i.IsYeriId equals w.IsYeriId
+                             join wp in context.WorkingPrices on i.PersonelKimlikId equals wp.PersonelKimlikId
+                             join pt in context.PriceTypes on wp.UcretTurId equals pt.UcretTurId
+                             join m in context.TisJobCodes on i.TisMeslekKolId equals m.TisMeslekKodId
+                             join g in context.Genders on i.CinsiyetId equals g.CinsiyetId
+                             join d in context.DisabilityStatus on i.EngelDurumId equals d.EngelDurumId
+                             join p in context.PrivateStatus on d.OzelDurumId equals p.OzelDurumId
+                             join dw in context.DailyWorkingTimes on wp.GunlukCalismaSureId equals dw.GunlukCalismaSureId
+                             join ap in context.AdminStatus on i.IdarecilikDurumId equals ap.IdarecilikDurumId
+                             join ws in context.WorkingStatus on i.IstihtamDurumId equals ws.IstihtamDurumId
+                             join ms in context.MaritalStatus on i.MedeniHalId equals ms.MedeniHalId
+                             join wh in context.WorkplaceHeadquarters on w.GenelMudurlukId equals wh.GenelMudurlukId
+                             select new FilterQueryDto
+                             {
+                                 PersonelKimlikId = i.PersonelKimlikId,
+                                 TcNo = i.TcKimlikNo,
+                                 Ad = i.Adi,
+                                 Soyad = i.Soyadi,
+                                 IsYeriId = i.IsYeriId,
+                                 Birimi = w.Birimi,
+                                 IsYeriAdi = w.IsYeriAdi,
+                                 GenelMudurluk=wh.GenelMudurluk,
+                                 GenelMudurlukId=w.GenelMudurlukId,
+                                 Cinsiyeti = g.Cinsiyeti,
+                                 DogumTarihi = i.DogumTarihi,
+                                 EngelDurumu = p.OzelDurumu,
+                                 GunlukCalismaSuresi = dw.GunlukCalismaSuresi,
+                                 GunlukCalismaSureId = wp.GunlukCalismaSureId,
+                                 IstihtamDurumId = i.IstihtamDurumId,
+                                 CinsiyetId = i.CinsiyetId,
+                                 IdarecilikId = i.IdarecilikDurumId,
+                                 MedeniHalId = i.MedeniHalId,
+                                 EngelDurumId = i.EngelDurumId,
+                                 IdarecilikDurumu = ap.IdarecilikDurumu,
+                                 IstihtamDurumu = ws.IstihtamDurumu,
+                                 KatilisTarihi = i.MsbKatilisTarih,
+                                 MedeniHali = ms.MedeniHali,
+                                 UcretTuru = pt.UcretTuru,
+                                 UcretTurId = wp.UcretTurId,
+                                 MeslekKol = m.TisMeslekAdi,
+                                 MeslekKolId=i.TisMeslekKolId,
+                                 Kuvvet=w.Kuvvet
+
+
+                             };
+
+                
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
 
         public List<PersonDto> GetPersonDetails(Expression<Func<Identity, bool>> filter = null)
         {
@@ -21,14 +77,17 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from i in filter == null ? context.Identities : context.Identities.Where(filter)
                              join w in context.Workplaces on i.IsYeriId equals w.IsYeriId
+                             join wh in context.WorkplaceHeadquarters on w.GenelMudurlukId equals wh.GenelMudurlukId
+                             join m in context.TisJobCodes on i.TisMeslekKolId equals m.TisMeslekKodId
                              select new PersonDto
                              {
                                  PersonelKimlikId = i.PersonelKimlikId,
                                  TcNo = i.TcKimlikNo,
                                  Adi = i.Adi,
                                  Soyadi = i.Soyadi,
-                                 CalistigiKurum = w.IsYeriAdi,
-                                 Birimi = w.Birimi
+                                 CalistigiKurum = wh.GenelMudurluk,
+                                 IsYeriAdi = w.IsYeriAdi,
+                                 MeslekKol=m.TisMeslekAdi
                              };
                 return result.ToList();
 
@@ -42,8 +101,9 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from i in filter == null ? context.Identities : context.Identities.Where(filter)
 
-                             //join p in context.Provinces on i.DogumYeri equals p.IlId
+                                 //join p in context.Provinces on i.DogumYeri equals p.IlId
                              join m in context.TisJobCodes on i.TisMeslekKolId equals m.TisMeslekKodId
+                             join w in context.Workplaces on i.IsYeriId equals w.IsYeriId
                              select new PersonGeneralDto
                              {
                                  PersonelKimlikId = i.PersonelKimlikId,
@@ -53,8 +113,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  //DogumYeri = p.IlAdi,
                                  KatilisTarih = i.MsbKatilisTarih,
                                  MeslekKol = m.TisMeslekAdi,
-                                
                                  TcKimlikNo = i.TcKimlikNo,
+                                 IsYeri=w.IsYeriAdi
 
                              };
                 return result.ToList();
@@ -126,15 +186,17 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from i in filter == null ? context.Identities : context.Identities.Where(filter)
                              join w in context.Workplaces on i.IsYeriId equals w.IsYeriId
+                             join wh in context.WorkplaceHeadquarters on w.GenelMudurlukId equals wh.GenelMudurlukId
                              select new PersonWorkplaceDto
                              {
                                  PersonelKimlikId = i.PersonelKimlikId,
                                  Il = w.Il,
                                  IsYeriId = w.IsYeriId,
-                                 IsYeriSicilNu = w.IsYeriSicilNu,
                                  Kuvvet = w.Kuvvet,
                                  IsYeriAdi = w.IsYeriAdi,
-                                 Birimi = w.Birimi
+                                 Birimi = w.Birimi,
+                                  GenelMudurluk=wh.GenelMudurluk,
+                                   GenelMudurlukId=w.GenelMudurlukId
                              };
                 return result.ToList();
 
@@ -142,6 +204,6 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-       
+
     }
 }

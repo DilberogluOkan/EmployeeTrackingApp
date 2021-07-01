@@ -17,7 +17,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (EmployeeContext context = new EmployeeContext())
             {
                 var result = from c in filter == null ? context.Designations : context.Designations.Where(filter)
-                             join v in context.Workplaces on c.IsYeriId equals v.IsYeriId
+                             join w in context.Workplaces on c.IsYeriId equals w.IsYeriId
+                             join wh in context.WorkplaceHeadquarters on w.GenelMudurlukId equals wh.GenelMudurlukId
                              join d in context.DesignationStatus on c.NakilDurumId equals d.NakilDurumId
                              join ı in context.DesignationApprovals on c.IlgiliGenelMudurOnay equals ı.OnayId
                              join p in context.DesignationApprovals on c.PersonelGenelMudurOnay equals p.OnayId
@@ -29,15 +30,18 @@ namespace DataAccess.Concrete.EntityFramework
                                  PersonelAtamaId = c.PersonelAtamaId,
                                  AtamaIstegiNedenId=c.AtamaIstegiNedenId,
                                  IsYeriId=c.IsYeriId,
+                                 GenelMudurluk=wh.GenelMudurluk,
+                                 GenelMudurlukId=w.GenelMudurlukId,
                                  AtamaIstegiNedeni = b.AtamaIstegiNedeni,
-                                 Birimi = v.Birimi,
+                                 IsYeriAdi = w.IsYeriAdi,
                                  AyrilisTarihi=c.AyrilisTarihi,
                                  KatilisTarihi=c.KatilisTarihi,
                                  Aciklama=c.Aciklama,
                                  NakilDurum=d.NakilDurumu,
                                  IlgiliGenelMudurOnay=ı.OnayDurumu,
                                  IsVerenVekiliOnay = ıv.OnayDurumu,
-                                 PersonelGenelMudurOnay = p.OnayDurumu
+                                 PersonelGenelMudurOnay = p.OnayDurumu,
+                                  NakilTalepTarihi=c.NakilTalepTarihi
 
 
 

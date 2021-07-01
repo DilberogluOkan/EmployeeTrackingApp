@@ -36,7 +36,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<TisJobCode>>(_tisJobCodeDal.GetAll());
         }
 
-        public IDataResult<TisJobCode> GetById(string tisJobCodeId)
+        public IDataResult<TisJobCode> GetById(int tisJobCodeId)
         {
             return new SuccessDataResult<TisJobCode>(_tisJobCodeDal.Get(p => p.TisMeslekKodId == tisJobCodeId));
         }

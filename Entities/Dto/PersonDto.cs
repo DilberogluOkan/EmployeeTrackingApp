@@ -14,6 +14,7 @@ namespace Entities.Dto
         public string  Adi { get; set; }
         public string Soyadi { get; set; }
         public string CalistigiKurum { get; set; }
-        public string Birimi { get; set; }
+        public string IsYeriAdi { get; set; }
+        public string MeslekKol { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Entities.Concrete.DynamicDataEntity
     {
         [Key]
         public int IsYeriId { get; set; }
+        public int GenelMudurlukId { get; set; }
         public string IsYeriAdi { get; set; }
         public string Birimi { get; set; }
         public string Kuvvet { get; set; }
-        public string IsYeriSicilNu { get; set; }
         public string Il { get; set; }
     }
 }

@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "InspectionHeadquartersPdf";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>İş ve İşçi Münasebetleri | Genel Müdürlüklere Göre Çalışan Sayıları</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <link rel="stylesheet" href="~/content/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/content/bower_components/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/content/bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/content/dist/css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="~/content/dist/css/skins/skin-blue.min.css">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body onload="window.print()">
+    @*<div class="wrapper">*@
+    <!-- Main content -->
+    <section class="invoice">
+        <!-- title row -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-print"></i>Genel Müdürlüklere Göre Çalışan Sayıları Raporu
+                    <small class="pull-right">Tarih:@DateTime.Now.ToShortDateString()</small>
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="box-header with-border">
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table id="example2" class="table table-bordered table-hover dataTable " role="grid" aria-describedby="example2_info">
+                        <tbody>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Birimler</th>
+
+                                <th style="width: 100px">Kişi sayısı</th>
+                            </tr>
+                            <tr>
+                                <td>1.</td>
+                                <td>Tersaneler Genel Müdürlüğü</td>
+                                <td>@ViewBag.TgmCount</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Askeri Fabrikalar Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.AfgmCount</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Tedarik Hizmetleri Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.TedgmCount</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Yönetim Hizmetleri Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.YhgmCount</td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>Lojistik Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.LgmCount</td>
+                            </tr>
+
+                            <tr>
+                                <td>6.</td>
+                                <td>Harita Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.HgmCount</td>
+                            </tr>
+
+                            <tr>
+                                <td>7.</td>
+                                <td>ASAL Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.AsalCount</td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>Kara Kuvvetleri Komutanlığı</td>
+
+                                <td>@ViewBag.KkkCount</td>
+                            </tr>
+                            <tr>
+                                <td>9.</td>
+                                <td>Hava Kuvvetleri Komutanlığı</td>
+
+                                <td>@ViewBag.HvkkCount</td>
+                            </tr>
+                            <tr>
+                                <td>10.</td>
+                                <td>Deniz Kuvvetleri Komutanlığı</td>
+
+                                <td>@ViewBag.DzkkCount</td>
+                            </tr>
+                            <tr>
+                                <td>11.</td>
+                                <td>Milli Savunma Üniversitesi</td>
+
+                                <td>@ViewBag.MsuCount</td>
+                            </tr>
+                            <tr>
+                                <td>12.</td>
+                                <td>Askeri Sağlık Hizmerleri Genel Müdürlüğü</td>
+
+                                <td>@ViewBag.AshgmCount</td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td>Genelkurmay Başkanlığı </td>
+
+                                <td>@ViewBag.GnkurCount</td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td>Askeri Fabrika ve Tersane İşletme A.Ş.</td>
+
+                                <td>@ViewBag.AsfatCount</td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td><b>Toplam</b></td>
+                                <td><b>@ViewBag.Sum</b></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                  
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -23,5 +23,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<PriceType>>(_priceTypeDal.GetAll());
         }
+
+        public IDataResult<PriceType> GetById(int id)
+        {
+            return new SuccessDataResult<PriceType>(_priceTypeDal.Get(p => p.UcretTurId == id));
+        }
     }
 }

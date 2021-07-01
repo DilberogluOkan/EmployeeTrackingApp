@@ -16,60 +16,70 @@
 
                 </thead>
                 <tbody>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1"><b>İş Yeri</b></td>
-                        <td>
-                            @Html.Hidden("PersonelKimlikId", (int)ViewBag.PersonelKimlikId)
+
+                    <tr>
+                        <td class="col-xs-3"><b>İş Yeri</b></td>
+                        <td class="col-xs-3">
+                            @Html.HiddenFor(x => x.PersonelKimlikId)
                             @Html.HiddenFor(x => x.PersonelAtamaId)
                             @Html.DropDownListFor(x => x.IsYeriId, ViewBag.WorkPlaceGrpList as SelectList, "--İşyeri Seçiniz--", new { @class = "form-control" })
                         </td>
-                        <td><b>Atama İsteği Nedeni</b></td>
-                        <td>
+                        <td class="col-xs-3"><b>Atama İsteği Nedeni</b></td>
+                        <td class="col-xs-3">
                             @Html.DropDownListFor(x => x.AtamaIstegiNedenId, ViewBag.ReasonForDesignationGrpList as SelectList, "--Nakil Nedeni Seçiniz--", new { @class = "form-control" })
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Katılış Tarihi</b></td>
-                        <td>
+                        <td class="col-xs-3"><b>Katılış Tarihi</b></td>
+                        <td class="col-xs-3">
                             @Html.TextBoxFor(x => x.KatilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
-                        <td><b>Ayrılış Tarihi</b></td>
-                        <td>
+                        <td class="col-xs-3"><b>Ayrılış Tarihi</b></td>
+                        <td class="col-xs-3">
                             @Html.TextBoxFor(x => x.AyrilisTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Açıklama</b></td>
-                        <td>
+                        <td class="col-xs-3"><b>Açıklama</b></td>
+                        <td class="col-xs-3">
                             @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
                         </td>
-                        <td><b>Nakil Durumu</b></td>
-                        <td>
+                        <td class="col-xs-3"><b>Meslek Kolu</b></td>
+                        <td class="col-xs-3">
+                            @*  @Html.DropDownListFor(x => x.NakilDurumId, ViewBag. as SelectList, "--Meslek Kolu Seçiniz--", new { @class = "form-control" })*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-3"><b>İşveren Vekili Onayı</b></td>
+                        <td class="col-xs-3">
+                            @Html.DropDownListFor(x => x.IsVerenVekiliOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td class="col-xs-3"><b>İlgili Gn. Md./Kuvvet Komutanı Onayı</b></td>
+                        <td class="col-xs-3">
+                            @Html.DropDownListFor(x => x.IlgiliGenelMudurOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-xs-3"><b>Personel Gn. Md. Onayı</b></td>
+                        <td class="col-xs-3">
+                            @Html.DropDownListFor(x => x.PersonelGenelMudurOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td class="col-xs-3"><b>Nakil Talep Tarihi</b></td>
+                        <td class="col-xs-3">
                             @Html.DropDownListFor(x => x.NakilDurumId, ViewBag.DesignationStatusGrpList as SelectList, "--Nakil Durumu Seçiniz--", new { @class = "form-control" })
                         </td>
                     </tr>
                     <tr>
-                        <td><b>İşveren Vekili Onayı</b></td>
-                        <td>
-                            @Html.DropDownListFor(x => x.IsVerenVekiliOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+                        <td class="col-xs-3"><b>Nakil Durumu</b></td>
+                        <td class="col-xs-3">
+                            @Html.DropDownListFor(x => x.NakilDurumId, ViewBag.DesignationStatusGrpList as SelectList, "--Nakil Durumu Seçiniz--", new { @class = "form-control" })
+                        </td>
 
-                        </td>
-                        <td><b>İlgili Gn. Md./Kuvvet Komutanı Onayı</b></td>
-                        <td>
-                            @Html.DropDownListFor(x => x.IlgiliGenelMudurOnay,ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
-                        </td>
                     </tr>
-                    <tr>
-                        <td><b>Personel Gn. Md. Onayı</b></td>
-                        <td>
-                            @Html.DropDownListFor(x => x.PersonelGenelMudurOnay,ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
-
-                        </td>
-                        <td><b></b></td>
-                        <td>
-                           </td>
-                    </tr>
-               </table>
+</table>
             <button class="btn btn-success">Ekle</button>
         </div>
     </div>

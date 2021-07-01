@@ -20,19 +20,18 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from c in filter ==null ?context.WorkingPrices:context.WorkingPrices.Where(filter)
                              join v in context.DailyWorkingTimes on c.GunlukCalismaSureId equals v.GunlukCalismaSureId
-                            
                              join n in context.PriceGradeRises on c.UcretDerecesineTerfiId equals n.UcretDerecesineTerfiId
                              join h in context.PriceTypes on c.UcretTurId equals h.UcretTurId
 
                              select new PriceDto
                              {
                                  PersonelKimlikId = c.PersonelKimlikId,
-                                 CalismaUcretBilgiId = c.CalismaUcretBilgiId,
-                                 UcretTuru=h.UcretTuru,
-                                 UcretDerecesi = c.UcretDerece,
-                                 GunlukCalismaSuresi = v.GunlukCalismaSuresi,
-                                 UcretDerecesineTerfiNedeni = n.UcretDerecesineTerfiNedeni,
-                                 SonUcretDerecesineYukselmeTarih=c.SonUcretDerecesineYukselmeTarih
+                                   CalismaUcretBilgiId = c.CalismaUcretBilgiId,
+                                    UcretTuru=h.UcretTuru,
+                                     UcretDerecesi = c.UcretDerece,
+                                      GunlukCalismaSuresi = v.GunlukCalismaSuresi,
+                                       UcretDerecesineTerfiNedeni = n.UcretDerecesineTerfiNedeni,
+                                       SonUcretDerecesineYukselmeTarih=c.SonUcretDerecesineYukselmeTarih
                              };
 
                 return result.ToList();

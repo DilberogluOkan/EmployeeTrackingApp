@@ -1,0 +1,264 @@
+﻿@using Entities.Dto
+@model FilterQueryDto
+@{
+    ViewBag.Title = "FilterQuery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Seçilen Değerlere Göre Sorgulama</h3><br />
+        <br />
+        @using (Html.BeginForm("FilterQueryPost", "Query", FormMethod.Post))
+        {
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Genel Müdürlük :</b>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.GenelMudurlukId, ViewBag.WorkplaceHeadquartersGrpList as SelectList, "-- Genel Müdürlük Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckGnMd")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>İş Yeri:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.IsYeriId, ViewBag.WorkplaceGrpList as SelectList, "-- İş Yeri Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckIsYeri")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Meslek Kolu :</b>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.MeslekKolId, ViewBag.TisJobCodeGrpList as SelectList, "-- Meslek Kolu Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckMeslekKol")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Ücret Türü :</b>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.UcretTurId, ViewBag.PriceTypeGrpList as SelectList, "-- Ücret Türü Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckUcretTur")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Msb Giriş Tarihi:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(x => x.KatilisTarihi1, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </div>
+                        <div class="col-sm-5">
+                            @Html.TextBoxFor(x => x.KatilisTarihi2, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.CheckBox("CheckMsbKatilisTarih")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>İdarecilik Durumu :</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.IdarecilikId, ViewBag.AdminStatusGrpList as SelectList, "-- İdarecilik Durumu Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckIdarecilikDurum")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Çalışma Saati:</b>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.GunlukCalismaSureId, ViewBag.DailyWorkingTimeGrpList as SelectList, "-- Çalışma Saati Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckGunlukCalismaSure")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Yaş Aralığı:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(x => x.DogumTarihiBaslangic, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </div>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(x => x.DogumTarihiBitis,"{0:yyyy-MM-dd}", new { @class = "form-control", @type = "Date" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckDogumTarihi")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Özel Durumu:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.EngelDurumId, ViewBag.DisabilityStatusGrpList as SelectList, "-- Engel Durumu Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckEngelDurum")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>Medeni Hal:</b>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.MedeniHalId, ViewBag.MaritalStatusGrpList as SelectList, "-- Medeni Hal Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckMedeniHal")
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b> Cinsiyet:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.CinsiyetId, ViewBag.GenderGrpList as SelectList, "-- Cinsiyet Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckCinsiyet")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-4">
+                        <b>İstihtam Durumu:</b>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.IstihtamDurumId, ViewBag.WorkingStatusGrpList as SelectList, "-- Istihtam Durumu Seçiniz --", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.CheckBox("CheckIstihtamDurum")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+
+            <div class="pull-right">
+
+                @Html.CheckBox("ExcelAktarımDurum") <b>Excel Dökümanı İstiyorum </b><p /><br />
+                <button class="btn btn-twitter" style="width:200px">Oluştur</button>
+
+            </div>
+
+            @*<div class="pull-right">
+
+                    <table>
+                        <tr><td>  @Html.CheckBox("ExcelAktarımDurum") Excel Dökümanı Oluştur</td></tr>
+                        <tr><td> <a href="FilterQueryPost/Query" class="btn btn-twitter"style="width:200px">Oluştur</a></td></tr>
+                    </table>
+                </div>*@
+        }
+
+    </div>
+</div>
+<div class="container box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Yaş Sorgulama</h3><br />
+        <br />
+        @using (Html.BeginForm("FilterQueryAgePost", "Query", FormMethod.Post))
+        {
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="col-md-3">
+                        <b>İlk Yaş :</b>
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBox("YasBaslangic", null, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col-md-3">
+                        <b>Son Yaş :</b>
+
+                    </div>
+                    <div class="col-md-9">
+                        @Html.TextBox("YasBitis", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-twitter pull-left">Sorgula</button>
+                </div>
+                @*<div class="col-md-3">
+                        @Html.DropDownListFor(x => x.MeslekKol, ViewBag.TisJobCodeGrpList as SelectList, "-- Meslek Kolu Seçiniz --", new { @class = "form-control" })
+
+                    </div>*@
+
+            </div>
+            <br />
+
+        }
+
+    </div>
+</div>

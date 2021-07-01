@@ -64,6 +64,7 @@
     <Compile Include="Abstract\Dynamic\IReasonForTemporaryDutyDal.cs" />
     <Compile Include="Abstract\Dynamic\ITradeUnionNameDal.cs" />
     <Compile Include="Abstract\Dynamic\ITradeUnionStatusDal.cs" />
+    <Compile Include="Abstract\Dynamic\IWorkplaceHeadquartersDal.cs" />
     <Compile Include="Abstract\IAdaptationDal.cs" />
     <Compile Include="Abstract\IAdminStatusDal.cs" />
     <Compile Include="Abstract\IAwardDal.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Concrete\EntityFramework\Dynamic\ReasonForTemporaryDutyDal.cs" />
     <Compile Include="Concrete\EntityFramework\Dynamic\TradeUnionNameDal.cs" />
     <Compile Include="Concrete\EntityFramework\Dynamic\TradeUnionStatusDal.cs" />
+    <Compile Include="Concrete\EntityFramework\Dynamic\WorkplaceHeadquartersDal.cs" />
     <Compile Include="Concrete\EntityFramework\EmployeeContext.cs" />
     <Compile Include="Concrete\EntityFramework\ForeignLanguageDal.cs" />
     <Compile Include="Concrete\EntityFramework\GenderDal.cs" />

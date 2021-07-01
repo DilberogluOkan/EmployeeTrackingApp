@@ -11,5 +11,6 @@ namespace Business.Abstract
     public interface IPriceTypeService
     {
         IDataResult<List<PriceType>> GetAll();
+        IDataResult<PriceType> GetById(int id);
     }
 }

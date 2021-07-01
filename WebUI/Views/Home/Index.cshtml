@@ -63,7 +63,7 @@
                 <div class="inner">
                     <h3>@ViewBag.CurrentStatusCount</h3>
 
-                    <p>Sürekli İşçi Statüsüne Geçen Çalışan Sayısı</p>
+                    <p>696 ile Taşerondan Geçen İşçi Sayısı</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
@@ -80,9 +80,19 @@
         <section class="col-lg-7 connectedSortable ui-sortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">İş Yerleri İşçi Dağılımı</h3>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">İş Yerleri İşçi Dağılımı</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        @*<div class="box-header with-border">
+                            <h3 class="box-title"><a href="/Query/InspectionHeadquartersPdf/" class="btn btn-github">Raporla</a></h3>
+                        </div>*@
+                    </div>
                 </div>
+               
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table class="table table-bordered">
@@ -244,6 +254,10 @@
                                     </div>
                                 </td>
                                 <td><span class="badge bg-blue">@ViewBag.Sum</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><a href="/Query/InspectionHeadquartersPdf/" class="btn btn-github pull-right"><i class="fa fa-print"></i> Raporla</a></td>
+                               
                             </tr>
                         </tbody>
                     </table>

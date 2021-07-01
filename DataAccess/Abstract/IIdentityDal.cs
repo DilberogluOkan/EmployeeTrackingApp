@@ -18,6 +18,9 @@ namespace DataAccess.Abstract
         List<PersonIndividualDto> GetPersonIndividualDtoDetails(Expression<Func<Identity, bool>> filter = null);
       
         List<PersonTradeUnionInfoDto> GetPersonTradeUnionInfoDetails(Expression<Func<Identity, bool>> filter = null);
+        List<FilterQueryDto> GetFilterQueryDetails(Expression<Func<FilterQueryDto, bool>> filter = null);
+      
+       
         //List<Identity> GetPersonCount(Expression<Func<Identity, bool>> filter = null);
         //List<Identity> GetWomanCount(Expression<Func<Identity, bool>> filter = null);
     }

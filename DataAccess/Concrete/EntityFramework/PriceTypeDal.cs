@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class PriceTypeDal : IPriceTypeDal
+    public class PriceTypeDal :EfEntityRepositoryBase<PriceType,EmployeeContext>,IPriceTypeDal
     {
-        public List<PriceType> GetAll(Expression<Func<PriceType, bool>> filter = null)
-        {
-            using (EmployeeContext context = new EmployeeContext())
-            {
-                return filter == null ? context.Set<PriceType>().ToList()
-                                      : context.Set<PriceType>().Where(filter).ToList();
-            }
-        }
+       
     }
 }

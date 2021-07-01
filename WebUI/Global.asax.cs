@@ -24,7 +24,7 @@ namespace WebUI
     {
         protected void Application_Start()
         {
-
+           
             ContainerBuilder builder = new ContainerBuilder();
            
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
@@ -74,6 +74,7 @@ namespace WebUI
             builder.RegisterType<DesignationStatusManager>().As<IDesignationStatusService>();
             builder.RegisterType<LanguageNameManager>().As<ILanguageNameService>();
             builder.RegisterType<DesignationApprovalManager>().As<IDesignationApprovalService>();
+            builder.RegisterType<WorkplaceHeadquartersManager>().As<IWorkplaceHeadquartersService>();
 
             builder.RegisterType<AdaptationDal>().As<IAdaptationDal>();
             builder.RegisterType<AdminStatusDal>().As<IAdminStatusDal>();
@@ -119,6 +120,7 @@ namespace WebUI
             builder.RegisterType<DesignationStatusDal>().As<IDesignationStatusDal>();
             builder.RegisterType<LanguageNameDal>().As<ILanguageNameDal>();
             builder.RegisterType<DesignationApprovalDal>().As<IDesignationApprovalDal>();
+            builder.RegisterType<WorkplaceHeadquartersDal>().As<IWorkplaceHeadquartersDal>();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

@@ -31,7 +31,12 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+        public IResult Update(Identity identity)
+        {
+            _identityDal.Update(identity);
+            return new SuccessResult();
 
+        }
         public IDataResult<List<Identity>> GetAgeCount()
         {
             var sonuc = DateTime.Now.AddYears(-49);
@@ -45,7 +50,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Identity>> GetAllByIdentityId(int id)
         {
-            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.PersonelKimlikId == id));
+            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.PersonelKimlikId != id));
         }
 
         public IDataResult<Identity> GetById(int identityId)
@@ -96,12 +101,7 @@ namespace Business.Concrete
 
         }
 
-        public IResult Update(Identity identity)
-        {
-            _identityDal.Update(identity);
-            return new SuccessResult();
 
-        }
         public IDataResult<List<Identity>> AfgmForCount()
         {
             return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.IsYeriId <= 26));
@@ -173,17 +173,50 @@ namespace Business.Concrete
 
         public IDataResult<List<Identity>> EngineerPersonCount()
         {
-            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.TisMeslekKolId == "B999" || p.TisMeslekKolId == "E999" ||
-                                                                                  p.TisMeslekKolId == "E999" || p.TisMeslekKolId == "E998" ||
-                                                                                  p.TisMeslekKolId == "E997" || p.TisMeslekKolId == "F999" || p.TisMeslekKolId == "G999" ||
-                                                                                  p.TisMeslekKolId == "G998" || p.TisMeslekKolId == "H999" || p.TisMeslekKolId == "K998" ||
-                                                                                  p.TisMeslekKolId == "M999" || p.TisMeslekKolId == "M998" || p.TisMeslekKolId == "T999"));
+            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.TisMeslekKolId == 336 || p.TisMeslekKolId == 341 ||
+                                                                                  p.TisMeslekKolId == 337 || p.TisMeslekKolId == 342 ||
+                                                                                  p.TisMeslekKolId == 338 || p.TisMeslekKolId == 346 || p.TisMeslekKolId == 354 ||
+                                                                                  p.TisMeslekKolId == 339 || p.TisMeslekKolId == 352 || p.TisMeslekKolId == 360 ||
+                                                                                  p.TisMeslekKolId == 340 || p.TisMeslekKolId == 353 || p.TisMeslekKolId == 361));
         }
 
         public IDataResult<List<Identity>> WorkplaceCount(int id)
         {
-            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.IsYeriId==id));
+            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll(p => p.IsYeriId == id));
 
         }
+        public IDataResult<List<Identity>> GetAllByAge(int YasBaslangic, int YasBitis)
+        {
+            var baslangicYıl = DateTime.Now.AddYears(-YasBaslangic);
+            var bitisYıl = DateTime.Now.AddYears(-YasBitis);
+            return new SuccessDataResult<List<Identity>>(_identityDal.GetAll
+                                                     (p => p.DogumTarihi.Value <= baslangicYıl && p.DogumTarihi.Value >= bitisYıl));
+
+        }
+
+        public IDataResult<List<FilterQueryDto>> GetFilterQueryDetails(FilterQueryDto filterQueryDto)
+        {
+            
+            return new SuccessDataResult<List<FilterQueryDto>>
+             (_identityDal.GetFilterQueryDetails(p => p.PersonelKimlikId != filterQueryDto.PersonelKimlikId &
+
+               (filterQueryDto.IsYeriId != 0 ? (p.IsYeriId == filterQueryDto.IsYeriId) : (p.IsYeriId != filterQueryDto.IsYeriId)) &
+               (filterQueryDto.UcretTurId != 0 ? (p.UcretTurId == filterQueryDto.UcretTurId) : (p.UcretTurId != filterQueryDto.UcretTurId)) &
+               (filterQueryDto.GenelMudurlukId != 0 ? (p.GenelMudurlukId == filterQueryDto.GenelMudurlukId) : (p.GenelMudurlukId != filterQueryDto.GenelMudurlukId)) &
+               (filterQueryDto.MeslekKolId != 0 ? (p.MeslekKolId == filterQueryDto.MeslekKolId) : (p.MeslekKolId != filterQueryDto.MeslekKolId)) &
+             //(filterQueryDto.IdarecilikId != 0 ? (p.IdarecilikId == filterQueryDto.IdarecilikId) : (p.IdarecilikId != filterQueryDto.IdarecilikId))&
+               (filterQueryDto.GunlukCalismaSureId != 0 ? (p.GunlukCalismaSureId == filterQueryDto.GunlukCalismaSureId) : (p.GunlukCalismaSureId != filterQueryDto.GunlukCalismaSureId)) &
+               (filterQueryDto.EngelDurumId != 0 ? (p.EngelDurumId == filterQueryDto.EngelDurumId) : (p.EngelDurumId != filterQueryDto.EngelDurumId)) &
+               (filterQueryDto.MedeniHalId != 0 ? (p.MedeniHalId == filterQueryDto.MedeniHalId) : (p.MedeniHalId != filterQueryDto.MedeniHalId)) &
+               (filterQueryDto.CinsiyetId != 0 ? (p.CinsiyetId == filterQueryDto.CinsiyetId) : (p.CinsiyetId != filterQueryDto.CinsiyetId)) &
+               (filterQueryDto.IstihtamDurumId != 0 ? (p.IstihtamDurumId == filterQueryDto.IstihtamDurumId) : (p.IstihtamDurumId != filterQueryDto.IstihtamDurumId)) &
+               (filterQueryDto.KatilisTarihi1 != null ? (p.KatilisTarihi.Value >= filterQueryDto.KatilisTarihi1 && p.KatilisTarihi.Value <= filterQueryDto.KatilisTarihi2) : (p.KatilisTarihi != filterQueryDto.KatilisTarihi))&
+               (filterQueryDto.DogumTarihiBaslangic != null ? (p.DogumTarihi.Value >= filterQueryDto.DogumTarihiBaslangic && p.DogumTarihi.Value <= filterQueryDto.DogumTarihiBitis) : (p.DogumTarihi != filterQueryDto.DogumTarihi))
+             
+               ));
+        }
+        
+
     }
-}                                                                              
+}
+//                                                     

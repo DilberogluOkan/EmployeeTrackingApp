@@ -18,6 +18,7 @@ namespace Entities.Concrete
         public int NakilDurumId { get; set; }
         public DateTime? KatilisTarihi { get; set; }
         public DateTime? AyrilisTarihi { get; set; }
+        public DateTime? NakilTalepTarihi { get; set; }
         public int IlgiliGenelMudurOnay { get; set; }
         public int PersonelGenelMudurOnay { get; set; }
         public int IsVerenVekiliOnay { get; set; }

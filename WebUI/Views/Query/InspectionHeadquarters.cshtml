@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "InspectionHeadquarters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Genel Müdürlüklerdeki Personel Sayıları</h3>
+    </div>
+
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Genel Müdürlükler</th>
+
+                    <th style="width: 100px">Kişi sayısı</th>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td>Tersaneler Genel Müdürlüğü</td>
+                    <td>@ViewBag.TgmCount</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Askeri Fabrikalar Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.AfgmCount</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Tedarik Hizmetleri Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.TedgmCount</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Yönetim Hizmetleri Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.YhgmCount</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Lojistik Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.LgmCount</td>
+                </tr>
+
+                <tr>
+                    <td>6.</td>
+                    <td>Harita Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.HgmCount</td>
+                </tr>
+
+                <tr>
+                    <td>7.</td>
+                    <td>ASAL Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.AsalCount</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Kara Kuvvetleri Komutanlığı</td>
+
+                    <td>@ViewBag.KkkCount</td>
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>Hava Kuvvetleri Komutanlığı</td>
+
+                    <td>@ViewBag.HvkkCount</td>
+                </tr>
+                <tr>
+                    <td>10.</td>
+                    <td>Deniz Kuvvetleri Komutanlığı</td>
+
+                    <td>@ViewBag.DzkkCount</td>
+                </tr>
+                <tr>
+                    <td>11.</td>
+                    <td>Milli Savunma Üniversitesi</td>
+
+                    <td>@ViewBag.MsuCount</td>
+                </tr>
+                <tr>
+                    <td>12.</td>
+                    <td>Askeri Sağlık Hizmerleri Genel Müdürlüğü</td>
+
+                    <td>@ViewBag.AshgmCount</td>
+                </tr>
+                <tr>
+                    <td>13.</td>
+                    <td>Genelkurmay Başkanlığı </td>
+
+                    <td>@ViewBag.GnkurCount</td>
+                </tr>
+                <tr>
+                    <td>13.</td>
+                    <td>Askeri Fabrika ve Tersane İşletme A.Ş.</td>
+
+                    <td>@ViewBag.AsfatCount</td>
+                </tr>
+                <tr>
+                    <td>#</td>
+                    <td><b>Toplam</b></td>
+                    <td><b>@ViewBag.Sum</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="/Query/InspectionHeadquartersPdf/" class="btn btn-success pull-right">Yazdır</a></td>
+                    <td><a href="/Query/ExcelImportInspectionHeadquartersService/" class="btn btn-github pull-right">Excel'e Aktar</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+</div>

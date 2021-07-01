@@ -43,13 +43,42 @@
                         <td>
                             @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
                         </td>
+                        <td><b>Meslek Kolu</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x., ViewBag.TisJobCodeGrpList as SelectList, "--Meslek Kolu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>İşveren Vekili Onayı</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.IsVerenVekiliOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td><b>İlgili Gn. Md./Kuvvet Komutanı Onayı</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.IlgiliGenelMudurOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td><b>Personel Gn. Md. Onayı</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.PersonelGenelMudurOnay, ViewBag.DesignationApprovalGrpList as SelectList, "--Onay Durumu Seçiniz--", new { @class = "form-control" })
+
+                        </td>
+                        <td><b>Nakil Talep Tarihi</b></td>
+                        <td>
+                            @Html.DropDownListFor(x => x.NakilDurumId, ViewBag.DesignationStatusGrpList as SelectList, "--Nakil Durumu Seçiniz--", new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
                         <td><b>Nakil Durumu</b></td>
                         <td>
                             @Html.DropDownListFor(x => x.NakilDurumId, ViewBag.DesignationStatusGrpList as SelectList, "--Nakil Durumu Seçiniz--", new { @class = "form-control" })
-
                         </td>
+                       
                     </tr>
-                    
+
 </table>
             <button class="btn btn-warning">Güncelle</button>
         </div>

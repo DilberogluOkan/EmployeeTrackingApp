@@ -11,7 +11,7 @@ namespace Business.Abstract
 {
     public interface ITisJobCodeService:IServiceRepository<TisJobCode>
     {
-        IDataResult<TisJobCode> GetById(string tisJobCodeId);
+        IDataResult<TisJobCode> GetById(int tisJobCodeId);
         IDataResult<List<TisJobCode>> GetAll();
     }
 }

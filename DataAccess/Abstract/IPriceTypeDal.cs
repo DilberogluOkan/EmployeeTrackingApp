@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IPriceTypeDal
+    public interface IPriceTypeDal:IEntityRepository<PriceType>
     {
-        List<PriceType> GetAll(Expression<Func<PriceType, bool>> filter = null);
+        //List<PriceType> GetAll(Expression<Func<PriceType, bool>> filter = null);
+       
     }
 }

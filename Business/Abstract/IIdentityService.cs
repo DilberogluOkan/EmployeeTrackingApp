@@ -13,12 +13,17 @@ namespace Business.Abstract
     {
         
         IDataResult<List<Identity>> GetAllByIdentityId(int id);
+        IDataResult<List<Identity>> GetAllByAge(int YasBaslangic,int YasBitis);
        
         IDataResult<List<PersonDto>> GetPersonDetails(string id);
         IDataResult<List<PersonGeneralDto>> GetPersonGeneralDetails(int id);
         IDataResult<List<PersonIndividualDto>> GetPersonIndividualDtoDetails(int id);
         IDataResult<List<PersonWorkplaceDto>> GetPersonWorkplaceDtoDetails(int id);
+      
         IDataResult<List<PersonTradeUnionInfoDto>> GetPersonTradeUnionInfoDtoDetails(int id);
+
+        IDataResult<List<FilterQueryDto>> GetFilterQueryDetails(FilterQueryDto filterQueryDto);
+
         IResult Add(Identity identity);
         IResult Delete(Identity identity);
         IResult Update(Identity identity);

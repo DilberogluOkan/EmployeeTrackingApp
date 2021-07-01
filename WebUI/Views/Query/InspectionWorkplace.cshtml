@@ -1,0 +1,84 @@
+﻿@using Entities.Concrete.DynamicDataEntity
+@model List<Workplace>
+@{
+    ViewBag.Title = "InspectionWorkplace";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">İş Yerlerindeki Personel Sayıları</h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-7">
+                <table id="example2" class="table table-bordered table-hover dataTable " role="grid" aria-describedby="example2_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Birimi</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Gn.Md.</th>
+
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">İşyeri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in Model)
+                        {
+                            <tr>
+                                <td class="sorting_1">@e.Kuvvet</td>
+                                <td class="sorting_1">@e.Birimi </td>
+                                <td class="sorting_1">@e.IsYeriAdi</td>
+
+                            </tr>
+
+                        }
+                        <tr role="row" class="odd">
+
+                            <td colspan="3"><b>Toplam Personel Sayısı</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-1">
+                <table id="example2" class="table table-bordered  dataTable" role="grid" aria-describedby="example2_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate " aria-sort="ascending">Sayı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in ViewBag.Sayi)
+                        {
+
+                            <tr role="row" class="odd">
+
+                                <td class="sorting_1">@e</td>
+
+                            </tr>
+
+                        }
+                        <tr role="row" class="odd">
+
+                            <td class="sorting_1"><b>@ViewBag.SumPerson</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <a href="/Query/InspectionWorkplacePdf/" class="btn btn-success pull-right">Yazdır</a>
+                <a href="/Query/ExcelImportInspectionWorkplaceService/" class="btn btn-github ">Excel'e Aktar</a>
+            </div>
+            <div class="col-xs-4">
+                <div>
+                    <a href="/Query/InspectionWorkplacePdf/" class="btn btn-success pull-right">Yazdır</a>
+                </div>
+                <div>
+                    <a href="/Query/ExcelImportInspectionWorkplaceService/" class="btn btn-github pull-right">Excel'e Aktar</a>
+                </div>
+            </div>
+            <br />
+
+
+        </div>
+    </div>
+
+</div>

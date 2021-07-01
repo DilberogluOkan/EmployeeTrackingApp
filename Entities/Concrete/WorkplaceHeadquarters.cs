@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class TisJobCode:IEntity
+    public class WorkplaceHeadquarters:IEntity
     {
         [Key]
-        public int TisMeslekKodId { get; set; }
-        public string TisMeslekKodu { get; set; }
-        public string TisMeslekAdi { get; set; }
+        public int GenelMudurlukId { get; set; }
+        public string GenelMudurluk { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-﻿@using Entities.Concrete
-@model List<Identity>
+﻿@using Entities.Dto
+@model List<PersonDto>
 @{
     ViewBag.Title = "IndexQuery";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,7 +50,7 @@
                                 <td class="sorting_1">@k.TcKimlikNo</td>
                                 <td>@k.Adi</td>
                                 <td>@k.Soyadi</td>
-                                <td>@k.CalistigiKurum  @k.Birimi</td>
+                                <td>@k.CalistigiKurum  @k.IsYeriAdi</td>
                                 <td><a href="/Military/MilitaryGet/@k.PersonelAskerlikId" class="btn btn-warning col-xs-pull-5">Güncelle</a></td>
                             </tr>
                         }

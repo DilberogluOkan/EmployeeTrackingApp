@@ -86,7 +86,10 @@
     <Compile Include="Concrete\SgkJobCode.cs" />
     <Compile Include="Concrete\TisJobCode.cs" />
     <Compile Include="Concrete\TradeUnionInfo.cs" />
+    <Compile Include="Concrete\WorkplaceHeadquarters.cs" />
+    <Compile Include="Dto\CheckDto.cs" />
     <Compile Include="Dto\CriminalDto.cs" />
+    <Compile Include="Dto\FilterQueryDto.cs" />
     <Compile Include="Dto\IdentityInfoDto.cs" />
     <Compile Include="Dto\DesignationDto.cs" />
     <Compile Include="Dto\ForeignLanguageDto.cs" />
